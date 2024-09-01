@@ -1,2 +1,2 @@
 # geek-hub
-Repositorio de Ecommerce de artículos tecnológicos.
+Repositorio de Ecommerce para artículos tecnológicos.
