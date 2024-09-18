@@ -1,0 +1,441 @@
+:root{
+    --Black: #000000;/*Fondo y letra*/
+    --White: #ffffff;  /*Fondo y letra*/
+    --Details-green-Aquamarine: #34EDF3;/*bordes tarjeta, animaciones hover, 
+    notificaciones carrito, descuestos */
+    --Details-purple: #9201CB;/*titulos y encabezados, subrayados,
+     líneas divisorias, bordes, y elementos de navegación
+      como el menú principal o íconos clave.*/
+    --Spotlight-pink: #F715AB; /*los botones principales como "Comprar", Añadir carrito*/
+    --Spotlight-blue: #0313A6;/*Botones secundarios o elementos interactivos como enlaces, hover states o iconocos relacionadas con la interaccion del usuario */
+ 
+    --card-height: 65vh;
+    --card-width: calc(var(--card-height) / 1.5);
+    
+    /*Aqui deben ir los tamaños propuestos de las letras*/
+    /*Además*/
+}
+
+/*En el selector universal se establece valores iniciales generales*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;/*El tamaño se propone solo por width y heigh, sin padding y border*/
+    text-decoration: none;/*quita el subrayado del hipertexto*/
+    border: none; /*elimina cualquier borde por defecto*/
+    scroll-behavior: smooth;/*Desplazamiento suave y gradual*/
+    font-family: 'Poppins';
+}
+
+html{
+    font-size: 62.5%;/*cambia el valorr para que la medida rem sea igual a 10px*/
+    overflow-x: hidden;/*previene el desbordamiento horizontal, evita barras de desplazamiento*/
+}
+
+body {
+    background: linear-gradient(135deg, #000000 40%, #9201CB 100%); 
+    color: var(--White);    
+}
+
+
+.header{
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos dentro del contenedor */
+    justify-content: center; /* Centra horizontalmente los elementos dentro del contenedor */
+    position: fixed; /*Siempre se ve en la misma posicion*/
+    width: 80%;
+    padding: 2rem 7%;/*2rem arriba y abajo 7%del ancho total del elementos de iz a dere*/   
+    background: var(--Details-purple);
+    border-radius: 2rem;/*curva al borde*/
+    box-shadow: .2rem .2rem .5rem var(--Details-green-Aquamarine);/*Agrega sombras*/
+    border: .2rem solid var(--Details-green-Aquamarine);
+    margin: 0 auto; /* Centra el contenedor en la pantalla */
+    z-index: 100; /* Corregido: 'z-index' en minúsculas */
+    left: 0; 
+    right: 0;
+    top: 2rem; 
+}
+
+.logo{
+    padding: 0;
+    margin: 0;
+    font-size:2.5rem;
+    color: var(--Details-green-Aquamarine);
+    font-weight:600;
+    cursor:default;
+    margin-right: auto;
+}
+
+.navbar a{
+    position: relative;
+    font-size: 1.7rem;
+    color: var(--White);
+    font-weight: 500;
+    margin-right: 3.5rem;    
+}
+
+.navbar a.active::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: .2rem;
+    background: var(--Details-green-Aquamarine);
+}
+
+.navbar a:hover{
+    background: var(--Spotlight-pink);
+    color: var(--Spotlight-blue);
+    box-shadow: 0 .5rem .7rem var(--Details-green-Aquamarine);
+    border: .2rem solid var(--Spotlight-blue);
+}
+
+#darkMode-icon{
+    font-size: 2.4rem ;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/*Home*/
+section{
+    min-height: 60vh;
+    padding: 1rem 7% 2rem;
+}
+
+.home {
+    padding-top: 20rem;
+    display: flex;
+    align-items: Center;
+}
+
+.home-content{
+    max-width: 60rem;
+}
+.home-content h3{
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: .3;
+}
+.home-content h1{
+    font-size: 5.6rem;
+    font-weight: 700;
+}
+
+.home-content p{
+    font-size: 1.6rem;
+}
+
+.social-media a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: transparent ;
+    border: .2rem solid var(--Details-green-Aquamarine);
+    border-radius: 50%;
+    box-shadow: 0 .2rem .5rem var(--Details-green-Aquamarine);
+    font-size: 2rem;
+    color: var(--Details-green-Aquamarine);
+    margin: 2.5rem 1.5rem 3rem 0;
+    transition: .5s ease;
+}
+
+.social-media a:hover{
+    background: var(--Spotlight-pink);
+    color: var(--Spotlight-blue);
+    box-shadow: 0 .5rem .7rem var(--Details-green-Aquamarine);
+    border: .2rem solid var(--Spotlight-blue);
+}
+
+.btn{
+    display: inline-block;
+    padding: 1.2rem 2.8rem;
+    background: var(--Details-green-Aquamarine);
+    border-radius: .6rem;
+    box-shadow: 0 .2rem .5rem var(--Details-green-Aquamarine);
+    font-size: 1.6rem;
+    color: var(--White);
+    letter-spacing: .1rem;
+    font-weight: 600;
+    border: .2rem solid transparent;
+    transition: .5s ease;
+}
+
+.btn:hover{
+    background: var(--Spotlight-pink);
+    color: var(--Spotlight-blue);
+}
+
+
+/*Aqui comienza todo acerca de nosotros*/
+.about {
+    display: flex;
+    align-items: center; /* Alinea verticalmente la imagen y el texto */
+    justify-content: space-between; /* Da espacio entre la imagen y el texto */
+    padding: 2rem 7%;
+    gap: 6rem; /* Espacio entre la imagen y el texto */
+}
+
+.about-img img {
+    max-width: 100%; /* Ajusta la imagen a su contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 1rem; /* Bordes ligeramente redondeados */
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2); /* Sombra para destacar la imagen */
+}
+
+.about-content {
+    max-width: 60%; /* Limita el ancho del texto */
+}
+
+.about h2 {
+    font-size: 2rem; /* Tamaño de los encabezados */
+    margin-bottom: 1rem;
+    color: var(--Details-purple);
+}
+
+.about p {
+    margin-bottom: 1.5rem; /* Espacio entre párrafos */
+    line-height: 1.6; /* Aumenta la legibilidad */
+}
+
+@media (max-width: 768px) {
+    .about {
+        flex-direction: column; /* En pantallas pequeñas, la imagen y el texto se apilan verticalmente */
+        text-align: center; /* Centra el texto */
+    }
+
+    .about-content {
+        max-width: 100%; /* El texto ocupará el 100% del ancho en pantallas pequeñas */
+    }
+}
+/*Tarjetas de presentación*/
+.teamTech{
+    display: flex;
+    align-items: center; /* Alinea verticalmente la imagen y el texto */
+    justify-content: space-between; /* Da espacio entre la imagen y el texto */
+}
+
+.card {
+    background: linear-gradient(135deg, #000000 40%,  #34EDF3 100%); 
+    width: var(--card-width);
+    height: var(--card-height);
+    padding: 10rem;
+    margin: 2rem;
+    position: relative;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    font-size: 1.5em;
+    color: rgb(88 199 250 / 0%);
+    cursor: pointer;
+    font-family: cursive;
+}
+
+.card:hover {
+    color: rgb(88 199 250 / 100%);
+    transition: color 1s;
+}
+
+.card:hover:before, .card:hover:after {
+    animation: none;
+    opacity: 0;
+}
+
+.card::before {
+    content: "";
+    width: 104%;
+    height: 102%;
+    border-radius: 8px;
+    background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+    position: absolute;
+    z-index: -1;
+    top: -1%;
+    left: -2%;
+    animation: spin 2.5s linear infinite;
+}
+
+.card::after {
+    position: absolute;
+    content: "";
+    top: calc(var(--card-height) / 6);
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    transform: scale(0.8);
+    filter: blur(calc(var(--card-height) / 6));
+    background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+    opacity: 1;
+    transition: opacity .5s;
+    animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        --rotate: 0deg;
+    }
+    100% {
+        --rotate: 360deg;
+    }
+}
+
+a {
+    color: #212534;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+.product-image{
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+.product-name {
+    width: 80%; 
+    height: 80%; 
+    margin: 10px 0;
+    font-size: 1.5em;
+    color: #ffffff; /* Blanco */
+    font-weight: bold; /* Negrita */
+}
+
+.availability {
+    width: 80%;
+    color: #ff00ff; /* Fucsia neón */
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.price {
+font-size: 1.8em;
+margin: 10px 0;
+color: #ffffff; /* Blanco */
+}
+
+.rating {
+margin: 10px 0;
+color: #ffffff; /* Blanco para estrellas llenas */
+}
+
+.star {
+color: #ffffff; /* Color blanco para estrellas llenas */
+}
+
+.star.gray {
+color: #808080; /* Color gris para estrellas vacías */
+}
+
+.cart-button {
+margin-top: auto;
+padding: 10px 20px;
+background-color: #5ddcff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-weight: bold;
+transition: background-color 0.3s;
+color: #212534; /* Color del texto del botón */
+font-size: 1.2em;
+}
+
+.cart-button:hover {
+background-color: #3c67e3;
+}
+
+/*Aqui empieza el estilo del footer */
+footer {
+    border-color: var(--Details-green-Aquamarine);
+    border-top-left-radius: 3rem;
+    border-top-right-radius: 2rem;
+    background-color:var(--Black);
+    color: var(--White);
+    padding: 4rem 2rem;
+}
+ 
+.footer-container {
+    display: flex;
+    justify-content:space-around ;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+ 
+.footer-section {
+    flex: 1;
+    margin: 0;
+}
+ 
+.footer-section h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--Details-purple);
+}
+ 
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+ 
+.footer-section ul li {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+ 
+.footer-section ul li a {
+    color: var(--White);
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+ 
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-section p{
+    font-size: 1.5rem;
+}
+ 
+
+/* Estilo para la parte inferior del footer */
+.footer-down {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+    border-top: 1px solid var(--Details-green-Aquamarine);
+    padding-top: 20px;
+}
+ 
+.footer-down p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.footer-down span{
+    font-size: 1.5rem;
+    color: var(--Details-green-Aquamarine);
+}
+ 
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+    }
+   
+    .footer-section {
+        margin-bottom: 20px;
+    }
+}
+
+
+
+
