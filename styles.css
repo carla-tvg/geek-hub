@@ -1,441 +1,387 @@
-:root{
-    --Black: #000000;/*Fondo y letra*/
-    --White: #ffffff;  /*Fondo y letra*/
-    --Details-green-Aquamarine: #34EDF3;/*bordes tarjeta, animaciones hover, 
-    notificaciones carrito, descuestos */
-    --Details-purple: #9201CB;/*titulos y encabezados, subrayados,
-     líneas divisorias, bordes, y elementos de navegación
-      como el menú principal o íconos clave.*/
-    --Spotlight-pink: #F715AB; /*los botones principales como "Comprar", Añadir carrito*/
-    --Spotlight-blue: #0313A6;/*Botones secundarios o elementos interactivos como enlaces, hover states o iconocos relacionadas con la interaccion del usuario */
- 
-    --card-height: 65vh;
-    --card-width: calc(var(--card-height) / 1.5);
-    
-    /*Aqui deben ir los tamaños propuestos de las letras*/
-    /*Además*/
-}
+/* Importación de fuentes futuristas */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-/*En el selector universal se establece valores iniciales generales*/
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;/*El tamaño se propone solo por width y heigh, sin padding y border*/
-    text-decoration: none;/*quita el subrayado del hipertexto*/
-    border: none; /*elimina cualquier borde por defecto*/
-    scroll-behavior: smooth;/*Desplazamiento suave y gradual*/
-    font-family: 'Poppins';
-}
-
-html{
-    font-size: 62.5%;/*cambia el valorr para que la medida rem sea igual a 10px*/
-    overflow-x: hidden;/*previene el desbordamiento horizontal, evita barras de desplazamiento*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background: linear-gradient(135deg, #000000 40%, #9201CB 100%); 
-    color: var(--White);    
+  font-family: 'Roboto', sans-serif;
+  background: #000; /* Fondo negro */
+  color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px;
+  position: relative;
+  height: auto; /* Para permitir que crezca si hay más contenido */
 }
 
-
-.header{
-    display: flex;
-    align-items: center; /* Alinea verticalmente los elementos dentro del contenedor */
-    justify-content: center; /* Centra horizontalmente los elementos dentro del contenedor */
-    position: fixed; /*Siempre se ve en la misma posicion*/
-    width: 80%;
-    padding: 2rem 7%;/*2rem arriba y abajo 7%del ancho total del elementos de iz a dere*/   
-    background: var(--Details-purple);
-    border-radius: 2rem;/*curva al borde*/
-    box-shadow: .2rem .2rem .5rem var(--Details-green-Aquamarine);/*Agrega sombras*/
-    border: .2rem solid var(--Details-green-Aquamarine);
-    margin: 0 auto; /* Centra el contenedor en la pantalla */
-    z-index: 100; /* Corregido: 'z-index' en minúsculas */
-    left: 0; 
-    right: 0;
-    top: 2rem; 
+/* Fondo animado aplicado a todo el sitio */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Ocupa toda la altura del body */
+  background: linear-gradient(45deg, #040a26, #72009a, #1c748a);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  z-index: -1; /* Asegurarse de que esté detrás de todo */
 }
 
-.logo{
-    padding: 0;
-    margin: 0;
-    font-size:2.5rem;
-    color: var(--Details-green-Aquamarine);
-    font-weight:600;
-    cursor:default;
-    margin-right: auto;
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.navbar a{
-    position: relative;
-    font-size: 1.7rem;
-    color: var(--White);
-    font-weight: 500;
-    margin-right: 3.5rem;    
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
 }
 
-.navbar a.active::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: .2rem;
-    background: var(--Details-green-Aquamarine);
+/* Encabezado */
+.header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5rem;
+  letter-spacing: 0.2em;
+  color: #34EDF3; /* Color del título principal */
+  margin-bottom: 10px;
 }
 
-.navbar a:hover{
-    background: var(--Spotlight-pink);
-    color: var(--Spotlight-blue);
-    box-shadow: 0 .5rem .7rem var(--Details-green-Aquamarine);
-    border: .2rem solid var(--Spotlight-blue);
+.header p {
+  font-size: 1.2rem;
+  color: #FFFFFF; /* Color blanco para subtítulo */
+  margin-bottom: 30px;
 }
 
-#darkMode-icon{
-    font-size: 2.4rem ;
-    color: #ffffff;
-    cursor: pointer;
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/*Home*/
-section{
-    min-height: 60vh;
-    padding: 1rem 7% 2rem;
+.nav-links {
+  list-style: none;
+  display: flex;
 }
 
-.home {
-    padding-top: 20rem;
-    display: flex;
-    align-items: Center;
+.nav-links li {
+  margin-left: 20px;
 }
 
-.home-content{
-    max-width: 60rem;
-}
-.home-content h3{
-    font-size: 3.2rem;
-    font-weight: 700;
-    line-height: .3;
-}
-.home-content h1{
-    font-size: 5.6rem;
-    font-weight: 700;
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  padding: 8px 16px;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-.home-content p{
-    font-size: 1.6rem;
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: #000;
+  border-radius: 5px;
 }
 
-.social-media a{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 4rem;
-    height: 4rem;
-    background: transparent ;
-    border: .2rem solid var(--Details-green-Aquamarine);
-    border-radius: 50%;
-    box-shadow: 0 .2rem .5rem var(--Details-green-Aquamarine);
-    font-size: 2rem;
-    color: var(--Details-green-Aquamarine);
-    margin: 2.5rem 1.5rem 3rem 0;
-    transition: .5s ease;
+/* Estilos para el botón hamburguesa */
+.menu-toggle {
+  display: none; /* Ocultamos el botón por defecto */
+  flex-direction: column;
+  cursor: pointer;
 }
 
-.social-media a:hover{
-    background: var(--Spotlight-pink);
-    color: var(--Spotlight-blue);
-    box-shadow: 0 .5rem .7rem var(--Details-green-Aquamarine);
-    border: .2rem solid var(--Spotlight-blue);
+.bar {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.3s;
 }
 
-.btn{
-    display: inline-block;
-    padding: 1.2rem 2.8rem;
-    background: var(--Details-green-Aquamarine);
-    border-radius: .6rem;
-    box-shadow: 0 .2rem .5rem var(--Details-green-Aquamarine);
-    font-size: 1.6rem;
-    color: var(--White);
-    letter-spacing: .1rem;
-    font-weight: 600;
-    border: .2rem solid transparent;
-    transition: .5s ease;
-}
-
-.btn:hover{
-    background: var(--Spotlight-pink);
-    color: var(--Spotlight-blue);
-}
-
-
-/*Aqui comienza todo acerca de nosotros*/
-.about {
-    display: flex;
-    align-items: center; /* Alinea verticalmente la imagen y el texto */
-    justify-content: space-between; /* Da espacio entre la imagen y el texto */
-    padding: 2rem 7%;
-    gap: 6rem; /* Espacio entre la imagen y el texto */
-}
-
-.about-img img {
-    max-width: 100%; /* Ajusta la imagen a su contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */
-    border-radius: 1rem; /* Bordes ligeramente redondeados */
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2); /* Sombra para destacar la imagen */
-}
-
-.about-content {
-    max-width: 60%; /* Limita el ancho del texto */
-}
-
-.about h2 {
-    font-size: 2rem; /* Tamaño de los encabezados */
-    margin-bottom: 1rem;
-    color: var(--Details-purple);
-}
-
-.about p {
-    margin-bottom: 1.5rem; /* Espacio entre párrafos */
-    line-height: 1.6; /* Aumenta la legibilidad */
-}
-
+/* Media query para pantallas pequeñas */
 @media (max-width: 768px) {
-    .about {
-        flex-direction: column; /* En pantallas pequeñas, la imagen y el texto se apilan verticalmente */
-        text-align: center; /* Centra el texto */
-    }
-
-    .about-content {
-        max-width: 100%; /* El texto ocupará el 100% del ancho en pantallas pequeñas */
-    }
-}
-/*Tarjetas de presentación*/
-.teamTech{
-    display: flex;
-    align-items: center; /* Alinea verticalmente la imagen y el texto */
-    justify-content: space-between; /* Da espacio entre la imagen y el texto */
-}
-
-.card {
-    background: linear-gradient(135deg, #000000 40%,  #34EDF3 100%); 
-    width: var(--card-width);
-    height: var(--card-height);
-    padding: 10rem;
-    margin: 2rem;
-    position: relative;
-    border-radius: 6px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    display: flex;
-    font-size: 1.5em;
-    color: rgb(88 199 250 / 0%);
-    cursor: pointer;
-    font-family: cursive;
-}
-
-.card:hover {
-    color: rgb(88 199 250 / 100%);
-    transition: color 1s;
-}
-
-.card:hover:before, .card:hover:after {
-    animation: none;
-    opacity: 0;
-}
-
-.card::before {
-    content: "";
-    width: 104%;
-    height: 102%;
-    border-radius: 8px;
-    background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
-    position: absolute;
-    z-index: -1;
-    top: -1%;
-    left: -2%;
-    animation: spin 2.5s linear infinite;
-}
-
-.card::after {
-    position: absolute;
-    content: "";
-    top: calc(var(--card-height) / 6);
+  .nav-links {
+    display: none; /* Ocultamos los enlaces de navegación */
+    flex-direction: column; /* Los enlaces se apilan verticalmente */
+    width: 100%; /* Anchura completa */
+    position: absolute; /* Posicionamos absolutamente */
+    top: 60px; /* Espaciado desde el top */
     left: 0;
-    right: 0;
-    z-index: -1;
-    height: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Fondo de la lista */
+  }
+
+  .nav-links.active {
+    display: flex; /* Mostramos los enlaces cuando está activa */
+  }
+
+  .menu-toggle {
+    display: flex; /* Mostramos el botón hamburguesa */
+  }
+}
+/* Sección general */
+.section {
+  margin: 40px 0;
+}
+
+.section h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 0.1em;
+  color: #FF00FF; /* Color rosado neón */
+  margin-bottom: 20px;
+}
+
+.section p {
+  font-size: 1.2rem;
+  color: #FFFFFF; /* Texto en blanco */
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.section ul li {
+  font-size: 1.2rem;
+  color: #34EDF3; /* Cian vibrante para ítems de la lista */
+  margin: 10px 0;
+  letter-spacing: 0.05em;
+}
+
+/* Botones futuristas */
+.btn {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  color: #FFF;
+  border: 2px solid #F715AB; /* Borde rosado */
+  background-color: transparent;
+  border-radius: 8px;
+  transition: 0.3s;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+
+.btn:hover {
+  background-color: #F715AB; /* Fondo rosado al pasar el ratón */
+  color: #FFF;
+  cursor: pointer;
+}
+
+.btn.primary {
+  border-color: #34EDF3; /* Borde cian para botón principal */
+}
+
+.btn.primary:hover {
+  background-color: #34EDF3;
+  color: #000; /* Texto negro sobre fondo cian */
+}
+
+.btn.secondary {
+  border-color: #F715AB; /* Borde rosado para botón secundario */
+}
+
+.btn.secondary:hover {
+  background-color: #F715AB;
+  color: #FFF;
+}
+
+/* Estilos específicos de las secciones */
+#quienes-somos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, rgba(21, 21, 31, 0.95) 50%, rgba(255, 255, 255, 0) 100%), url('./img-carla/headphones.png') no-repeat right center;
+  background-size: contain;
+  padding: 60px 20px;
+  border-radius: 12px;
+  color: #FFF;
+  text-align: left;
+  position: relative;
+  min-height: 400px;
+}
+
+
+#quienes-somos .content {
+  max-width: 50%; /* Limita el ancho del contenido textual */
+}
+
+#quienes-somos h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #FF00FF; /* Cambia el color del título para destacar más */
+}
+
+#quienes-somos p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+#quienes-somos .btn.primary {
+  margin-top: 20px;
+  border-color: #FFF;
+  color: #FFF;
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: transparent;
+  border: 2px solid #FFF;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#quienes-somos .btn.primary:hover {
+  background-color: #FFF;
+  color: #000;
+}
+
+/* Para pantallas más pequeñas */
+@media (max-width: 768px) {
+  #quienes-somos {
+    background: linear-gradient(180deg, rgba(21, 21, 31, 0.95) 50%, rgba(255, 255, 255, 0) 100%),
+                url('./img/headphones.png') no-repeat center top;
+    background-size: cover; /* La imagen cubre toda la sección en pantallas pequeñas */
+    text-align: center;
+    flex-direction: column;
+  }
+
+  #quienes-somos .content {
+    max-width: 90%; /* Ajusta el ancho del texto en pantallas pequeñas */
+  }
+}
+
+#vision-mision {
+  display: flex;
+  justify-content: space-around;
+  text-align: left;
+}
+
+#vision-mision .vision, 
+#vision-mision .mision {
+  width: 45%;
+}
+
+#vision-mision p {
+  color: #C0C0C0; /* Color gris claro para subtítulos */
+}
+
+#equipo p {
+  font-size: 1.1rem;
+  color: #FFFFFF; /* Texto blanco */
+}
+
+/* CTA sección */
+.cta {
+  background-color: rgba(0, 0, 0, 0.3); /* Color morado más oscuro */
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.cta h2 {
+  color: #34EDF3; /* Cian brillante para títulos de las secciones CTA */
+}
+
+.cta p {
+  color: #E0E0E0; /* Texto gris claro para contenido CTA */
+  margin-bottom: 20px;
+}
+
+/* Adaptaciones para pantallas más pequeñas */
+@media (max-width: 768px) {
+  #vision-mision {
+    flex-direction: column;
+  }
+
+  #vision-mision .vision, 
+  #vision-mision .mision {
     width: 100%;
-    margin: 0 auto;
-    transform: scale(0.8);
-    filter: blur(calc(var(--card-height) / 6));
-    background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
-    opacity: 1;
-    transition: opacity .5s;
-    animation: spin 2.5s linear infinite;
+    margin-bottom: 20px;
+  }
 }
 
-@keyframes spin {
-    0% {
-        --rotate: 0deg;
-    }
-    100% {
-        --rotate: 360deg;
-    }
-}
-
-a {
-    color: #212534;
-    text-decoration: none;
-    font-family: sans-serif;
-    font-weight: bold;
-    margin-top: 2rem;
-}
-
-.product-image{
+/* Sección de diferenciadores */
+.diferenciadores-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+  }
+  
+  .card {
+    background-color: rgba(0, 0, 0, 0.3); /* Fondo más oscuro para las tarjetas */
+    border-radius: 15px;
+    padding: 20px;
+    width: 25%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+ 
+  
+  .card img {
     width: 100%;
     height: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-
-.product-name {
-    width: 80%; 
-    height: 80%; 
-    margin: 10px 0;
-    font-size: 1.5em;
-    color: #ffffff; /* Blanco */
-    font-weight: bold; /* Negrita */
-}
-
-.availability {
-    width: 80%;
-    color: #ff00ff; /* Fucsia neón */
-    font-weight: bold;
-    margin: 5px 0;
-}
-
-.price {
-font-size: 1.8em;
-margin: 10px 0;
-color: #ffffff; /* Blanco */
-}
-
-.rating {
-margin: 10px 0;
-color: #ffffff; /* Blanco para estrellas llenas */
-}
-
-.star {
-color: #ffffff; /* Color blanco para estrellas llenas */
-}
-
-.star.gray {
-color: #808080; /* Color gris para estrellas vacías */
-}
-
-.cart-button {
-margin-top: auto;
-padding: 10px 20px;
-background-color: #5ddcff;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-font-weight: bold;
-transition: background-color 0.3s;
-color: #212534; /* Color del texto del botón */
-font-size: 1.2em;
-}
-
-.cart-button:hover {
-background-color: #3c67e3;
-}
-
-/*Aqui empieza el estilo del footer */
-footer {
-    border-color: var(--Details-green-Aquamarine);
-    border-top-left-radius: 3rem;
-    border-top-right-radius: 2rem;
-    background-color:var(--Black);
-    color: var(--White);
-    padding: 4rem 2rem;
-}
- 
-.footer-container {
-    display: flex;
-    justify-content:space-around ;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-}
- 
-.footer-section {
-    flex: 1;
-    margin: 0;
-}
- 
-.footer-section h3 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--Details-purple);
-}
- 
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
- 
-.footer-section ul li {
-    margin-bottom: 1.5rem;
+    border-radius: 10px;
+  }
+  
+  .card h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #34EDF3; /* Color cian para los títulos de las tarjetas */
+    margin-top: 15px;
     font-size: 1.5rem;
-}
- 
-.footer-section ul li a {
-    color: var(--White);
-    font-size: 1.5rem;
-    text-decoration: none;
-}
- 
-.footer-section ul li a:hover {
-    text-decoration: underline;
-}
-
-.footer-section p{
-    font-size: 1.5rem;
-}
- 
-
-/* Estilo para la parte inferior del footer */
-.footer-down {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 0;
-    border-top: 1px solid var(--Details-green-Aquamarine);
-    padding-top: 20px;
-}
- 
-.footer-down p {
-    margin: 5px 0;
-    font-size: 14px;
-}
-
-.footer-down span{
-    font-size: 1.5rem;
-    color: var(--Details-green-Aquamarine);
-}
- 
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #34EDF3;
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .card:hover::before {
+    opacity: 1;
+  }
+  
+  /* Ajustes para pantallas más pequeñas */
+  @media (max-width: 768px) {
+    .diferenciadores-container {
+      flex-direction: column;
+      align-items: center;
     }
-   
-    .footer-section {
-        margin-bottom: 20px;
+  
+    .card {
+      width: 80%;
+      margin-bottom: 20px;
     }
-}
-
-
-
-
+  }
