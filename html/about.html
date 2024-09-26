@@ -8,27 +8,39 @@
   <link rel="stylesheet" href="../css/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
   <!-- Contenedor Principal -->
   <div class="container">
+    <img src="../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image">
+    <br><br>
+
 
     <nav class="navbar">
-      <div class="logo">Geek Hub</div>
-      <div class="menu-toggle" id="mobile-menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+      <div class="menu-toggle">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
       </div>
       <ul class="nav-links">
-        <li><a href="../html/index.html">Inicio</a></li>
-        <li><a href="../html/productos">Productos</a></li>
-        <li><a href="../html/about.html">Sobre nosotros</a></li>
-        <li><a href="../html/contacto.html">Contacto</a></li>
-        <li><a href="../html/carrito.html">Carrito</a></li>
+          <li><a href="masvendido.html"><i class="fas fa-fire"></i> Más Vendido</a></li>
+          <li><a href="recienllegado.html"><i class="fas fa-box"></i> Recién Llegado</a></li>
+          <li class="search-item">
+              <form class="search-form">
+                  <div class="search-container">
+                      <i class="fas fa-search search-icon"></i>
+                      <input type="text" class="search-input" placeholder="Buscar productos...">
+                  </div>
+                  <button type="submit" class="search-button">Buscar</button>
+              </form>
+          </li>
+          <li><a href="formulariodeinicio.html"><i class="fas fa-user"></i> Iniciar Sesión / Registro</a></li>
+          <li><a href="contacto.html"fas fa-question-circle"></i> Ayuda</a></li>
+          <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
       </ul>
-    </nav>
+  </nav>
     <br><br>
 
     <!-- Encabezado -->
@@ -47,7 +59,7 @@
       para crear una experiencia única. Nuestro equipo de entusiastas de la cultura geek se ha propuesto
       transformar la forma en que accedes a tus productos favoritos.
     </p>
-    <a href="#" class="btn primary">Conoce más</a> <!-- Botón CTA -->
+    <a href="index.html" class="btn primary">Conoce más</a> <!-- Botón CTA -->
   </div>
 </section>
     
@@ -93,17 +105,17 @@
     <section class="section cta" id="revolucion">
       <h2>Únete a la comunidad Geek Hub</h2>
       <p>Forma parte de la revolución geek. Regístrate hoy y obtén un 10% de descuento en tu primera compra.</p>
-      <a href="#" class="btn primary">¡ÚNETE AHORA!</a>
+      <a href="formulariodeinicio.html" class="btn primary">¡ÚNETE AHORA!</a>
     </section>
 
     <!-- Sección: Explora la tienda -->
     <section class="section cta" id="explora">
       <h2>La experiencia que va más allá de lo que conoces</h2>
       <p>No somos solo otra tienda. Queremos darte una experiencia inmersiva, personalizada y entretenida.</p>
-      <a href="#" class="btn secondary">¡EXPLORA LA TIENDA!</a>
+      <a href="productos.html" class="btn secondary">¡EXPLORA LA TIENDA!</a>
     </section>
 
   </div>
-<script src="../javascript/script.js"></script>
+<script src="../script.js"></script>
 </body>
 </html>
