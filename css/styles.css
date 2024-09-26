@@ -212,7 +212,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(90deg, rgba(21, 21, 31, 0.95) 50%, rgba(255, 255, 255, 0) 100%), url('./img-carla/headphones.png') no-repeat right center;
+  background: linear-gradient(90deg, rgba(21, 21, 31, 0.95) 50%, rgba(255, 255, 255, 0) 100%), url('../img-carla/headphones.png') no-repeat right center;
   background-size: contain;
   padding: 60px 20px;
   border-radius: 12px;
