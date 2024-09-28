@@ -3,91 +3,101 @@
       "id": 1,
       "nombre": "Auriculares NeonTech",
       "descripcion": "Auriculares inalámbricos con tecnología de cancelación de ruido y luces LED personalizables.",
-      "precio": 120.000,
+      "precio": 120000,
       "imagen": "img-productos/audifonos-1.png",
       "categoria": "Electrónica",
-      "stock": 10
+      "stock": 10,
+      "puntuacion": 4.5
     },
     {
       "id": 2,
       "nombre": "Teclado Mecánico CyberStrike",
       "descripcion": "Teclado mecánico RGB con switches intercambiables y diseño compacto ideal para gaming.",
-      "precio": 80.000,
+      "precio": 80000,
       "imagen": "img-productos/teclado-1.png",
       "categoria": "Periféricos",
-      "stock": 10
+      "stock": 10,
+      "puntuacion":4.5
     },
     {
       "id": 3,
       "nombre": "Camiseta HoloWave",
       "descripcion": "Camiseta de algodón con estampado holográfico reactivo a la luz.",
-      "precio": 48.000,
-      "imagen": "img-productos/camisa-1",
+      "precio": 48000,
+      "imagen": "img-productos/camisa-1.png",
       "categoria": "Ropa",
-      "stock": 10
+      "stock": 10,
+      "puntuacion":4.5
     },
     {
       "id": 4,
       "nombre": "Mochila Anti-Gravity",
       "descripcion": "Mochila ergonómica con sistema de distribución de peso y paneles de carga solar.",
-      "precio": 170.000,
+      "precio": 170000,
       "imagen": "img-productos/mochila-1.png",
       "categoria": "Accesorios",
-      "stock": 10
+      "stock": 10,
+      "puntuacion":4.5
     },
     {
       "id": 5,
       "nombre": "Lámpara NeoPixel",
       "descripcion": "Lámpara futurista con control por voz y millones de colores RGB.",
-      "precio": 90.000,
+      "precio": 90000,
       "imagen": "img-productos/lampara-1.png",
       "categoria": "Hogar",
-      "stock": 10
+      "stock": 10,
+      "puntuacion":4.5
     },
     {
       "id": 6,
       "nombre": "Reloj Holográfico ChronoX",
       "descripcion": "Reloj de pulsera con pantalla holográfica interactiva y múltiples funciones de salud.",
-      "precio": 97.000,
+      "precio": 97000,
       "imagen": "img-productos/smartwatch-1.png",
       "categoria": "Accesorios",
-      "stock": 10
+      "stock": 10,
+      "puntuacion":4.5
     },
     {
       "id": 7,
       "nombre": "Silla Gamer OmegaFlux",
       "descripcion": "Silla gaming ergonómica con soporte lumbar y reclinación de hasta 180 grados.",
-      "precio": 650.000,
+      "precio": 650000,
       "imagen": "img-productos/sillagamer-1.png",
       "categoria": "Muebles",
-      "stock": 10
+      "stock": 10,
+      "puntuacion":4.5
     },
     {
       "id": 8,
       "nombre": "Mouse Cyberspeed V2",
       "descripcion": "Mouse óptico inalámbrico de alta precisión con iluminación RGB personalizable.",
-      "precio": 87.000,
+      "precio": 87000,
       "imagen": "img-productos/mouse-1.png",
       "categoria": "Periféricos",
-      "stock": 10
+      "stock": 10,
+      "puntuacion":4.5
     },
     {
       "id": 9,
       "nombre": "Lentes AR VisionX",
       "descripcion": "Lentes de realidad aumentada con visualización holográfica y conexión Bluetooth.",
-      "precio": 370.000,
+      "precio": 370000,
       "imagen": "img-productos/vr-1.png",
       "categoria": "Electrónica",
-      "stock": 10
+      "stock": 10,
+      "puntuacion":4.5
     },
     {
       "id": 10,
       "nombre": "Figura Coleccionable NeoTrooper",
       "descripcion": "Figura de edición limitada con detalles futuristas y articulaciones.",
-      "precio": 55.000,
+      "precio": 55000,
       "imagen": "img-productos/figura-1.png",
       "categoria": "Coleccionables",
-      "stock": 10
+      "stock": 10,
+      "puntuacion":4.5
     }
   ]
   
