@@ -189,7 +189,7 @@ body::before {
 }
 
 .search-button:hover {
-  background-color: rgba(136, 53, 163, 0.667);
+  background-color: rgba(255, 255, 255, 0.3);
   color: #000;
 }
 
@@ -520,3 +520,145 @@ body::before {
       margin-bottom: 20px;
     }
   }
+
+  /*FOOTER*/
+
+  #foot {
+    background: rgba(4, 10, 38, 0.7); /* Fondo oscuro y translúcido */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    -webkit-backdrop-filter: blur(10px);
+    color: #faf9fa; /* Color base para el texto */
+    padding: 40px 50px; /* Aumentar el padding para más espacio */
+    text-align: left; /* Alinear texto a la izquierda */
+    border-radius: 0px; /* Bordes redondeados */
+}
+
+.foot-inner-container {
+    display: flex;
+    justify-content: flex-start; /* Alinear enlaces a la izquierda */
+    margin-bottom: 30px; /* Espacio entre enlaces y Encuéntranos */
+    flex-wrap: wrap; /* Permitir que los enlaces se envuelvan si es necesario */
+}
+
+.foot-inner-info {
+    flex: 1;
+    margin-right: 50px; /* Espaciado entre grupos */
+}
+
+.footer-header {
+    color: #ffffff; /* Cambiar color de los encabezados a blanco */
+    text-decoration: none; /* Sin subrayado */
+    transition: color 0.3s;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    display: block; /* Cambiado a block para que estén en una columna */
+}
+
+.footer-links li {
+    margin: 10px 0; /* Espaciado vertical entre enlaces */
+}
+
+.footer-links a {
+    color: #34EDF3; /* Verde aguamarina */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #72009a; /* Color de hover */
+}
+
+.subscribe-container {
+    margin-top: 20px; /* Espacio superior */
+    text-align: center; /* Centrar contenido del contenedor de suscripción */
+}
+
+.subscribe-container input {
+    padding: 10px;
+    border: 2px solid rgba(52, 237, 243, 0.7); /* Borde color aguamarina y translúcido */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-right: 10px; /* Espaciado entre campo y botón */
+    width: 200px; /* Ancho del campo */
+    outline: none; /* Sin contorno */
+    background: rgba(255, 255, 255, 0.2); /* Fondo blanco translúcido */
+    color: #fff; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: border-color 0.3s, background-color 0.3s; /* Transiciones suaves */
+}
+
+.subscribe-container input::placeholder {
+    color: #ccc; /* Color del placeholder */
+}
+
+.subscribe-container input:focus {
+    border-color: #72009a; /* Borde al enfocar */
+    background-color: rgba(255, 255, 255, 0.4); /* Fondo más claro al enfocar */
+}
+
+.subscribe-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(0, 217, 255, 0.8); /* Color de fondo */
+    color: white; /* Color del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+.subscribe-button:hover {
+    background-color: #72009a; /* Color de fondo al pasar el mouse */
+    transform: scale(1.05); /* Efecto de aumento */
+}
+
+.foot-inner-social {
+    margin-bottom: 30px; /* Espacio adicional entre Encuéntranos y el logo */
+    text-align: center; /* Centrar contenido de Encuéntranos */
+}
+
+.foot-inner-social h2 {
+    margin-bottom: 10px; /* Espacio debajo del título Encuéntranos */
+    color: #ffffff; /* Cambiar color a blanco */
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+}
+
+.social-icon {
+    margin: 0 15px; /* Espaciado entre iconos aumentado */
+    color: #34EDF3; /* Verde aguamarina */
+    font-size: 24px;
+    transition: color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+.social-icon:hover {
+    color: #72009a; /* Fucsia en hover */
+    transform: scale(1.5); /* Efecto de aumento en hover */
+}
+
+.footer-bottom {
+    background-color: rgba(4, 10, 38, 0.7); /* Mismo color de fondo que el footer superior, con efecto cristal */
+    padding: 20px;
+    text-align: center; /* Centrar el contenido del footer inferior */
+    border-radius: 0px; /* Bordes redondeados */
+}
+
+.footer-logo {
+    max-width: 200px; /* Ajustar el tamaño del logo */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .foot-inner-container {
+        flex-direction: column;
+        align-items: flex-start; /* Alinear al inicio en pantallas pequeñas */
+    }
+
+    .foot-inner-info, .foot-inner-social {
+        margin-bottom: 20px;
+    }
+}
