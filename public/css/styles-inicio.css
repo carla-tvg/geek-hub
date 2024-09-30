@@ -1,0 +1,170 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; 
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Cambia a columna para que la navbar y el footer estén en su lugar */
+    justify-content: space-between; /* Espacio entre navbar, formulario y footer */
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('fondo1.jpg'); /* Ruta de la imagen */
+    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
+.navbar {
+    width: 100%;
+    padding: 20px; /* Espacio para la navbar */
+    background-color: rgba(255, 255, 255, 0.034); /* Fondo semitransparente para la navbar */
+}
+
+.wrapper {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    box-shadow: 0 0 50px #0ef; /* Sombra inicial */
+    border-radius: 20px;
+    padding: 40px;
+    overflow: hidden;
+    transition: box-shadow 0.5s ease; /* Transición suave para la sombra */
+    margin: 20px 0; /* Espacio entre la navbar y el footer */
+}
+
+
+.wrapper:hover {
+    animation: animate 1s linear infinite; /* Animación al pasar el ratón */
+}
+
+/* Resto de tus estilos... */
+
+
+@keyframes animate {
+    0% {
+        box-shadow: 0 0 50px #0ef; /* Color inicial */
+    }
+    50% {
+        box-shadow: 0 0 50px #056dcf; /* Color intermedio (fucsia) */
+    }
+    100% {
+        box-shadow: 0 0 50px #34EDF3; /* Color final (aguamarina) */
+    }
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: 3s ease-in-out;
+}
+
+.wrapper.active .form-wrapper.sign-in {
+    transform: translateY(-450px);
+}
+
+.wrapper .form-wrapper.sign-up {
+    position: absolute;
+    top: 450px;
+    left: 0;
+}
+
+.wrapper.active .form-wrapper.sign-up {
+    transform: translateY(-450px);
+}
+
+h2 {
+    font-size: 30px;
+    color: #fff; /* Color del título */
+    text-align: center;
+}
+
+.input-group {
+    position: relative;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff; /* Línea blanca */
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #fff; /* Color de las etiquetas */
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-group input {
+    width: 320px;
+    height: 40px;
+    font-size: 16px;
+    color: #fff; /* Texto blanco */
+    padding: 0 5px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.input-group input:focus~label,
+.input-group input:valid~label {
+    top: -5px;
+}
+
+.remember {
+    margin: -5px 0 15px 5px;
+}
+
+.remember label {
+    color: #fff; /* Texto blanco */
+    font-size: 14px;
+}
+
+.remember label input {
+    accent-color: #0ef; /* Color del checkbox */
+}
+
+button {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: #0ef; /* Color del botón */
+    box-shadow: 0 0 10px #0ef; /* Sombra del botón */
+    font-size: 16px;
+    color: #000; /* Texto negro */
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+}
+
+.signUp-link {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.signUp-link p {
+    color: #fff; /* Texto blanco */
+}
+
+.signUp-link p a {
+    color: #0ef; /* Color del enlace */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signUp-link p a:hover {
+    text-decoration: underline; /* Subrayado en hover */
+}
+
