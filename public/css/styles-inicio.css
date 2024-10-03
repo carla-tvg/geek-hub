@@ -38,6 +38,11 @@ body {
     margin: 20px 0; /* Espacio entre la navbar y el footer */
 }
 
+.container-form {
+    display: flex;
+    justify-content: center;
+}
+
 
 .wrapper:hover {
     animation: animate 1s linear infinite; /* Animación al pasar el ratón */
