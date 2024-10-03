@@ -1,16 +1,15 @@
-/* Estilos generales para el contenedor de la sección */
-.productos-container {
+.container-equipo {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between; /* Distribuye el espacio entre las tarjetas */
-    padding: 20px;
+    padding: 10px;
 }
 
-/* Estilo para cada tarjeta de producto */
-.product-card {
+/* Estilo para cada tarjeta de equipo */
+.card-equipo {
     margin: 15px; /* Espaciado entre tarjetas */
     padding: 20px; /* Ajustar el padding según sea necesario */
-    width: calc(33.33% - 30px); /* 3 tarjetas por fila */
+    width: calc(25% - 30px); /* Ajustar el ancho para 4 tarjetas por fila */
     background: #1c1f2b;
     color: white;
     text-align: left;
@@ -20,32 +19,23 @@
 }
 
 /* Contenedor de imagen */
-.img-container {
+.img-container-equipo {
     overflow: hidden; /* Asegúrate de que la imagen no desborde la tarjeta */
     height: 200px; /* Altura fija para las imágenes */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.img-container img {
+.img-container-equipo img {
     width: 100%;
     height: 100%; /* Asegura que la imagen ocupe toda la altura */
     object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
-    display: block;
     transition: transform 0.3s ease; /* Transición suave para el zoom */
 }
 
-.product-card:hover .img-container img {
+.card-equipo:hover .img-container-equipo img {
     transform: scale(1.1); /* Aumenta la imagen al pasar el mouse */
-}
-
-.promo {
-    position: absolute;
-    top: 20px;
-    left: 0px;
-    background: #72009a;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: bold;
 }
 
 /* Contenedor de información */
@@ -53,10 +43,11 @@
     padding: 15px;
 }
 
-/* Títulos y precios */
+/* Nombre */
 .info-container h3 {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.5rem; /* Tamaño relativo */
+    text-align: center;
     color: #ff00ff;
     margin: 10px 0;
     transition: color 0.3s ease; /* Transición suave para el color */
@@ -67,31 +58,14 @@
 }
 
 .info-container strong {
-    font-size: 1.2rem; /* Tamaño relativo */
-    color: #ff00ff; /* Color para el precio */
+    font-size: 1rem; /* Tamaño relativo */
+    text-align: center;
+    color: #ffffff; /* Color para descripción */
     transition: color 0.3s ease; /* Transición suave para el color */
 }
 
 .info-container strong:hover {
     color: #34EDF3; /* Cambia el color al pasar el mouse */
-}
-
-/* Estilo para el botón de añadir al carrito */
-.add-cart {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #34EDF3;
-    color: #1d1d1d;
-    padding: 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background 0.3s;
-    margin-top: 10px;
-}
-
-.add-cart:hover {
-    background: #72009a; /* Color más oscuro al pasar el ratón */
 }
 
 @property --angle {
@@ -100,7 +74,7 @@
     inherits: false;
 }
 
-.product-card::after, .product-card::before {
+.card-equipo::after, .card-equipo::before {
     content: '';
     position: absolute;
     height: 100%;
@@ -115,7 +89,7 @@
     animation: 3s spin linear infinite;
 }
 
-.product-card::before {
+.card-equipo::before {
     filter: blur(1.5rem);
 }
 
@@ -141,18 +115,24 @@ body {
 }
 
 /* Media Queries para Responsividad */
-@media (max-width: 1024px) { /* Pantallas de tabletas */
-    .product-card {
+@media (max-width: 1200px) {
+    .card-equipo {
+        width: calc(33.33% - 30px); /* 3 tarjetas por fila */
+    }
+}
+
+@media (max-width: 800px) {
+    .card-equipo {
         width: calc(50% - 30px); /* 2 tarjetas por fila */
     }
 }
 
-@media (max-width: 600px) { /* Pantallas móviles */
-    .product-card {
+@media (max-width: 600px) {
+    .card-equipo {
         width: calc(100% - 30px); /* 1 tarjeta por fila */
     }
 
-    .img-container {
+    .img-container-equipo {
         height: 150px; /* Ajustar altura para pantallas más pequeñas */
     }
 
@@ -161,6 +141,6 @@ body {
     }
 
     .info-container strong {
-        font-size: 1rem; /* Ajustar tamaño de fuente */
+        font-size: 0.9rem; /* Ajustar tamaño de fuente */
     }
 }
