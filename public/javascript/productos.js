@@ -20,7 +20,11 @@ function mostrarProductos(productos) {
     productos.forEach(producto => {
         const estrellasHTML = crearEstrellas(producto.puntuacion);
         const productoHTML = `
+<<<<<<< HEAD
             <div class="product-card"> <!-- Cambié 'product-card' a 'card' -->
+=======
+            <div class="card"> <!-- Cambié 'product-card' a 'card' -->
+>>>>>>> carlis/develop
                 <div class="img-container">
                     <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image">
                 </div>
