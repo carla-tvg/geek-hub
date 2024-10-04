@@ -16,19 +16,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function mostrarProductos(productos) {
     const productosContainer = document.getElementById('productos');
-    
+    productosContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
+
     productos.forEach(producto => {
+<<<<<<< HEAD
         const estrellasHTML = crearEstrellas(producto.puntuacion);
         const productoHTML = `<div class="product-card"> <!-- Cambié 'product-card' a 'card' -->
+=======
+        const estrellasHTML = crearEstrellas(producto.puntuacion || 0); // Manejar puntuación undefined
+        const productoHTML = `
+            <div class="card">
+>>>>>>> carlis/develop
                 <div class="img-container">
                     <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image">
                 </div>
-                <div class="info-container"> <!-- Añadido contenedor de información -->
-                    <h3 class="product-name">${producto.nombre}</h3> <!-- Cambié 'h2' a 'h3' -->
+                <div class="info-container">
+                    <h3 class="product-name">${producto.nombre}</h3>
                     <p class="product-description">${producto.descripcion}</p>
-                    <strong class="product-price">$${producto.precio.toFixed(2)}</strong>
+                    <strong class="product-price">$${Number(producto.precio).toLocaleString('es-CO')}</strong>
                     <span class="product-rating">${estrellasHTML}</span>
-                    <a href="detalle.html?id=${producto.id}" class="add-cart">Ver Detalle</a> <!-- Cambié 'btn' a 'add-cart' -->
+                    <a href="detalle.html?id=${producto.id}" class="add-cart">Ver Detalle</a>
                 </div>
             </div>
         `;
