@@ -98,5 +98,21 @@
     "categoria": "Coleccionables",
     "stock": 10,
     "puntuacion": 4.5
+  },
+  {
+    "nombre": "prubea 1",
+    "descripcion": "prueba producto",
+    "precio": "232323",
+    "stock": "1",
+    "imagen": "/img-productos/imagen-1728012378973-660650723.png",
+    "id": 1728012378981
+  },
+  {
+    "nombre": "Silla Gamer",
+    "descripcion": "Silla Gamer Rosa",
+    "precio": "23445",
+    "stock": "1",
+    "imagen": "/img-productos/imagen-1728012895159-834044468.png",
+    "id": 1728012895166
   }
 ]
