@@ -1,5 +1,14 @@
+// productos.js
+
 document.addEventListener("DOMContentLoaded", () => {
-    fetch('/api/productos')
+    fetchProductos();
+
+    // Opcional: Refrescar los productos cada 60 segundos
+    // setInterval(fetchProductos, 60000);
+});
+
+function fetchProductos() {
+    fetch(`/api/productos?timestamp=${new Date().getTime()}`) // Evitar caché
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error en la red');
@@ -12,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => {
             console.error('Hubo un problema con la petición Fetch:', error);
         });
-});
+}
 
 function mostrarProductos(productos) {
     const productosContainer = document.getElementById('productos');
@@ -21,16 +30,15 @@ function mostrarProductos(productos) {
     productos.forEach(producto => {
         const estrellasHTML = crearEstrellas(producto.puntuacion || 0); // Manejar puntuación undefined
         const productoHTML = `
-            <div class="card">
-                <div class="img-container">
-                    <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image">
-                </div>
-                <div class="info-container">
-                    <h3 class="product-name">${producto.nombre}</h3>
-                    <p class="product-description">${producto.descripcion}</p>
-                    <strong class="product-price">$${Number(producto.precio).toLocaleString('es-CO')}</strong>
-                    <span class="product-rating">${estrellasHTML}</span>
-                    <a href="detalle.html?id=${producto.id}" class="add-cart">Ver Detalle</a>
+            <div class="card mb-4" style="width: 18rem;">
+                <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+                <div class="card-body">
+                    <h5 class="card-title">${producto.nombre}</h5>
+                    <p class="card-text">${producto.descripcion}</p>
+                    <p class="card-text"><strong>${(producto.precio / 1000).toLocaleString('es-CO', { style: 'currency', currency: 'COP' })}</strong></p>
+                    <p class="card-text">Stock: ${producto.stock}</p>
+                    <p class="card-text">Puntuación: ${estrellasHTML}</p>
+                    <a href="detalle.html?id=${producto.id}" class="btn btn-primary">Ver Detalle</a>
                 </div>
             </div>
         `;

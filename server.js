@@ -3,28 +3,41 @@ const app = express();
 const PORT = 3000;
 const fs = require('fs');
 const path = require('path');
-const multer = require('multer'); // Importar multer
+const multer = require('multer');
 
 // Configuración de almacenamiento de multer
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'public/img-productos/'); // Carpeta donde se guardarán las imágenes
+        cb(null, 'public/img-productos/');
     },
     filename: function (req, file, cb) {
-        // Renombrar el archivo para evitar conflictos
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
         const extension = path.extname(file.originalname);
         cb(null, file.fieldname + '-' + uniqueSuffix + extension);
     }
 });
 
-const upload = multer({ storage: storage });
+// Configuración de multer con limitaciones
+const upload = multer({ 
+    storage: storage,
+    limits: { fileSize: 2 * 1024 * 1024 }, // 2MB
+    fileFilter: function (req, file, cb) {
+        const filetypes = /jpeg|jpg|png|gif/;
+        const mimetype = filetypes.test(file.mimetype);
+        const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+        if (mimetype && extname) {
+            return cb(null, true);
+        }
+        cb(new Error('Solo se permiten imágenes'));
+    }
+});
 
 // Middleware para servir archivos estáticos
 app.use(express.static('public'));
 
-// Middleware para parsear JSON
+// Middleware para parsear JSON y datos URL-encoded
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Ruta para servir el archivo index.html
 app.get('/', (req, res) => {
@@ -48,16 +61,22 @@ app.get('/api/productos', (req, res) => {
 
 // Ruta para agregar un nuevo producto con subida de imagen
 app.post('/api/agregar_producto', upload.single('imagen'), (req, res) => {
-    const nuevoProducto = req.body;
+    const { nombre, descripcion, precio, stock } = req.body;
 
-    // Validar si se subió una imagen
-    if (!req.file) {
-        return res.status(400).send('No se subió ninguna imagen');
+    if (!nombre || !descripcion || !precio || !stock || !req.file) {
+        return res.status(400).send('Faltan campos requeridos');
     }
 
-    // Asignar la ruta de la imagen al producto
-    nuevoProducto.imagen = `/img-productos/${req.file.filename}`;
-    nuevoProducto.id = Date.now(); // Generar un ID único
+    const nuevoProducto = {
+        id: Date.now(),
+        nombre: nombre.trim(),
+        descripcion: descripcion.trim(),
+        precio: parseFloat(precio),
+        stock: parseInt(stock),
+        imagen: `/img-productos/${req.file.filename}`,
+        categoria: "Sin categoría", // Valor por defecto
+        puntuacion: 0 // Valor por defecto
+    };
 
     fs.readFile('db.json', (err, data) => {
         if (err) {
@@ -78,7 +97,7 @@ app.post('/api/agregar_producto', upload.single('imagen'), (req, res) => {
 
 // Ruta para eliminar un producto
 app.delete('/api/eliminar_producto/:id', (req, res) => {
-    const id = parseInt(req.params.id); // Obtener el ID del producto a eliminar
+    const id = parseInt(req.params.id);
 
     fs.readFile('db.json', (err, data) => {
         if (err) {
@@ -86,10 +105,8 @@ app.delete('/api/eliminar_producto/:id', (req, res) => {
         }
 
         let productos = JSON.parse(data);
-        // Filtrar el producto que se desea eliminar
         const productoEliminado = productos.find(p => p.id === id);
         if (productoEliminado) {
-            // Eliminar la imagen del servidor
             const imagenPath = path.join(__dirname, 'public', productoEliminado.imagen);
             fs.unlink(imagenPath, (err) => {
                 if (err) {
@@ -103,9 +120,68 @@ app.delete('/api/eliminar_producto/:id', (req, res) => {
             if (err) {
                 return res.status(500).send('Error al guardar la base de datos');
             }
-            res.status(200).json({ message: 'Producto eliminado' }); // Respuesta de éxito
+            res.status(200).json({ message: 'Producto eliminado' });
         });
     });
+});
+
+// Ruta para editar un producto
+app.put('/api/editar_producto/:id', upload.single('imagen'), (req, res) => {
+    const id = parseInt(req.params.id);
+    const { nombre, descripcion, precio, stock } = req.body;
+
+    if (!nombre || !descripcion || !precio || !stock) {
+        return res.status(400).send('Faltan campos requeridos');
+    }
+
+    fs.readFile('db.json', (err, data) => {
+        if (err) {
+            return res.status(500).send('Error al leer la base de datos');
+        }
+
+        let productos = JSON.parse(data);
+        const productoIndex = productos.findIndex(p => p.id === id);
+
+        if (productoIndex === -1) {
+            return res.status(404).send('Producto no encontrado');
+        }
+
+        // Si se subió una nueva imagen, manejarla
+        if (req.file) {
+            // Eliminar la imagen antigua
+            const imagenPath = path.join(__dirname, 'public', productos[productoIndex].imagen);
+            fs.unlink(imagenPath, (err) => {
+                if (err) {
+                    console.error('Error al eliminar la imagen antigua:', err);
+                }
+            });
+
+            // Asignar la nueva ruta de la imagen
+            productos[productoIndex].imagen = `/img-productos/${req.file.filename}`;
+        }
+
+        // Actualizar los campos del producto
+        productos[productoIndex].nombre = nombre.trim();
+        productos[productoIndex].descripcion = descripcion.trim();
+        productos[productoIndex].precio = parseFloat(precio);
+        productos[productoIndex].stock = parseInt(stock);
+
+        fs.writeFile('db.json', JSON.stringify(productos, null, 2), (err) => {
+            if (err) {
+                return res.status(500).send('Error al guardar el producto');
+            }
+            res.status(200).json(productos[productoIndex]);
+        });
+    });
+});
+
+// Manejar errores de Multer
+app.use((err, req, res, next) => {
+    if (err instanceof multer.MulterError || err.message === 'Solo se permiten imágenes') {
+        res.status(400).send(err.message);
+    } else {
+        next(err);
+    }
 });
 
 // Iniciar el servidor
