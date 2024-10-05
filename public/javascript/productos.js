@@ -19,14 +19,8 @@ function mostrarProductos(productos) {
     productosContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
 
     productos.forEach(producto => {
-<<<<<<< HEAD
         const estrellasHTML = crearEstrellas(producto.puntuacion);
         const productoHTML = `<div class="product-card"> <!-- Cambié 'product-card' a 'card' -->
-=======
-        const estrellasHTML = crearEstrellas(producto.puntuacion || 0); // Manejar puntuación undefined
-        const productoHTML = `
-            <div class="card">
->>>>>>> carlis/develop
                 <div class="img-container">
                     <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image">
                 </div>
