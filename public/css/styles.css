@@ -174,18 +174,19 @@ body::before {
 }
 
 .search-button {
-  padding: 8px 16px;
+  padding: 4px 8px; /* Reducir el padding a la mitad */
   border: none;
   background-color: rgb(255, 255, 255);
-  color: #000000;
+  color: #4242429f;
   cursor: pointer;
   border-radius: 0 5px 5px 0; /* Bordes redondeados solo en el lado derecho */
   transition: background-color 0.3s ease;
-  position: absolute; /* Colocamos el botón en el lado derecho */
+  position: relative; /* Colocamos el botón en el lado derecho */
   right: 0;
   top: 0;
   bottom: 0;
   height: 100%; /* Aseguramos que el botón tenga la misma altura que el input */
+  width: 65px; /* Ajustar el ancho según sea necesario */
 }
 
 .search-button:hover {
@@ -394,7 +395,7 @@ body::before {
 @media (max-width: 768px) {
   #quienes-somos {
     background: linear-gradient(180deg, rgba(21, 21, 31, 0.95) 50%, rgba(255, 255, 255, 0) 100%),
-                url('../img-carla/banner.jpg') no-repeat center top;
+                url('../img-carla/headphones.png') no-repeat center top;
     background-size: cover; /* La imagen cubre toda la sección en pantallas pequeñas */
     text-align: center;
     flex-direction: column;
@@ -461,7 +462,7 @@ body::before {
     margin-top: 30px;
   }
   
-  .card {
+  .card{
     background-color: rgba(0, 0, 0, 0.3); /* Fondo más oscuro para las tarjetas */
     border-radius: 15px;
     padding: 20px;
@@ -491,23 +492,45 @@ body::before {
     transform: translateY(-10px);
   }
   
-  .card::before {
+  .card::after, .card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     height: 100%;
-    border: 2px solid #34EDF3;
-    border-radius: 15px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  .card:hover::before {
-    opacity: 1;
-  }
-  
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+}
+
+.card::before {
+    filter: blur(1.5rem);
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 20px;
+    background-color: #121212; /* Fondo oscuro */
+    margin: 0;
+    color: white; /* Color de texto general */
+}
   /* Ajustes para pantallas más pequeñas */
   @media (max-width: 768px) {
     .diferenciadores-container {
@@ -568,7 +591,7 @@ body::before {
 }
 
 .footer-links a:hover {
-    color: #72009a; /* Color de hover */
+    color: #FF00FF; /* Color de hover */
 }
 
 .subscribe-container {
@@ -594,7 +617,7 @@ body::before {
 }
 
 .subscribe-container input:focus {
-    border-color: #72009a; /* Borde al enfocar */
+    border-color: #FF00FF; /* Borde al enfocar */
     background-color: rgba(255, 255, 255, 0.4); /* Fondo más claro al enfocar */
 }
 
@@ -609,7 +632,7 @@ body::before {
 }
 
 .subscribe-button:hover {
-    background-color: #72009a; /* Color de fondo al pasar el mouse */
+    background-color: #FF00FF; /* Color de fondo al pasar el mouse */
     transform: scale(1.05); /* Efecto de aumento */
 }
 
@@ -636,7 +659,7 @@ body::before {
 }
 
 .social-icon:hover {
-    color: #72009a; /* Fucsia en hover */
+    color: #FF00FF; /* Fucsia en hover */
     transform: scale(1.5); /* Efecto de aumento en hover */
 }
 
