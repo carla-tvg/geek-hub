@@ -3,7 +3,7 @@ const router = express.Router();
 const productosController = require('../controllers/productosController'); // Importar el controlador de productos
 const multer = require('multer');
 
-// Configurar multer aquí o en el controlador si lo prefieres
+//multer configurado en el controlador
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/img-productos/');
@@ -33,6 +33,6 @@ const upload = multer({
 router.get('/productos', productosController.obtenerProductos); // Cambiado aquí
 router.post('/agregar_producto', upload.single('imagen'), productosController.agregarProducto);
 router.delete('/eliminar_producto/:id', productosController.eliminarProducto);
-router.put('/editar_producto/:id', upload.single('imagen'), productosController.editarProducto);
+
 
 module.exports = router;

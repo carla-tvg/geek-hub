@@ -6,11 +6,7 @@ let productos = [];
 // Referencia al formulario de agregar productos y a la tabla
 const form = document.getElementById('productoForm');
 const productosTableBody = document.getElementById('productosTable');
-
-// Referencia al formulario de edición y al modal
-const editarForm = document.getElementById('editarProductoForm');
-const editarModalElement = document.getElementById('editarProductoModal');
-const editarModal = new bootstrap.Modal(editarModalElement);
+s
 
 // Función para agregar un producto a la tabla de administración
 function agregarProductoTabla(producto) {
@@ -117,71 +113,6 @@ function eliminarProducto(id) {
         });
 }
 
-// Función para abrir el modal de edición con los datos del producto
-function abrirEditar(id) {
-    const producto = productos.find(p => p.id === id);
-    if (!producto) {
-        alert('Producto no encontrado');
-        return;
-    }
-
-    // Llenar el formulario del modal con los datos del producto
-    document.getElementById('editarId').value = producto.id;
-    document.getElementById('editarNombre').value = producto.nombre;
-    document.getElementById('editarDescripcion').value = producto.descripcion;
-    document.getElementById('editarPrecio').value = producto.precio;
-    document.getElementById('editarStock').value = producto.stock;
-    document.getElementById('editarImagen').value = ''; // Limpiar el campo de imagen
-
-    // Mostrar el modal
-    editarModal.show();
-}
-
-// Función para manejar la edición de un producto
-editarForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const id = parseInt(document.getElementById('editarId').value);
-    const nombre = document.getElementById('editarNombre').value.trim();
-    const descripcion = document.getElementById('editarDescripcion').value.trim();
-    const precio = parseFloat(document.getElementById('editarPrecio').value);
-    const stock = parseInt(document.getElementById('editarStock').value);
-    const imagen = document.getElementById('editarImagen').files[0]; // Puede ser undefined
-
-    if (!nombre || !descripcion || isNaN(precio) || isNaN(stock)) {
-        alert('Por favor, completa todos los campos correctamente.');
-        return;
-    }
-
-    // Crear un nuevo FormData para enviar al servidor
-    const dataToSend = new FormData();
-    dataToSend.append('nombre', nombre);
-    dataToSend.append('descripcion', descripcion);
-    dataToSend.append('precio', precio);
-    dataToSend.append('stock', stock);
-    if (imagen) {
-        dataToSend.append('imagen', imagen);
-    }
-
-    // Enviar la actualización al servidor
-    fetch(`/api/editar_producto/${id}`, {
-        method: 'PUT',
-        body: dataToSend
-    })
-        .then(response => {
-            if (!response.ok) throw new Error('Error en la solicitud de edición');
-            return response.json();
-        })
-        .then(data => {
-            console.log('Producto editado:', data);
-            cargarProductos(); // Actualizar la lista de productos en admin.html
-            editarForm.reset(); // Limpiar el formulario del modal
-            editarModal.hide(); // Cerrar el modal
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-});
 
 // Cargar los productos al inicio
 window.onload = function () {

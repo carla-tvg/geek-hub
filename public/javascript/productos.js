@@ -1,12 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetchProductos();
-
-    // Opcional: Refrescar los productos cada 60 segundos
-    // setInterval(fetchProductos, 60000);
-});
-
-function fetchProductos() {
-    fetch(`/api/productos?timestamp=${new Date().getTime()}`) // Esto es correcto
+    fetch('/api/productos')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error en la red');
@@ -19,27 +12,28 @@ function fetchProductos() {
         .catch(error => {
             console.error('Hubo un problema con la petición Fetch:', error);
         });
-}
+});
 
 function mostrarProductos(productos) {
     const productosContainer = document.getElementById('productos');
-    productosContainer.innerHTML = ''; // Limpiar el contenedor
+    productosContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
 
     productos.forEach(producto => {
-        const productoDiv = document.createElement('div');
-        productoDiv.className = 'col-md-4 mb-4';
-        productoDiv.innerHTML = `
-            <div class="card">
-                <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
-                <div class="card-body">
-                    <h5 class="card-title">${producto.nombre}</h5>
-                    <p class="card-text">${producto.descripcion}</p>
-                    <p class="card-text">Precio: $${producto.precio}</p>
-                    <p class="card-text">Stock: ${producto.stock}</p>
+        const estrellasHTML = crearEstrellas(producto.puntuacion);
+        const productoHTML = `<div class="product-card"> <!-- Cambié 'product-card' a 'card' -->
+                <div class="img-container">
+                    <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image">
+                </div>
+                <div class="info-container">
+                    <h3 class="product-name">${producto.nombre}</h3>
+                    <p class="product-description">${producto.descripcion}</p>
+                    <strong class="product-price">$${Number(producto.precio).toLocaleString('es-CO')}</strong>
+                    <span class="product-rating">${estrellasHTML}</span>
+                    <a href="detalle.html?id=${producto.id}" class="add-cart">Ver Detalle</a>
                 </div>
             </div>
         `;
-        productosContainer.appendChild(productoDiv);
+        productosContainer.innerHTML += productoHTML;
     });
 }
 

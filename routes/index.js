@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
-const productosRoutes = require('./productos'); // Asegúrate de que esta línea esté presente
+const productosRoutes = require('./productos'); 
 
 // Ruta para servir el archivo index.html
 router.get('/', (req, res) => {
@@ -19,7 +19,7 @@ router.get('/usuarios.html', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/html/usuarios.html'));
 });
 
-// Usar las rutas de productos
-router.use('/api', productosRoutes); // Asegúrate de que esta línea esté presente
+
+router.use('/api', productosRoutes);  //llamado de productos
 
 module.exports = router;
