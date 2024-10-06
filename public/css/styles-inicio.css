@@ -24,11 +24,22 @@ body {
     background-color: rgba(255, 255, 255, 0.034); /* Fondo semitransparente para la navbar */
 }
 
-.container-form{
+.container-form {
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 100%; /* Asegura que el contenedor ocupe toda la altura */
 }
 
+/* Estilos generales para ambos formularios */
+.form-wrapper {
+    display: none; /* Ambos formularios ocultos por defecto */
+}
+
+/* El formulario activo se muestra */
+.form-wrapper.active {
+    display: block; /* El formulario activo será visible */
+}
 
 .wrapper {
     position: relative;
@@ -44,47 +55,20 @@ body {
     margin: 20px 0; /* Espacio entre la navbar y el footer */
 }
 
-
 .wrapper:hover {
     animation: animate 1s linear infinite; /* Animación al pasar el ratón */
 }
-
-/* Resto de tus estilos... */
-
 
 @keyframes animate {
     0% {
         box-shadow: 0 0 50px #0ef; /* Color inicial */
     }
     50% {
-        box-shadow: 0 0 50px #056dcf; /* Color intermedio (fucsia) */
+        box-shadow: 0 0 50px #056dcf; /* Color intermedio */
     }
     100% {
-        box-shadow: 0 0 50px #34EDF3; /* Color final (aguamarina) */
+        box-shadow: 0 0 50px #34EDF3; /* Color final */
     }
-}
-
-.form-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    transition: 3s ease-in-out;
-}
-
-.wrapper.active .form-wrapper.sign-in {
-    transform: translateY(-450px);
-}
-
-.wrapper .form-wrapper.sign-up {
-    position: absolute;
-    top: 450px;
-    left: 0;
-}
-
-.wrapper.active .form-wrapper.sign-up {
-    transform: translateY(-450px);
 }
 
 h2 {
@@ -152,12 +136,16 @@ button {
     border-radius: 30px;
     border: none;
     outline: none;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #34EDF3; /* Cambio de color al pasar el ratón */
 }
 
 .signUp-link {
     font-size: 14px;
     text-align: center;
-    margin: 15px 0;
 }
 
 .signUp-link p {

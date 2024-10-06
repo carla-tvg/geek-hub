@@ -1,5 +1,3 @@
-// productos.js
-
 document.addEventListener("DOMContentLoaded", () => {
     fetchProductos();
 
@@ -8,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function fetchProductos() {
-    fetch(`/api/productos?timestamp=${new Date().getTime()}`) // Evitar caché
+    fetch(`/api/productos?timestamp=${new Date().getTime()}`) // Esto es correcto
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error en la red');
@@ -25,24 +23,23 @@ function fetchProductos() {
 
 function mostrarProductos(productos) {
     const productosContainer = document.getElementById('productos');
-    productosContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
+    productosContainer.innerHTML = ''; // Limpiar el contenedor
 
     productos.forEach(producto => {
-        const estrellasHTML = crearEstrellas(producto.puntuacion || 0); // Manejar puntuación undefined
-        const productoHTML = `
-            <div class="card mb-4" style="width: 18rem;">
+        const productoDiv = document.createElement('div');
+        productoDiv.className = 'col-md-4 mb-4';
+        productoDiv.innerHTML = `
+            <div class="card">
                 <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
                     <p class="card-text">${producto.descripcion}</p>
-                    <p class="card-text"><strong>${(producto.precio / 1000).toLocaleString('es-CO', { style: 'currency', currency: 'COP' })}</strong></p>
+                    <p class="card-text">Precio: $${producto.precio}</p>
                     <p class="card-text">Stock: ${producto.stock}</p>
-                    <p class="card-text">Puntuación: ${estrellasHTML}</p>
-                    <a href="detalle.html?id=${producto.id}" class="btn btn-primary">Ver Detalle</a>
                 </div>
             </div>
         `;
-        productosContainer.innerHTML += productoHTML;
+        productosContainer.appendChild(productoDiv);
     });
 }
 

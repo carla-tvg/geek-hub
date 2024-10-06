@@ -1,4 +1,5 @@
-[
+{
+  "productos":[
   {
     "id": 1,
     "nombre": "Auriculares NeonTech",
@@ -116,3 +117,4 @@
     "id": 1728012895166
   }
 ]
+}
