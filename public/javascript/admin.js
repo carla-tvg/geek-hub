@@ -6,7 +6,7 @@ let productos = [];
 // Referencia al formulario de agregar productos y a la tabla
 const form = document.getElementById('productoForm');
 const productosTableBody = document.getElementById('productosTable');
-s
+
 
 // Función para agregar un producto a la tabla de administración
 function agregarProductoTabla(producto) {
