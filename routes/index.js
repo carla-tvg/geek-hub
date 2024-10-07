@@ -20,6 +20,7 @@ router.get('/usuarios.html', (req, res) => {
 });
 
 
+
 router.use('/api', productosRoutes);  //llamado de productos
 
 module.exports = router;
