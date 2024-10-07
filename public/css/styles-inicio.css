@@ -29,11 +29,14 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%; /* Asegura que el contenedor ocupe toda la altura */
+    padding: 20px; /* Espacio adicional para evitar que el contenido toque los bordes */
+    overflow: auto; /* Permite el desplazamiento si es necesario */
 }
 
 /* Estilos generales para ambos formularios */
 .form-wrapper {
     display: none; /* Ambos formularios ocultos por defecto */
+    width: 100%; /* Asegura que los formularios ocupen todo el ancho disponible */
 }
 
 /* El formulario activo se muestra */
@@ -44,13 +47,14 @@ body {
 .wrapper {
     position: relative;
     width: 400px;
-    height: 500px;
+    min-height: 500px; /* Asegúrate de que la altura mínima sea suficiente */
+    max-height: 600px; /* Limita la altura máxima si es necesario */
     background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
     backdrop-filter: blur(10px); /* Efecto de desenfoque */
     box-shadow: 0 0 50px #0ef; /* Sombra inicial */
     border-radius: 20px;
     padding: 40px;
-    overflow: hidden;
+    overflow: auto; /* Permite el desplazamiento si el contenido es demasiado grande */
     transition: box-shadow 0.5s ease; /* Transición suave para la sombra */
     margin: 20px 0; /* Espacio entre la navbar y el footer */
 }

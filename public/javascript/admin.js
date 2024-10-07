@@ -14,7 +14,7 @@ function agregarProductoTabla(producto) {
     row.innerHTML = `
         <td>${producto.nombre}</td>
         <td>${producto.descripcion}</td>
-        <td>${(producto.precio / 1000).toLocaleString('es-CO', { style: 'currency', currency: 'COP' })}</td>
+        <td>${(producto.precio).toLocaleString('es-CO', { style: 'currency', currency: 'COP' })}</td>
         <td>${producto.stock}</td>
         <td><img src="${producto.imagen}" alt="${producto.nombre}" style="width: 50px; height: auto;"></td>
         <td>

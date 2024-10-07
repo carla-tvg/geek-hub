@@ -43,58 +43,64 @@
         </nav>
 
         <!-- Contenedor de formularios -->
-        <div class="container-form">
-          <div class="wrapper">
-            <!-- Cambia el orden: Primero el formulario de registro (sign-up) -->
-            <div class="form-wrapper sign-up active"> <!-- Agregar 'active' aquí -->
-              <form action="" onsubmit="registerUser(event)">
-                <h2>Registro</h2>
-                <div class="input-group">
-                  <input type="text" required>
-                  <label for="">Usuario</label>
-                </div>
-                <div class="input-group">
-                  <input type="email" required>
-                  <label for="">Correo</label>
-                </div>
-                <div class="input-group">
-                  <input type="password" required>
+<div class="container-form">
+  <div class="wrapper">
+      <!-- Formulario de Registro -->
+      <div class="form-wrapper sign-up active">
+          <form id="registroForm" onsubmit="registerUser(event)">
+              <h2>Registro</h2>
+              <div class="input-group">
+                  <input type="text" name="nombreCompleto" required>
+                  <label for="">Nombre Completo</label>
+              </div>
+              <div class="input-group">
+                  <input type="tel" name="telefono" required>
+                  <label for="">Número de Teléfono</label>
+              </div>
+              <div class="input-group">
+                  <input type="email" name="correo" required>
+                  <label for="">Email (Nombre de Usuario)</label>
+              </div>
+              <div class="input-group">
+                  <input type="password" name="password" required>
                   <label for="">Contraseña</label>
-                </div>
-                <div class="remember">
-                  <label><input type="checkbox"> He leído los términos y condiciones</label>
-                </div>
-                <button type="submit">Registrarme</button>
-                <div class="signUp-link">
-                  <p>¿Ya tienes una cuenta? <a href="#" class="signInBtn-link">Iniciar Sesión</a></p>
-                </div>
-              </form>
-            </div>
-            
-            <!-- Quita la clase 'active' del inicio de sesión -->
-            <div class="form-wrapper sign-in">
-              <form action="">
-                <h2>Inicio de Sesión</h2>
-                <div class="input-group">
-                  <input type="text" required>
-                  <label for="">Nombre</label>
-                </div>
-                <div class="input-group">
-                  <input type="password" required>
-                  <label for="">Contraseña</label>
-                </div>
-                <div class="remember">
-                  <label><input type="checkbox"> Recuérdame</label>
-                </div>
-                <button type="submit">Iniciar Sesión</button>
-                <div class="signUp-link">
-                  <p>¿No tienes una cuenta? <a href="#" class="signUpBtn-link">Registrarse</a></p>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+              </div>
+              <div class="input-group">
+                  <input type="password" name="confirmPassword" required>
+                  <label for="">Confirmar Contraseña</label>
+              </div>
+              <div class="remember">
+                  <label><input type="checkbox" required> He leído los términos y condiciones</label>
+              </div>
+              <button type="submit">Registrarme</button>
+              <div class="signUp-link">
+                  <p>¿Ya tienes una cuenta? <a href="#" class="signInBtn-link" onclick="toggleForm()">Iniciar Sesión</a></p>
+              </div>
+              <div id="errorMessages" class="error-messages"></div>
+          </form>
+      </div>
 
+      <!-- Formulario de Inicio de Sesión -->
+      <div class="form-wrapper sign-in">
+          <form id="loginForm" onsubmit="loginUser(event)">
+              <h2>Inicio de Sesión</h2>
+              <div class="input-group">
+                  <input type="email" name="correoLogin" required>
+                  <label for="">Email</label>
+              </div>
+              <div class="input-group">
+                  <input type="password" name="passwordLogin" required>
+                  <label for="">Contraseña</label>
+              </div>
+              <button type="submit">Iniciar Sesión</button>
+              <div class="signIn-link">
+                  <p>¿No tienes una cuenta? <a href="#" class="signUpBtn-link" onclick="toggleForm()">Registrarte</a></p>
+              </div>
+              <div id="loginErrorMessages" class="error-messages"></div>
+          </form>
+      </div>
+  </div>
+</div>
         <!-- Footer -->
         <footer id="foot">
             <div class='foot-inner-container'>

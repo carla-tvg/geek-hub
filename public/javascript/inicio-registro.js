@@ -1,87 +1,124 @@
-// Obtener los botones de alternancia de formulario
-const signUpBtnLink = document.querySelector('.signUpBtn-link');
-const signInBtnLink = document.querySelector('.signInBtn-link');
+// Función para validar el formulario de registro
+function registerUser(event) {
+    event.preventDefault(); // Evita que el formulario se envíe de forma predeterminada
 
-// Obtener los formularios
-const signUpForm = document.querySelector('.sign-up');
-const signInForm = document.querySelector('.sign-in');
+    // Obtén los valores de los campos del formulario
+    const form = event.target;
+    const nombreCompleto = form.nombreCompleto.value.trim();
+    const telefono = form.telefono.value.trim();
+    const correo = form.correo.value.trim();
+    const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
 
-// Función para mostrar el formulario de registro
-function showSignUpForm() {
-    signUpForm.classList.add('active');  // Agregar clase 'active' para mostrar el registro
-    signInForm.classList.remove('active');  // Quitar clase 'active' para ocultar el inicio de sesión
-}
+    // Limpiar mensajes de error
+    const errorMessages = document.getElementById('errorMessages');
+    errorMessages.innerHTML = '';
 
-// Función para mostrar el formulario de inicio de sesión
-function showSignInForm() {
-    signInForm.classList.add('active');  // Agregar clase 'active' para mostrar el inicio de sesión
-    signUpForm.classList.remove('active');  // Quitar clase 'active' para ocultar el registro
-}
-
-// Asignar eventos a los enlaces de alternancia
-signUpBtnLink.addEventListener('click', (e) => {
-    e.preventDefault();  // Prevenir el comportamiento por defecto del enlace
-    showSignUpForm();  // Mostrar el formulario de registro
-});
-
-signInBtnLink.addEventListener('click', (e) => {
-    e.preventDefault();  // Prevenir el comportamiento por defecto del enlace
-    showSignInForm();  // Mostrar el formulario de inicio de sesión
-});
-
-// Función para registrar un nuevo usuario
-async function registerUser(event) {
-    event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
-
-    const username = document.querySelector('.form-wrapper.sign-up input[type="text"]').value;
-    const email = document.querySelector('.form-wrapper.sign-up input[type="email"]').value;
-    const password = document.querySelector('.form-wrapper.sign-up input[type="password"]').value;
-
-    try {
-        const response = await fetch('/api/registrar_usuario', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username, email, password })
-        });
-
-        if (!response.ok) {
-            throw new Error(await response.text());
-        }
-
-        alert('Registro exitoso. Ahora puedes iniciar sesión.');
-        document.querySelector('.form-wrapper.sign-up form').reset(); // Reiniciar el formulario de registro
-        toggleForms(); // Cambiar a la vista de inicio de sesión
-    } catch (error) {
-        alert(error.message);
+    // Validaciones
+    let errores = [];
+    
+    // Validación de campo vacío
+    if (!nombreCompleto || !telefono || !correo || !password || !confirmPassword) {
+        errores.push('Todos los campos son obligatorios.');
     }
+
+    // Validación de correo electrónico
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(correo)) {
+        errores.push('Por favor, introduce un correo electrónico válido.');
+    }
+
+    // Validación de número de teléfono
+    const phonePattern = /^[0-9]{10,}$/; // Ejemplo: solo números y al menos 10 dígitos
+    if (!phonePattern.test(telefono)) {
+        errores.push('El número de teléfono debe contener al menos 10 dígitos.');
+    }
+
+    // Validación de contraseñas
+    if (password !== confirmPassword) {
+        errores.push('Las contraseñas no coinciden.');
+    }
+
+    // Mostrar errores si los hay
+    if (errores.length > 0) {
+        errores.forEach(error => {
+            const p = document.createElement('p');
+            p.textContent = error;
+            errorMessages.appendChild(p);
+        });
+        return; // Detener la ejecución si hay errores
+    }
+
+    // Crear objeto JSON
+    const usuario = {
+        nombreCompleto: nombreCompleto,
+        telefono: telefono,
+        correo: correo,
+        password: password // Considerar cifrar la contraseña
+    };
+
+    // Almacenar el usuario en localStorage
+    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    usuarios.push(usuario);
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+    // Mostrar mensaje de éxito y objeto JSON
+    alert(`¡Registro exitoso para ${nombreCompleto}!`);
+    console.log('Usuario registrado:', JSON.stringify(usuario, null, 2));
+
+    // Simulación de usuarios.json
+    console.log('usuarios.json', JSON.stringify(usuarios, null, 2));
+
+    // Limpiar el formulario
+    form.reset();
 }
 
-// Función para iniciar sesión
-async function loginUser(event) {
-    event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
+// Función para validar el formulario de inicio de sesión
+function loginUser(event) {
+    event.preventDefault(); // Evita que el formulario se envíe de forma predeterminada
 
-    const username = document.querySelector('.form-wrapper.sign-in input[type="text"]').value;
-    const password = document.querySelector('.form-wrapper.sign-in input[type="password"]').value;
+    // Obtén los valores de los campos del formulario
+    const form = event.target;
+    const correoLogin = form.correoLogin.value.trim();
+    const passwordLogin = form.passwordLogin.value;
 
-    try {
-        const response = await fetch('/api/iniciar_sesion', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username, password })
-        });
+    // Limpiar mensajes de error
+    const loginErrorMessages = document.getElementById('loginErrorMessages');
+    loginErrorMessages.innerHTML = '';
 
-        if (!response.ok) {
-            throw new Error(await response.text());
-        }
-
-        const user = await response.json();
-        alert('Inicio de sesión exitoso. Bienvenido, ' + user.username + '!');
-        // Aquí puedes redirigir al usuario a otra página o realizar otra acción
-    } catch (error) {
-        alert(error.message);
+    // Validaciones
+    let errores = [];
+    
+    // Validación de campo vacío
+    if (!correoLogin || !passwordLogin) {
+        errores.push('Todos los campos son obligatorios.');
     }
+
+    // Validación de correo electrónico
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(correoLogin)) {
+        errores.push('Por favor, introduce un correo electrónico válido.');
+    }
+
+    // Mostrar errores si los hay
+    if (errores.length > 0) {
+        errores.forEach(error => {
+            const p = document.createElement('p');
+            p.textContent = error;
+            loginErrorMessages.appendChild(p);
+        });
+        return; // Detener la ejecución si hay errores
+    }
+
+    // Aquí puedes manejar el inicio de sesión (ej. verificar credenciales)
+    alert(`¡Inicio de sesión exitoso para ${correoLogin}!`);
+}
+
+// Función para alternar entre formularios
+function toggleForm() {
+    const signUpForm = document.querySelector('.sign-up');
+    const signInForm = document.querySelector('.sign-in');
+
+    signUpForm.classList.toggle('active');
+    signInForm.classList.toggle('active');
 }
