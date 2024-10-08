@@ -52,3 +52,5 @@ function crearEstrellas(puntuacion) {
     }
     return estrellas;
 }
+
+
