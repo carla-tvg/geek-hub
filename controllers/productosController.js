@@ -1,15 +1,20 @@
 const fs = require('fs');
 const path = require('path');
 
+const dbPath = path.join(__dirname, '..', 'data', 'db.json'); // Ruta para el archivo db.json
+
 exports.obtenerProductos = (req, res) => {
-    fs.readFile('db.json', 'utf8', (err, data) => {
+    fs.readFile(dbPath, 'utf8', (err, data) => {
         if (err) {
             return res.status(500).send('Error al leer la base de datos');
         }
 
-        // Asumiendo que la estructura de db.json es { "productos": [...] }
-        const productos = JSON.parse(data).productos; 
-        res.json(productos); // Devolver solo el array de productos
+        try {
+            const productos = JSON.parse(data).productos || []; 
+            res.json(productos);
+        } catch (e) {
+            res.status(500).send('Error al procesar la base de datos');
+        }
     });
 };
 
@@ -27,54 +32,62 @@ exports.agregarProducto = (req, res) => {
         precio: parseFloat(precio),
         stock: parseInt(stock),
         imagen: `/img-productos/${req.file.filename}`,
-        categoria: "Sin categoría", // Valor por defecto
-        puntuacion: 0 // Valor por defecto
+        categoria: "Sin categoría",
+        puntuacion: 0
     };
 
-    fs.readFile('db.json', (err, data) => {
+    fs.readFile(dbPath, (err, data) => {
         if (err) {
             return res.status(500).send('Error al leer la base de datos');
         }
 
-        const productos = JSON.parse(data).productos; // Cambiar esto para adaptarse a la estructura
-        productos.push(nuevoProducto);
+        try {
+            const productos = JSON.parse(data).productos || [];
+            productos.push(nuevoProducto);
 
-        fs.writeFile('db.json', JSON.stringify({ productos }, null, 2), (err) => {
-            if (err) {
-                return res.status(500).send('Error al guardar el producto');
-            }
-            res.status(201).json(nuevoProducto);
-        });
+            fs.writeFile(dbPath, JSON.stringify({ productos }, null, 2), (err) => {
+                if (err) {
+                    return res.status(500).send('Error al guardar el producto');
+                }
+                res.status(201).json(nuevoProducto);
+            });
+        } catch (e) {
+            res.status(500).send('Error al procesar la base de datos');
+        }
     });
 };
 
 exports.eliminarProducto = (req, res) => {
     const id = parseInt(req.params.id);
 
-    fs.readFile('db.json', (err, data) => {
+    fs.readFile(dbPath, (err, data) => {
         if (err) {
             return res.status(500).send('Error al leer la base de datos');
         }
 
-        let productos = JSON.parse(data).productos; // Cambiar esto para adaptarse a la estructura
-        const productoEliminado = productos.find(p => p.id === id);
-        if (productoEliminado) {
-            const imagenPath = path.join(__dirname, '..', 'public', productoEliminado.imagen);
-            fs.unlink(imagenPath, (err) => {
-                if (err) {
-                    console.error('Error al eliminar la imagen:', err);
-                }
-            });
-        }
+        try {
+            let productos = JSON.parse(data).productos || [];
+            const productoEliminado = productos.find(p => p.id === id);
 
-        productos = productos.filter(producto => producto.id !== id);
-
-        fs.writeFile('db.json', JSON.stringify({ productos }, null, 2), (err) => { // Cambiar esto para adaptarse a la estructura
-            if (err) {
-                return res.status(500).send('Error al guardar la base de datos');
+            if (productoEliminado) {
+                const imagenPath = path.join(__dirname, '..', 'public', productoEliminado.imagen);
+                fs.unlink(imagenPath, (err) => {
+                    if (err) {
+                        console.error('Error al eliminar la imagen:', err);
+                    }
+                });
             }
-            res.status(200).json({ message: 'Producto eliminado' });
-        });
+
+            productos = productos.filter(producto => producto.id !== id);
+
+            fs.writeFile(dbPath, JSON.stringify({ productos }, null, 2), (err) => {
+                if (err) {
+                    return res.status(500).send('Error al guardar la base de datos');
+                }
+                res.status(200).json({ message: 'Producto eliminado', productoEliminado });
+            });
+        } catch (e) {
+            res.status(500).send('Error al procesar la base de datos');
+        }
     });
 };
-
