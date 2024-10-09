@@ -6,6 +6,9 @@ const routes = require('./routes/index'); // Asegúrate de que la ruta sea corre
 // Middleware para servir archivos estáticos
 app.use(express.static('public'));
 
+// Middleware para analizar cuerpos JSON
+app.use(express.json()); // Agrega esta línea
+
 // Usar las rutas definidas
 app.use('/', routes);
 

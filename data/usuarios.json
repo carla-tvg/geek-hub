@@ -1,0 +1,16 @@
+[
+  {
+    "nombreCompleto": "Juan Pérez",
+    "correo": "juan.perez@example.com"
+  },
+  {
+    "nombreCompleto": "Ana Gómez",
+    "correo": "ana.gomez@example.com"
+  },
+  {
+    "nombreCompleto": "carla prueba",
+    "telefono": "1234567891",
+    "correo": "carlaesprueba@gmail.com",
+    "password": "123456"
+  }
+]

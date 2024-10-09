@@ -1,66 +1,138 @@
-.container-productos {
-    max-width: 1200px;
-    margin: 0 auto;
+/* Estilos generales para el contenedor de la sección */
+.productos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribuye el espacio entre las tarjetas */
     padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-}
-
+/* Estilo para cada tarjeta de producto */
 .product-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    text-align: center;
-}
-
-.product-card img {
-    max-width: 100%;
-    height: auto;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-}
-
-.product-name {
-    font-size: 1.5em;
-    margin: 0 0 10px;
-}
-
-.product-description {
-    font-size: 1em;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-.product-price {
-    font-size: 1.2em;
-    color: #28a745;
-    margin-bottom: 15px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
+    margin: 15px; /* Espaciado entre tarjetas */
+    padding: 20px; /* Ajustar el padding según sea necesario */
+    width: calc(33.33% - 30px); /* Ajustar el ancho para 3 tarjetas por fila */
+    background: #1c1f2b;
     color: white;
-    text-decoration: none;
+    text-align: left;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* Contenedor de imagen */
+.img-container {
+    overflow: hidden; /* Asegúrate de que la imagen no desborde la tarjeta */
+}
+
+.img-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease; /* Transición suave para el zoom */
+}
+
+.product-card:hover .img-container img {
+    transform: scale(1.1); /* Aumenta la imagen al pasar el mouse */
+}
+
+.promo {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    background: #72009a;
+    color: white;
+    padding: 5px 10px;
     border-radius: 5px;
+    font-weight: bold;
 }
 
-.btn:hover {
-    background-color: #0056b3;
+/* Contenedor de información */
+.info-container {
+    padding: 15px;
 }
 
-.product-rating {
-    font-size: 1.5em;
-    color: #ffa500; /* Color de las estrellas */
-    margin: 5px 0;
+/* Títulos y precios */
+.info-container h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    color: #ff00ff;
+    margin: 10px 0;
+    transition: color 0.3s ease; /* Transición suave para el color */
+}
+
+.info-container h3:hover {
+    color: #ffffff; /* Cambia el color al pasar el mouse */
+}
+
+.info-container strong {
+    font-size: 16px;
+    color: #ff00ff; /* Color para el precio */
+    transition: color 0.3s ease; /* Transición suave para el color */
+}
+
+.info-container strong:hover {
+    color: #34EDF3; /* Cambia el color al pasar el mouse */
+}
+
+/* Estilo para el botón de añadir al carrito */
+.add-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #34EDF3;
+    color: #1d1d1d;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.add-cart:hover {
+    background: #72009a; /* Color más oscuro al pasar el ratón */
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.product-card::after, .product-card::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+}
+
+.product-card::before {
+    filter: blur(1.5rem);
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 20px;
+    background-color: #121212; /* Fondo oscuro */
+    margin: 0;
+    color: white; /* Color de texto general */
 }

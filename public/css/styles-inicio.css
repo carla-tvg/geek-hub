@@ -33,6 +33,8 @@ body {
     overflow: auto; /* Permite el desplazamiento si es necesario */
 }
 
+
+
 /* Estilos generales para ambos formularios */
 .form-wrapper {
     display: none; /* Ambos formularios ocultos por defecto */
