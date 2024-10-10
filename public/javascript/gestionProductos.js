@@ -1,11 +1,9 @@
-
 // Inicializar el array de productos
 let productos = [];
 
 // Referencia al formulario de agregar productos y a la tabla
 const form = document.getElementById('productoForm');
 const productosTableBody = document.getElementById('productosTable');
-
 
 // Función para agregar un producto a la tabla de administración
 function agregarProductoTabla(producto) {
@@ -15,10 +13,10 @@ function agregarProductoTabla(producto) {
         <td>${producto.descripcion}</td>
         <td>${(producto.precio).toLocaleString('es-CO', { style: 'currency', currency: 'COP' })}</td>
         <td>${producto.stock}</td>
-        <td>                    <img src="${producto.imagen.startsWith('/') ? producto.imagen : '/' + producto.imagen}" alt="${producto.nombre}" style="width: 50px; height: auto;" ></td>
+        <td><img src="${producto.imagen.startsWith('/') ? producto.imagen : '/' + producto.imagen}" alt="${producto.nombre}" style="width: 50px; height: auto;"></td>
         <td>
             <button class="btn btn-danger btn-sm" onclick="confirmarEliminar(${producto.id})">Eliminar</button>
-            <button class="btn btn-secondary btn-sm ms-2" onclick="abrirEditar(${producto.id})">Editar</button>
+            <button class="btn btn-secondary btn-sm" onclick="abrirEditar(${producto.id})">Editar</button>
         </td>
     `;
     productosTableBody.appendChild(row);
@@ -28,9 +26,7 @@ function agregarProductoTabla(producto) {
 function cargarProductos() {
     fetch('/api/productos?timestamp=' + new Date().getTime()) // Evitar caché
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Error al obtener productos');
-            }
+            if (!response.ok) throw new Error('Error al obtener productos');
             return response.json();
         })
         .then(data => {
@@ -41,6 +37,7 @@ function cargarProductos() {
         })
         .catch(error => {
             console.error('Error al cargar los productos:', error);
+            alert('No se pudieron cargar los productos. Inténtalo más tarde.');
         });
 }
 
@@ -48,10 +45,7 @@ function cargarProductos() {
 form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Crear un objeto FormData a partir del formulario
     const formData = new FormData(form);
-
-    // Validación simple
     const nombreProducto = formData.get('nombre').trim();
     const descripcionProducto = formData.get('descripcion').trim();
     const precioProducto = parseFloat(formData.get('precio'));
@@ -63,31 +57,24 @@ form.addEventListener('submit', function (e) {
         return;
     }
 
-    // Crear un nuevo FormData para enviar al servidor
-    const dataToSend = new FormData();
-    dataToSend.append('nombre', nombreProducto);
-    dataToSend.append('descripcion', descripcionProducto);
-    dataToSend.append('precio', precioProducto);
-    dataToSend.append('stock', stockProducto);
-    dataToSend.append('imagen', formData.get('imagen')); // Archivo de imagen
-
     // Enviar el nuevo producto al servidor
-    fetch('/api/agregar_producto', {
+    fetch('/api/productos/agregar_producto', {
         method: 'POST',
-        body: dataToSend
+        body: formData
     })
-        .then(response => {
-            if (!response.ok) throw new Error('Error en la solicitud');
-            return response.json();
-        })
-        .then(data => {
-            console.log('Producto agregado:', data);
-            cargarProductos(); // Actualizar la lista de productos
-            form.reset(); // Limpiar el formulario
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+    .then(response => {
+        if (!response.ok) throw new Error('Error en la solicitud');
+        return response.json();
+    })
+    .then(data => {
+        console.log('Producto agregado:', data);
+        cargarProductos(); // Actualizar la lista de productos
+        form.reset(); // Limpiar el formulario
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('No se pudo agregar el producto. Inténtalo más tarde.');
+    });
 });
 
 // Función para confirmar la eliminación de un producto
@@ -99,21 +86,71 @@ function confirmarEliminar(id) {
 
 // Función para eliminar un producto del servidor y actualizar la tabla
 function eliminarProducto(id) {
-    fetch(`/api/eliminar_producto/${id}`, {
+    fetch(`/api/productos/eliminar_producto/${id}`, {
         method: 'DELETE'
     })
-        .then(response => {
-            if (!response.ok) throw new Error('Error al eliminar el producto');
-            console.log('Producto eliminado');
-            cargarProductos(); // Actualizar la lista de productos
-        })
-        .catch(error => {
-            console.error('Error al eliminar el producto:', error);
-        });
+    .then(response => {
+        if (!response.ok) throw new Error('Error al eliminar el producto');
+        console.log('Producto eliminado');
+        cargarProductos(); // Actualizar la lista de productos
+    })
+    .catch(error => {
+        console.error('Error al eliminar el producto:', error);
+        alert('No se pudo eliminar el producto. Inténtalo más tarde.');
+    });
 }
 
+// Función para abrir el modal de edición
+function abrirEditar(id) {
+    console.log('Abrir edición para ID:', id);
+    const producto = productos.find(p => p.id === id);
+    if (producto) {
+        document.getElementById('editarId').value = producto.id;
+        document.getElementById('editarNombre').value = producto.nombre;
+        document.getElementById('editarDescripcion').value = producto.descripcion;
+        document.getElementById('editarPrecio').value = producto.precio;
+        document.getElementById('editarStock').value = producto.stock; // Agregando stock
+        $('#editarProductoModal').modal('show'); // Mostrar el modal de edición
+    }
+}
 
-// Cargar los productos al inicio
-window.onload = function () {
+// Evento para cargar productos al inicio
+document.addEventListener('DOMContentLoaded', () => {
     cargarProductos();
-};
+    document.getElementById('editarProductoForm').addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+        const formData = new FormData(this); // Obtener los datos del formulario
+        const imagenInput = document.getElementById('editarImagen');
+
+        const id = formData.get('editarId');
+
+        // Verificar si se ha seleccionado un archivo
+        // Solo mostrar la alerta si se ha seleccionado una nueva imagen
+        if (imagenInput.files.length === 0) {
+            // Si no hay nueva imagen, eliminamos el campo de la FormData
+            formData.delete('imagen');
+        }
+
+        // Log para ver los datos que se están enviando
+        console.log('Datos del formulario antes de enviar:', Object.fromEntries(formData));
+
+        // Realizar la solicitud fetch para editar el producto
+        fetch(`/api/productos/editar_producto/${id}`, {
+            method: 'PUT',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Error al editar el producto');
+            return response.json(); // Parsear la respuesta como JSON
+        })
+        .then(data => {
+            console.log('Producto editado:', data);
+            cargarProductos(); // Actualizar la lista de productos
+            $('#editarProductoModal').modal('hide'); // Cerrar el modal de edición
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert(`No se pudo editar el producto. Error: ${error.message}`);
+        });
+    });
+});

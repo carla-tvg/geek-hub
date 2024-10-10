@@ -4,13 +4,15 @@
     "correo": "juan.perez@example.com"
   },
   {
-    "nombreCompleto": "Ana Gómez",
-    "correo": "ana.gomez@example.com"
-  },
-  {
     "nombreCompleto": "carla prueba",
     "telefono": "1234567891",
     "correo": "carlaesprueba@gmail.com",
+    "password": "123456"
+  },
+  {
+    "nombreCompleto": "Nelly Paola",
+    "telefono": "3223378856",
+    "correo": "nelly@gmail.com",
     "password": "123456"
   }
 ]

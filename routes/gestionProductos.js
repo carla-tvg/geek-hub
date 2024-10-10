@@ -33,5 +33,6 @@ const upload = multer({
 router.get('/', productosController.obtenerProductos); // Cambiado aquí
 router.post('/agregar_producto', upload.single('imagen'), productosController.agregarProducto);
 router.delete('/eliminar_producto/:id', productosController.eliminarProducto);
+router.put('/editar_producto/:id', upload.single('imagen'), productosController.editarProducto);
 
 module.exports = router;
