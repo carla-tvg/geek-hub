@@ -105,7 +105,7 @@
       "descripcion": "prueba producto",
       "precio": "232323",
       "stock": "1",
-      "imagen": "/img-productos/imagen-1728531672947-443202179.png",
+      "imagen": "/img-productos/imagen-1728568233948-177237066.png",
       "id": 1728012378981
     },
     {
@@ -115,6 +115,16 @@
       "precio": 220,
       "stock": 2,
       "imagen": "/img-productos/imagen-1728531645670-138559306.png",
+      "categoria": "Sin categoría",
+      "puntuacion": 0
+    },
+    {
+      "id": 1728585614200,
+      "nombre": "prueba beto",
+      "descripcion": "beto producto",
+      "precio": 25522,
+      "stock": 12,
+      "imagen": "/img-productos/imagen-1728585614187-977394695.png",
       "categoria": "Sin categoría",
       "puntuacion": 0
     }

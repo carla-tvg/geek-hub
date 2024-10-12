@@ -91,4 +91,34 @@ function eliminarUsuario(req, res) {
     });
 }
 
-module.exports = { obtenerUsuarios, registrarUsuario, eliminarUsuario };
+function obtenerUsuarioPorCorreo(req, res) {
+    const { correo } = req.params; // Obtener el correo de los parámetros de la URL
+
+    fs.readFile(path.join(__dirname, '../data/usuarios.json'), 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).send('Error al leer los datos de usuarios');
+        }
+        let usuarios;
+        try {
+            usuarios = JSON.parse(data) || [];
+        } catch (e) {
+            return res.status(500).send('Error al parsear los datos de usuarios');
+        }
+
+        const usuario = usuarios.find(u => u.correo === correo); // Buscar el usuario por correo
+        if (usuario) {
+            res.json(usuario); // Enviar el usuario encontrado
+        } else {
+            res.status(404).send('Usuario no encontrado');
+        }
+    });
+}
+
+
+
+module.exports = { obtenerUsuarios,
+     registrarUsuario, 
+     eliminarUsuario, 
+     obtenerUsuarioPorCorreo 
+    };
+

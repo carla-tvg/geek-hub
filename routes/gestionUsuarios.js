@@ -7,5 +7,7 @@ const usuariosController = require('../controllers/usuariosController'); // Aseg
 router.get('/', usuariosController.obtenerUsuarios);
 router.post('/', usuariosController.registrarUsuario);
 router.delete('/', usuariosController.eliminarUsuario);
+router.get('/:correo', usuariosController.obtenerUsuarioPorCorreo);
+
 
 module.exports = router;
