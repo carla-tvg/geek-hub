@@ -17,30 +17,50 @@
     <img src="../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image">
     <br><br>
 
-
     <nav class="navbar">
       <div class="menu-toggle">
           <div class="bar"></div>
           <div class="bar"></div>
           <div class="bar"></div>
-      </div>
+      </div> 
       <ul class="nav-links">
-          <li><a href="masvendido.html"><i class="fas fa-fire"></i> Más Vendido</a></li>
-          <li><a href="recienllegado.html"><i class="fas fa-box"></i> Recién Llegado</a></li>
-          <li class="search-item">
-              <form class="search-form">
-                  <div class="search-container">
-                      <i class="fas fa-search search-icon"></i>
-                      <input type="text" class="search-input" placeholder="Buscar productos...">
-                  </div>
-                  <button type="submit" class="search-button">Buscar</button>
-              </form>
-          </li>
-          <li><a href="formulariodeinicio.html"><i class="fas fa-user"></i> Iniciar Sesión / Registro</a></li>
-          <li><a href="contacto.html"><i class="fas fa-question-circle"></i> Ayuda</a></li>
-          <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+          
+        <div class="menu">
+          <a class="account-button"><i class="fa fa-list"></i> Categorias</a>
+          <div class="dropdown">
+            <a href="#" class="dropdown-item">Categoria 1</a>
+            <a href="#" class="dropdown-item">Categoria 2</a>
+            <a href="#" class="dropdown-item">Categoria 3</a>
+            <a href="#" class="dropdown-item">Categoria 4</a>
+            <a href="#" class="dropdown-item">Categoria 5</a>
+          </div>
+        </div>
+
+        <li><a href="recienllegado.html"><i class="fas fa-box"></i> Recién Llegado</a></li>
+      
+        <li class="search-item">
+          <form class="search-form">
+            <div class="search-container">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" class="search-input" placeholder="Buscar productos...">
+            </div>
+            <button type="submit" class="search-button">Buscar</button>
+          </form>
+        </li>
+
+        <div class="menu">
+          <a class="account-button"> <i class="fas fa-user"></i>Mi Cuenta</a>
+          <div class="dropdown">
+            <a href="#" class="dropdown-item">Iniciar Sesión</a>
+            <a href="#" class="dropdown-item">Registrarse</a>
+          </div>
+        </div>
+
+        <li><a href="contacto.html"><i class="fas fa-question-circle"></i> Ayuda</a></li>
+        
+        <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
       </ul>
-  </nav>
+    </nav>
     <br><br>
 
     <!-- Encabezado -->
@@ -51,17 +71,13 @@
 
 
     <!-- Sección: Quiénes Somos -->
-<section class="section" id="quienes-somos">
-  <div class="content">
-    <h2>Bienvenidos a Geek Hub, tu universo digital</h2>
-    <p>
-      Geek Hub no es solo una tienda. Somos un espacio donde lo geek, la tecnología y lo cyberpunk colisionan
-      para crear una experiencia única. Nuestro equipo de entusiastas de la cultura geek se ha propuesto
-      transformar la forma en que accedes a tus productos favoritos.
-    </p>
-    <a href="index.html" class="btn primary">Conoce más</a> <!-- Botón CTA -->
-  </div>
-</section>
+    <section class="section" id="quienes-somos">
+      <div class="content">
+        <h2>Bienvenidos a Geek Hub, tu universo digital</h2>
+        <p>Geek Hub no es solo una tienda. Somos un espacio donde lo geek, la tecnología y lo cyberpunk colisionan para crear una experiencia única. Nuestro equipo de entusiastas de la cultura geek se ha propuesto transformar la forma en que accedes a tus productos favoritos.</p>
+        <a href="index.html" class="btn primary">Conoce más</a> <!-- Botón CTA -->
+      </div>
+    </section>
     
 
     <!-- Sección: Visión y Misión -->
@@ -77,23 +93,23 @@
     </section>
 
     <!-- Sección: Diferenciadores -->
-<section class="section" id="diferenciadores">
-    <h2>¿Qué nos hace diferentes?</h2>
-    <div class="diferenciadores-container">
-      <div class="card">
-        <img src="../img-carla/headphones.png" alt="Innovación constante">
-        <h3>Innovación constante</h3>
+    <section class="section" id="diferenciadores">
+      <h2>¿Qué nos hace diferentes?</h2>
+      <div class="diferenciadores-container">
+        <div class="card">
+          <img src="../img-carla/headphones.png" alt="Innovación constante">
+          <h3>Innovación constante</h3>
+        </div>
+        <div class="card">
+          <img src="../img-carla/articulos-nuevo.png" alt="Productos exclusivos">
+          <h3>Productos exclusivos</h3>
+        </div>
+        <div class="card">
+          <img src="../img-carla/diseño-inmersivo.jpg" alt="Diseño inmersivo">
+          <h3>Diseño inmersivo</h3>
+        </div>
       </div>
-      <div class="card">
-        <img src="../img-carla/articulos-nuevo.png" alt="Productos exclusivos">
-        <h3>Productos exclusivos</h3>
-      </div>
-      <div class="card">
-        <img src="../img-carla/diseño-inmersivo.jpg" alt="Diseño inmersivo">
-        <h3>Diseño inmersivo</h3>
-      </div>
-    </div>
-  </section>
+    </section>
 
     <!-- Sección: Nuestro equipo -->
     <section class="section" id="equipo">
@@ -117,63 +133,56 @@
 
     <footer id="foot">
       <div class='foot-inner-container'>
-          <div class="foot-inner-info">
-              <h2><a href="" class="footer-header">Información de la empresa</a></h2>
-              <ul class="footer-links">
-                  <li><a href="">Acerca de Geek Hub</a></li>
-                  <li><a href="">Política de devolución y reembolso</a></li>
-                  <li><a href="">Política de propiedad intelectual</a></li>
-                  <li><a href="">Política de envíos</a></li>
-                  <li><a href="">Reportar actividad sospechosa</a></li>
-              </ul>
-          </div>
-          <div class="foot-inner-info">
-              <h2><a href="" class="footer-header">Atención al cliente</a></h2>
-              <ul class="footer-links">
-                  <li><a href="">Preguntas frecuentes</a></li>
-                  <li><a href="">Centro de seguridad</a></li>
-                  <li><a href="">Protección de compras de Geek Hub</a></li>
-              </ul>
-          </div>
-          <div class="foot-inner-info">
-              <h2><a href="" class="footer-header">Ayuda</a></h2>
-              <ul class="footer-links">
-                  <li><a href="">Guía de usuario</a></li>
-                  <li><a href="">Contactar soporte</a></li>
-              </ul>
-          </div>
+        <div class="foot-inner-info">
+          <h2><a href="" class="footer-header">Información de la empresa</a></h2>
+          <ul class="footer-links">
+            <li><a href="">Acerca de Geek Hub</a></li>
+            <li><a href="">Política de devolución y reembolso</a></li>
+            <li><a href="">Política de propiedad intelectual</a></li>
+            <li><a href="">Política de envíos</a></li>
+            <li><a href="">Reportar actividad sospechosa</a></li>
+          </ul>
+        </div>
+        <div class="foot-inner-info">
+          <h2><a href="" class="footer-header">Atención al cliente</a></h2>
+          <ul class="footer-links">
+            <li><a href="">Preguntas frecuentes</a></li>
+            <li><a href="">Centro de seguridad</a></li>
+            <li><a href="">Protección de compras de Geek Hub</a></li>
+          </ul>
+        </div>
+        <div class="foot-inner-info">
+          <h2><a href="" class="footer-header">Ayuda</a></h2>
+          <ul class="footer-links">
+            <li><a href="">Guía de usuario</a></li>
+            <li><a href="">Contactar soporte</a></li>
+          </ul>
+        </div>
       </div>
+
       <div class="foot-inner-social">
-          <h2>Encuéntranos</h2>
-          <div class="social-container">
-              <a href="#" class="icono-transparente social-icon">
-                  <i class="fab fa-facebook"></i>
-              </a>
-              <a href="#" class="icono-transparente social-icon">
-                  <i class="fab fa-instagram"></i>
-              </a>
-              <a href="#" class="icono-transparente social-icon">
-                  <i class="fab fa-youtube"></i>
-              </a>
-              <a href="#" class="icono-transparente social-icon">
-                  <i class="fab fa-discord"></i>
-              </a>
-          </div>
+        <h2>Encuéntranos</h2>
+        <div class="social-container">
+          <a href="#" class="icono-transparente social-icon"> <i class="fab fa-facebook"></i> </a>
+          <a href="#" class="icono-transparente social-icon"> <i class="fab fa-instagram"></i> </a>
+          <a href="#" class="icono-transparente social-icon"> <i class="fab fa-youtube"></i> </a>
+          <a href="#" class="icono-transparente social-icon"> <i class="fab fa-discord"></i> </a>
+        </div>
       </div>
       <div class="subscribe-container">
           <h2>¡Suscríbete a nuestro Newsletter!</h2>
           <input type="email" id="email" placeholder="Dirección de correo" required>
           <a href="#" class="subscribe-button" onclick="subscribe()">¡Suscríbete!</a>
       </div>
-  </footer>
-  <footer class="footer-bottom">
+    </footer>
+    <footer class="footer-bottom">
       <div class="footer-logo-container">
-          <img src="../img-carla/geekhub.png" alt="Logo" class="footer-logo">
+        <img src="../img-carla/geekhub.png" alt="Logo" class="footer-logo">
       </div>
-  </footer>
-
+    </footer>
 
   </div>
-<script src="../script.js"></script>
+
+<script src="../javascript/script.js"></script>
 </body>
 </html>

@@ -1,4 +1,8 @@
 /* Estilos generales para el contenedor de la sección */
+.title {
+    margin: 50px 0;
+}
+
 .productos-container {
     display: flex;
     flex-wrap: wrap;
