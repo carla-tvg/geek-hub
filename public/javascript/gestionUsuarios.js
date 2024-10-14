@@ -59,5 +59,16 @@ function eliminarUsuario(correo) {
     }
 }
 
+
+const cerrarSesionBtn = document.getElementById("cerrarSesion");
+cerrarSesionBtn.addEventListener("click", function () {
+    // Aquí puedes manejar la lógica de cierre de sesión
+    alert("Cerrando sesión...");
+    
+    // Redirigir a la página de inicio de sesión
+    window.location.href = "/admin/login"; // Asegúrate de que la ruta sea correcta
+});
+
 // Cargar usuarios cuando la página se cargue
 window.onload = cargarUsuarios;
+
