@@ -66,7 +66,7 @@ h1 {
 .info-container h3 {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.5rem; /* Tamaño relativo */
-    color: #34EDF3;
+    color: #ff00ff;
     margin: 10px 0;
     transition: color 0.3s ease; /* Transición suave para el color */
 }
@@ -98,18 +98,18 @@ h1 {
     text-decoration: none;
     display: block; /* Cambiado a block para permitir el centrado */
     margin: 5px auto; /* Margen automático para centrar */
-    background-color: #F715AB; 
+    background-color: #34EDF3; 
 }
 
     
     .checkout-button {
-    background-color: #F715AB; 
+    background-color: #34EDF3; 
     }
 
 
 .add-cart:hover {
     background-color: transparent;
-    border: 2px solid #F715AB;
+    border: 2px solid #34EDF3;
     color: #FFF;
     cursor: pointer;
 }
