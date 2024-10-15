@@ -1,16 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const menu = document.querySelector('.menu');
-    const dropdown = document.querySelector('.dropdown');
 
-    menu.addEventListener('click', (event) => {
-        event.stopPropagation(); // Evita que el clic se propague al documento
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block'; // Alterna la visibilidad
-    });
-
-    // Cierra el dropdown si se hace clic fuera de él
-    document.addEventListener('click', () => {
-        dropdown.style.display = 'block';
-    });
+document.getElementById('recienLlegados').addEventListener('click', () => {
+    fetch('/api/productos')
+        .then(response => response.json())
+        .then(data => {
+            const productosRecientes = filtrarRecienLlegados(data);
+            mostrarProductos(productosRecientes);
+        })
+        .catch(error => {
+            console.error('Hubo un problema con la petición Fetch:', error);
+        });
 });
 
 
