@@ -27,17 +27,26 @@
           <div class="bar"></div>
       </div>
       <ul class="nav-links">
-          <li><a href="masvendido.html"><i class="fas fa-fire"></i> Más Vendido</a></li>
+          <li class="menu">
+          <a ><i class="fa fa-list"></i> Categorias</a>
+          <div class="dropdown">
+            <a href="#" class="dropdown-item">Electrónicos</a>
+            <a href="#" class="dropdown-item">Ropa</a>
+            <a href="#" class="dropdown-item">Accesorios</a>
+            <a href="#" class="dropdown-item">Coleccionables</a>
+            <a href="#" class="dropdown-item">Muebles</a>
+          </div>
+        </li>
           <li><a href="recienllegado.html"><i class="fas fa-box"></i> Recién Llegado</a></li>
           <li class="search-item">
-              <form class="search-form">
-                  <div class="search-container">
-                      <i class="fas fa-search search-icon"></i>
-                      <input type="text" class="search-input" placeholder="Buscar productos...">
-                  </div>
-                  <button type="submit" class="search-button">Buscar</button>
-              </form>
-          </li>
+            <form class="search-form" id="searchForm"> <!-- Agregado ID -->
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Buscar productos..."> <!-- Agregado ID -->
+                </div>
+                <button type="submit" class="search-button">Buscar</button>
+            </form>
+        </li>
           <li><a href="registro.html"><i class="fas fa-user"></i> Iniciar Sesión / Registro</a></li>
           <li><a href="contacto.html"><i class="fas fa-question-circle"></i> Ayuda</a></li>
           <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
@@ -113,11 +122,10 @@
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoI6eLqHqUvKNQ+OllQKA6Q+UucYykIxQe1yIM+uM3B9B8+"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoI6eLqHqUvKNQ+OllQKA6Q+UucYykIxQe1yIM+uM3B9B8+" crossorigin="anonymous"></script>
 <script src="javascript/productos.js"></script>
 <script src="javascript/script.js"></script>
+
 
 </body>
 </html>
