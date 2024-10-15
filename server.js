@@ -1,17 +1,16 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
-const fs = require('fs');
+const fs = require('fs').promises; // Usar promesas para fs
 const path = require('path');
-const multer = require('multer'); // Importar multer
+const multer = require('multer');
 
-// Configuración de almacenamiento de multer
+// Configuración de multer para la subida de imágenes
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'public/img-productos/'); // Carpeta donde se guardarán las imágenes
+    destination: (req, file, cb) => {
+        cb(null, 'public/img-productos/');
     },
-    filename: function (req, file, cb) {
-        // Renombrar el archivo para evitar conflictos
+    filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
         const extension = path.extname(file.originalname);
         cb(null, file.fieldname + '-' + uniqueSuffix + extension);
@@ -20,10 +19,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Middleware para servir archivos estáticos
 app.use(express.static('public'));
-
-// Middleware para parsear JSON
 app.use(express.json());
 
 // Ruta para servir el archivo index.html
@@ -36,76 +32,106 @@ app.get('/admin.html', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/html/admin.html'));
 });
 
+// Ruta para servir el archivo carrito.html
+app.get('/carrito.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/html/carrito.html'));
+});
+
+
 // Ruta para obtener los productos desde db.json
-app.get('/api/productos', (req, res) => {
-    fs.readFile('db.json', (err, data) => {
-        if (err) {
-            return res.status(500).send('Error al leer la base de datos');
-        }
+app.get('/api/productos', async (req, res) => {
+    try {
+        const data = await fs.readFile('db.json');
         res.json(JSON.parse(data));
-    });
+    } catch (err) {
+        res.status(500).send('Error al leer la base de datos');
+    }
 });
 
 // Ruta para agregar un nuevo producto con subida de imagen
-app.post('/api/agregar_producto', upload.single('imagen'), (req, res) => {
+app.post('/api/agregar_producto', upload.single('imagen'), async (req, res) => {
     const nuevoProducto = req.body;
 
-    // Validar si se subió una imagen
     if (!req.file) {
         return res.status(400).send('No se subió ninguna imagen');
     }
 
-    // Asignar la ruta de la imagen al producto
     nuevoProducto.imagen = `/img-productos/${req.file.filename}`;
-    nuevoProducto.id = Date.now(); // Generar un ID único
+    nuevoProducto.id = Date.now();
 
-    fs.readFile('db.json', (err, data) => {
-        if (err) {
-            return res.status(500).send('Error al leer la base de datos');
-        }
-
+    try {
+        const data = await fs.readFile('db.json');
         const productos = JSON.parse(data);
         productos.push(nuevoProducto);
-
-        fs.writeFile('db.json', JSON.stringify(productos, null, 2), (err) => {
-            if (err) {
-                return res.status(500).send('Error al guardar el producto');
-            }
-            res.status(201).json(nuevoProducto);
-        });
-    });
+        await fs.writeFile('db.json', JSON.stringify(productos, null, 2));
+        res.status(201).json(nuevoProducto);
+    } catch (err) {
+        res.status(500).send('Error al guardar el producto');
+    }
 });
 
 // Ruta para eliminar un producto
-app.delete('/api/eliminar_producto/:id', (req, res) => {
-    const id = parseInt(req.params.id); // Obtener el ID del producto a eliminar
+app.delete('/api/eliminar_producto/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
 
-    fs.readFile('db.json', (err, data) => {
-        if (err) {
-            return res.status(500).send('Error al leer la base de datos');
-        }
-
+    try {
+        const data = await fs.readFile('db.json');
         let productos = JSON.parse(data);
-        // Filtrar el producto que se desea eliminar
         const productoEliminado = productos.find(p => p.id === id);
+
         if (productoEliminado) {
-            // Eliminar la imagen del servidor
             const imagenPath = path.join(__dirname, 'public', productoEliminado.imagen);
-            fs.unlink(imagenPath, (err) => {
-                if (err) {
-                    console.error('Error al eliminar la imagen:', err);
-                }
+            await fs.unlink(imagenPath).catch(err => {
+                console.error('Error al eliminar la imagen:', err);
             });
         }
-        productos = productos.filter(producto => producto.id !== id);
 
-        fs.writeFile('db.json', JSON.stringify(productos, null, 2), (err) => {
-            if (err) {
-                return res.status(500).send('Error al guardar la base de datos');
-            }
-            res.status(200).json({ message: 'Producto eliminado' }); // Respuesta de éxito
-        });
-    });
+        productos = productos.filter(producto => producto.id !== id);
+        await fs.writeFile('db.json', JSON.stringify(productos, null, 2));
+        res.status(200).json({ message: 'Producto eliminado' });
+    } catch (err) {
+        res.status(500).send('Error al guardar la base de datos');
+    }
+});
+
+// Ruta para agregar productos al carrito en carrito.json
+app.post('/api/carrito', async (req, res) => {
+    const nuevoProducto = req.body;
+
+    try {
+        // Leer el contenido actual del carrito
+        const data = await fs.readFile('carrito.json');
+        let carrito = JSON.parse(data.length > 0 ? data : '[]');
+
+        // Verificar si el producto ya está en el carrito
+        const existingItem = carrito.find(item => item.id === nuevoProducto.id);
+
+        if (existingItem) {
+            // Si ya existe, aumentar la cantidad
+            existingItem.cantidad += 1;
+        } else {
+            // Si no existe, agregarlo con cantidad 1
+            nuevoProducto.cantidad = 1;
+            carrito.push(nuevoProducto);
+        }
+
+        // Guardar el carrito actualizado
+        await fs.writeFile('carrito.json', JSON.stringify(carrito, null, 2));
+        res.status(201).json(carrito);
+    } catch (err) {
+        res.status(500).send('Error al agregar el producto al carrito');
+    }
+});
+
+// Ruta para obtener el contenido del carrito
+app.get('/api/carrito', async (req, res) => {
+    try {
+        const data = await fs.readFile('carrito.json');
+        const carrito = JSON.parse(data.length > 0 ? data : '[]');
+        res.json(carrito);
+    } catch (err) {
+        res.status(500).send('Error al leer el carrito');
+    }
 });
 
 // Iniciar el servidor

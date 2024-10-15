@@ -56,8 +56,9 @@ body::before {
   font-size: 3.5rem;
   letter-spacing: 0.2em;
   color: #34EDF3; /* Color del título principal */
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
+
 
 .header p {
   font-size: 1.2rem;
@@ -72,8 +73,7 @@ body::before {
 }
 
 .logo-image {
-  height: 50px; /* Ajusta según sea necesario */
-  margin-right: 10px; /* Espacio entre el logo y el texto */
+  height: 100px; /* Ajusta según sea necesario */
 }
 
 .logo-text {
@@ -671,7 +671,7 @@ body {
 }
 
 .footer-logo {
-    max-width: 200px; /* Ajustar el tamaño del logo */
+    max-width: 50px; /* Ajustar el tamaño del logo */
 }
 
 /* Responsive Design */
@@ -685,3 +685,4 @@ body {
         margin-bottom: 20px;
     }
 }
+

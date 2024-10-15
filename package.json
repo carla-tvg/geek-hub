@@ -4,6 +4,7 @@
   "description": "Repositorio de Ecommerce para artículos tecnológicos.",
   "main": "productos.js",
   "scripts": {
+    "start": "node productos.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

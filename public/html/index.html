@@ -13,12 +13,10 @@
 </head>
 <body>
 
-
     <!-- Contenedor Principal -->
   <div class="container">
-    <img src="../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image">
+    <img src="../img-carla/logo-color.png" alt="Geek Hub Logo" class="logo-image">
     <br><br>
-
 
     <nav class="navbar">
       <div class="menu-toggle">
@@ -40,7 +38,12 @@
           </li>
           <li><a href="formulariodeinicio.html"><i class="fas fa-user"></i> Iniciar Sesión / Registro</a></li>
           <li><a href="contacto.html"><i class="fas fa-question-circle"></i> Ayuda</a></li>
-          <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+          <li>
+              <a href="carrito.html">
+                  <i class="fas fa-shopping-cart"></i> 
+                  <span id="numero-carrito">0</span> <!-- Contador de productos en el carrito -->
+              </a>
+          </li>
       </ul>
   </nav>
 
@@ -48,7 +51,6 @@
   <div id="productos" class="productos-container">
     <!-- Aquí se cargarán los productos desde el JSON -->
   </div>
-  
   
   <footer id="foot">
     <div class='foot-inner-container'>
@@ -106,7 +108,6 @@
         <img src="../img-carla/geekhub.png" alt="Logo" class="footer-logo">
     </div>
 </footer>
-
 
 </div>
 <script src="javascript/script.js"></script>

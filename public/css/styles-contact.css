@@ -46,11 +46,12 @@
   }
 
   h2 {
-    font-size: 30px;
-    color: #fff; 
+    font-size: 2rem;
+    color: #34EDF3;
+    font-family: 'Orbitron', sans-serif;
     text-align: center;
-    margin-bottom: 20px; /* Espacio debajo del título */
-  }
+    margin-bottom: 20px;
+}
 
   .input-group {
     position: relative;
@@ -93,17 +94,25 @@
     color: #0ef; /* Color al enfocarse */
   }
 
-  button {
-    position: relative;
-    width: 100%;
-    height: 40px;
-    background: #0ef; 
-    box-shadow: 0 0 10px #0ef; 
-    font-size: 16px;
-    color: #000; 
-    font-weight: 500;
+  .button-enviar {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    padding: 15px 30px;
+    font-size: 1rem; /* Aumentado para mejor legibilidad */
+    color: #FFF;
+    border-radius: 8px;
+    transition: 0.3s;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    display: block; /* Cambiado a block para permitir el centrado */
+    margin: 20px auto; /* Margen automático para centrar */
+    background-color: #34EDF3; 
+    border: none; /* Eliminar borde por defecto */
+}
+
+.button-enviar:hover {
+    background-color: transparent;
+    border: 2px solid #34EDF3;
+    color: #34EDF3; /* Cambiado a color de fondo para un mejor efecto */
     cursor: pointer;
-    border-radius: 30px;
-    border: none;
-    outline: none;
-  }
+}

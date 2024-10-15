@@ -1,0 +1,148 @@
+/* Importación de fuentes futuristas */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #000; /* Fondo negro */
+  color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px;
+  position: relative;
+}
+
+/* Fondo animado */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #040a26, #72009a, #1c748a);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Contenedor principal */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Título del carrito */
+h1 {
+    font-size: 2rem;
+    color: #34EDF3;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos del carrito */
+.carrito-container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.cart-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Estilo para el total y botones */
+.total-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.total-container strong {
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+.checkout-button, .empty-cart {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: #FFF;
+    border-radius: 8px;
+    transition: 0.3s;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.checkout-button {
+    background-color: #34EDF3; 
+}
+
+.checkout-button:hover {
+    background-color: transparent;
+    border: 2px solid #34EDF3;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.empty-cart {
+    background-color: transparent;
+    border: 2px solid #F715AB;
+}
+
+.empty-cart:hover {
+    background-color: #F715AB;
+    border: 2px solid #F715AB;
+    color: #FFF;
+    cursor: pointer;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 600px) {
+    .total-container {
+        width: 100%;
+    }
+
+    .checkout-button, .empty-cart {
+        width: 100%; /* Botones ocupan todo el ancho en pantallas pequeñas */
+    }
+}

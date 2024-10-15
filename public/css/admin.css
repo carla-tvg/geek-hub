@@ -1,19 +1,104 @@
-/* Estilo para la sidebar */
-#sidebar {
-    background-color: #f8f9fa;
-    height: 100vh;
+/* Estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif; 
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #121212; /* Fondo oscuro */
+  color: white; /* Color de texto general */
+}
+
+/* Contenedor principal */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Título del carrito */
+h1 {
+  font-size: 2rem;
+  color: #34EDF3; /* Color del título */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos del carrito */
+.carrito-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Contenedor de productos */
+#cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacio entre los productos */
+}
+
+/* Estilo para cada producto en el carrito */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.cart-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Estilo para el total y botones */
+.total-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.total-container strong {
+  font-size: 1.2rem;
+  margin: 5px 0;
+}
+
+button {
+  width: 200px;
+  height: 40px;
+  background: #34EDF3; /* Color del botón */
+  color: #1d1d1d; /* Texto oscuro */
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin: 5px 0;
+}
+
+button:hover {
+  background: #72009a; /* Color más oscuro al pasar el ratón */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 600px) {
+  .total-container {
+      width: 100%;
   }
-  
-  #sidebar .nav-link {
-    font-weight: 500;
+
+  button {
+      width: 100%; /* Botones ocupan todo el ancho en pantallas pequeñas */
   }
-  
-  #sidebar .nav-link.active {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  /* Contenido Principal */
-  main {
-    margin-left: 240px; /* Esto ajusta el espacio para el sidebar */
-  }
+}
