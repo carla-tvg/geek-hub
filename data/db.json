@@ -8,7 +8,8 @@
       "imagen": "img-productos/audifonos-1.png",
       "categoria": "Electrónica",
       "stock": 10,
-      "puntuacion": 4.5
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-10T00:00:00"
     },
     {
       "id": 2,
@@ -18,7 +19,8 @@
       "imagen": "img-productos/teclado-1.png",
       "categoria": "Periféricos",
       "stock": 10,
-      "puntuacion": 4.5
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-10T00:00:00"
     },
     {
       "id": 3,
@@ -28,7 +30,8 @@
       "imagen": "img-productos/camisa-1.png",
       "categoria": "Ropa",
       "stock": 10,
-      "puntuacion": 4.5
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-10T00:00:00"
     },
     {
       "id": 4,
@@ -38,7 +41,8 @@
       "imagen": "img-productos/mochila-1.png",
       "categoria": "Accesorios",
       "stock": 10,
-      "puntuacion": 4.5
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-10"
     },
     {
       "id": 5,
@@ -48,7 +52,8 @@
       "imagen": "img-productos/lampara-1.png",
       "categoria": "Hogar",
       "stock": 10,
-      "puntuacion": 4.5
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-10"
     },
     {
       "id": 6,
@@ -58,7 +63,8 @@
       "imagen": "img-productos/smartwatch-1.png",
       "categoria": "Accesorios",
       "stock": 10,
-      "puntuacion": 4.5
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-10"
     },
     {
       "id": 7,
@@ -68,7 +74,8 @@
       "imagen": "img-productos/sillagamer-1.png",
       "categoria": "Muebles",
       "stock": 10,
-      "puntuacion": 4.5
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-01"
     },
     {
       "id": 8,
@@ -78,7 +85,8 @@
       "imagen": "img-productos/mouse-1.png",
       "categoria": "Periféricos",
       "stock": 10,
-      "puntuacion": 4.5
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-01"
     },
     {
       "id": 9,
@@ -88,7 +96,8 @@
       "imagen": "img-productos/vr-1.png",
       "categoria": "Electrónica",
       "stock": 10,
-      "puntuacion": 4.5
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-01"
     },
     {
       "id": 10,
@@ -98,7 +107,8 @@
       "imagen": "img-productos/figura-1.png",
       "categoria": "Coleccionables",
       "stock": 10,
-      "puntuacion": 4.5
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-01"
     },
     {
       "nombre": "prubea 1",

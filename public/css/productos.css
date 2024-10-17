@@ -136,3 +136,45 @@ body {
     margin: 0;
     color: white; /* Color de texto general */
 }
+
+/* Contenedor para las acciones del carrito */
+.cart-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+/* Botones para añadir y quitar productos */
+.btn-decrease, .btn-increase {
+    background-color: #34EDF3;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-decrease:hover, .btn-increase:hover {
+    background-color: #34EDF3; /* Cambia el color al pasar el ratón */
+}
+
+/* Cantidad de productos */
+.product-quantity {
+    font-size: 16px;
+    color: #ff00ff;
+    margin: 0 10px;
+    min-width: 30px; /* Ancho mínimo para mantener espacio entre los botones */
+    text-align: center;
+}
+
+/* Ajuste para el texto de la cantidad */
+.product-quantity::before {
+    content: "Añadir: "; /* Texto que acompaña a la cantidad */
+    color: white;
+    font-weight: bold;
+    margin-right: 5px;
+}
