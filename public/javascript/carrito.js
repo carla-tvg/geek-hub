@@ -1,84 +1,90 @@
-// carrito.js
-
-document.addEventListener("DOMContentLoaded", () => {
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || {}; // Inicializar el carrito
-
-    function cargarCarrito() {
-        const carritoContainer = document.getElementById('carrito');
-        carritoContainer.innerHTML = ''; // Limpiar el contenedor
-
-        if (Object.keys(carrito).length === 0) {
-            carritoContainer.innerHTML = '<p>No hay productos en el carrito.</p>';
-            return;
-        }
-
-        // Aquí asumimos que tienes una API para obtener detalles de los productos por IDs
-        const idsProductos = Object.keys(carrito);
-        fetch('/api/productos') // O una API específica para obtener múltiples productos por ID
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error al obtener los productos');
-                }
-                return response.json();
-            })
-            .then(productos => {
-                const productosFiltrados = productos.filter(producto => idsProductos.includes(producto.id));
-                productosFiltrados.forEach(producto => {
-                    const cantidad = carrito[producto.id];
-                    const productoHTML = `
-                        <div class="carrito-item">
-                            <img src="${producto.imagen}" alt="${producto.nombre}" class="carrito-imagen">
-                            <div class="carrito-info">
-                                <h3>${producto.nombre}</h3>
-                                <p>Precio: $${Number(producto.precio).toLocaleString('es-CO')}</p>
-                                <p>Cantidad: ${cantidad}</p>
-                                <button class="btn-remove" data-id="${producto.id}">Eliminar</button>
-                            </div>
-                        </div>
-                    `;
-                    carritoContainer.innerHTML += productoHTML;
-                });
-
-                agregarEventosEliminar(); // Agregar eventos para eliminar productos
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                carritoContainer.innerHTML = '<p>Error al cargar los productos del carrito.</p>';
-            });
-    }
-
-    // Función para eliminar un producto del carrito
-    function eliminarProducto(idProducto) {
-        if (carrito[idProducto]) {
-            delete carrito[idProducto];
-            localStorage.setItem('carrito', JSON.stringify(carrito));
-            cargarCarrito();
-            actualizarCarritoIcono(); // Actualizar el ícono del carrito en todas las páginas
-        }
-    }
-
-    // Función para agregar eventos a los botones de eliminar
-    function agregarEventosEliminar() {
-        const botonesEliminar = document.querySelectorAll('.btn-remove');
-
-        botonesEliminar.forEach(boton => {
-            boton.addEventListener('click', (e) => {
-                const idProducto = e.target.getAttribute('data-id');
-                eliminarProducto(idProducto);
-            });
-        });
-    }
-
-    // Función para actualizar el número de productos en el carrito
-    function actualizarCarritoIcono() {
-        const carritoIcono = document.querySelector('.fa-shopping-cart');
-        const totalProductos = Object.values(carrito).reduce((acc, cantidad) => acc + cantidad, 0);
-        carritoIcono.setAttribute('data-count', totalProductos); // Mostrar el total en el ícono
-        const cartCountSpan = document.getElementById('cart-count');
-        if (cartCountSpan) {
-            cartCountSpan.textContent = totalProductos;
-        }
-    }
-
-    cargarCarrito();
+document.addEventListener("DOMContentLoaded", async () => {
+    await mostrarCarrito(); // Mostrar el carrito al cargar la página
+    actualizarCarritoIcono();
 });
+
+async function mostrarCarrito() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || {};
+    const cartItemsContainer = document.getElementById('cart-items');
+    const totalAmount = document.getElementById('total-amount');
+    let total = 0;
+
+    cartItemsContainer.innerHTML = '';
+
+    for (let idProducto in carrito) {
+        const cantidad = carrito[idProducto];
+        const producto = await obtenerProductoPorId(idProducto);
+
+        if (producto) {
+            const tr = document.createElement('tr');
+            const subtotal = producto.precio * cantidad;
+            total += subtotal;
+
+            // Crear las celdas de la fila
+            tr.innerHTML = `
+                <td>${producto.nombre}</td>
+                <td>$${producto.precio.toLocaleString('es-CO')}</td>
+                <td>${cantidad}</td>
+                <td>$${subtotal.toLocaleString('es-CO')}</td>
+                <td>
+                    <button class="button" onclick="agregarAlCarrito(${producto.id})">Agregar</button>
+                    <button class="remove-button" onclick="eliminarDelCarrito(${producto.id})">Eliminar</button>
+                </td>
+            `;
+            
+            cartItemsContainer.appendChild(tr);
+        }
+    }
+
+    totalAmount.innerText = `$${total.toLocaleString('es-CO')}`;
+}
+
+function agregarAlCarrito(idProducto) {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || {};
+    
+    // Incrementar la cantidad del producto en el carrito
+    if (carrito[idProducto]) {
+        carrito[idProducto] += 1; // Aumentar cantidad si ya existe
+    } else {
+        carrito[idProducto] = 1; // Si no existe, añadir con cantidad 1
+    }
+
+    // Guardar el carrito actualizado
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+    // Volver a mostrar el carrito
+    mostrarCarrito();
+}
+function eliminarDelCarrito(idProducto) {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || {};
+    
+    // Verificar si el producto existe en el carrito
+    if (carrito[idProducto]) {
+        carrito[idProducto] -= 1; // Reducir la cantidad en uno
+        
+        // Si la cantidad llega a cero, eliminar el producto del carrito
+        if (carrito[idProducto] <= 0) {
+            delete carrito[idProducto];
+        }
+        
+        // Guardar el carrito actualizado
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        
+        // Volver a mostrar el carrito
+        mostrarCarrito();
+    }
+}
+// Función para obtener un producto por ID (puedes modificar esto según tu implementación)
+async function obtenerProductoPorId(id) {
+    try {
+        const response = await fetch('/api/productos');
+        if (!response.ok) {
+            throw new Error('Error en la red');
+        }
+        const productos = await response.json();
+        return productos.find(prod => prod.id == id); // Buscar el producto por ID
+    } catch (error) {
+        console.error('Hubo un problema con la petición Fetch:', error);
+        return null; // Retornar null en caso de error
+    }
+}
