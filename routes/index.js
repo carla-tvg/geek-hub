@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
-
 const productosRoutes = require('./gestionProductos'); 
 const usuariosRoutes = require('./gestionUsuarios'); 
 const gestionLogin = require('./gestionLogin');
@@ -13,6 +12,11 @@ const carritoRoutes = require('./gestionCarrito');
 // Ruta para servir el archivo index.html
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/html/index.html'));
+});
+
+// Ruta para contacto
+router.get('/contacto', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/html/contacto.html'));
 });
 
 // Rutas para otros archivos
