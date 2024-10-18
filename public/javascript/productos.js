@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
             agregarEventosBusqueda(data);
             agregarEventosRecienLlegados(data);
             actualizarCarritoIcono(); // Actualizar el ícono del carrito
-            agregarEventosRecienLlegados(data); // Añadir eventos para "Recién Llegados"
         })
         .catch(error => {
             console.error('Hubo un problema con la petición Fetch:', error);
@@ -122,6 +121,31 @@ document.addEventListener("DOMContentLoaded", () => {
                 producto.descripcion.toLowerCase().includes(query)
             );
 
-        mostrarProductos(productosFiltrados); // Mostrar productos filtrados
-    });
-}
+            mostrarProductos(productosFiltrados); // Mostrar productos filtrados
+        });
+    }
+
+    // Función para agregar eventos de "Recién Llegados"
+    function agregarEventosRecienLlegados(productos) {
+        const recienLlegadosLink = document.getElementById("recienLlegados");
+
+        recienLlegadosLink.addEventListener("click", (event) => {
+            event.preventDefault(); // Evitar la acción por defecto del enlace
+            const productosRecienLlegados = filtrarRecienLlegados(productos);
+            mostrarProductos(productosRecienLlegados); // Mostrar productos recién llegados
+        });
+    }
+
+    // Función para filtrar productos "Recién Llegados"
+    function filtrarRecienLlegados(productos) {
+        const diasRecientes = 7; // Define cuántos días atrás consideras como "reciente"
+        const fechaLimite = new Date();
+        fechaLimite.setDate(fechaLimite.getDate() - diasRecientes);
+
+        return productos.filter(producto => {
+            const fechaLlegada = new Date(producto.fechaLlegada);
+            return fechaLlegada >= fechaLimite;
+        });
+    }
+});
+
