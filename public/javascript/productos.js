@@ -12,38 +12,62 @@ document.addEventListener("DOMContentLoaded", () => {
             mostrarProductos(data);
             agregarEventosBusqueda(data);
             agregarEventosRecienLlegados(data);
+            agregarEventosCategorias(data); // Agregar eventos a las categorías
             actualizarCarritoIcono(); // Actualizar el ícono del carrito
         })
         .catch(error => {
             console.error('Hubo un problema con la petición Fetch:', error);
         });
 
+    // Función para agregar eventos a las categorías del menú
+    function agregarEventosCategorias(productos) {
+        const botonesCategorias = document.querySelectorAll('.dropdown a');
+
+        botonesCategorias.forEach(boton => {
+            boton.addEventListener('click', (event) => {
+                event.preventDefault(); // Evitar la acción por defecto del enlace
+                const categoriaSeleccionada = event.target.getAttribute('data-category');
+
+                // Verificar que la categoría seleccionada y los productos tengan categoría
+                const productosFiltrados = productos.filter(producto => 
+                    producto.categoria && 
+                    producto.categoria.toLowerCase() === categoriaSeleccionada.toLowerCase()
+                );
+
+                mostrarProductos(productosFiltrados); // Mostrar los productos filtrados
+            });
+        });
+    }
+
     function mostrarProductos(productos) {
         const productosContainer = document.getElementById('productos');
         productosContainer.innerHTML = '';
 
         productos.forEach(producto => {
-            const estrellasHTML = crearEstrellas(producto.puntuacion);
-            const cantidadEnCarrito = carrito[producto.id] || 0;
-            const productoHTML = `
-                <div class="product-card">
-                    <div class="img-container">
-                        <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image">
-                    </div>
-                    <div class="info-container">
-                        <h3 class="product-name">${producto.nombre}</h3>
-                        <p class="product-description">${producto.descripcion}</p>
-                        <strong class="product-price">$${Number(producto.precio).toLocaleString('es-CO')}</strong>
-                        <span class="product-rating">${estrellasHTML}</span>
-                        <div class="cart-actions">
-                            <button class="btn-decrease" data-id="${producto.id}">-</button>
-                            <span class="product-quantity" id="cantidad-${producto.id}">${cantidadEnCarrito}</span>
-                            <button class="btn-increase" data-id="${producto.id}">+</button>
+            // Verificar que el producto tenga nombre, precio, imagen y descripción antes de mostrarlos
+            if (producto.nombre && producto.precio && producto.imagen && producto.descripcion) {
+                const estrellasHTML = crearEstrellas(producto.puntuacion);
+                const cantidadEnCarrito = carrito[producto.id] || 0;
+                const productoHTML = `
+                    <div class="product-card">
+                        <div class="img-container">
+                            <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image">
+                        </div>
+                        <div class="info-container">
+                            <h3 class="product-name">${producto.nombre}</h3>
+                            <p class="product-description">${producto.descripcion}</p>
+                            <strong class="product-price">$${Number(producto.precio).toLocaleString('es-CO')}</strong>
+                            <span class="product-rating">${estrellasHTML}</span>
+                            <div class="cart-actions">
+                                <button class="btn-decrease" data-id="${producto.id}">-</button>
+                                <span class="product-quantity" id="cantidad-${producto.id}">${cantidadEnCarrito}</span>
+                                <button class="btn-increase" data-id="${producto.id}">+</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `;
-            productosContainer.innerHTML += productoHTML;
+                `;
+                productosContainer.innerHTML += productoHTML;
+            }
         });
 
         agregarEventosCarrito(); // Agregar eventos a los botones de agregar y eliminar
@@ -75,38 +99,32 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Función para actualizar el carrito en el localStorage y en la interfaz
     function actualizarCarrito(idProducto) {
         localStorage.setItem('carrito', JSON.stringify(carrito)); // Guardar en localStorage
 
         // Actualizar la cantidad del producto en la interfaz
         const cantidadElemento = document.getElementById(`cantidad-${idProducto}`);
-        cantidadElemento.textContent = carrito[idProducto] || 0;
+        if (cantidadElemento) {
+            cantidadElemento.textContent = carrito[idProducto] || 0;
+        }
 
         actualizarCarritoIcono(); // Actualizar el número en la navbar
     }
 
-    // Función para actualizar el número total de productos en el carrito de la navbar
     function actualizarCarritoIcono() {
         const totalProductos = Object.values(carrito).reduce((acc, cantidad) => acc + cantidad, 0);
         const carritoNumero = document.getElementById('carrito-numero');
         carritoNumero.textContent = `${totalProductos}`; // Actualizar el número en la navbar
     }
 
-    // Función para crear estrellas
     function crearEstrellas(puntuacion) {
         let estrellas = '';
         for (let i = 1; i <= 5; i++) {
-            if (i <= puntuacion) {
-                estrellas += '★';
-            } else {
-                estrellas += '☆';
-            }
+            estrellas += i <= puntuacion ? '★' : '☆';
         }
         return estrellas;
     }
 
-    // Función para agregar eventos de búsqueda
     function agregarEventosBusqueda(productos) {
         const searchForm = document.getElementById("searchForm");
         const searchInput = document.getElementById("searchInput");
@@ -115,17 +133,16 @@ document.addEventListener("DOMContentLoaded", () => {
             event.preventDefault(); // Evitar que se recargue la página
             const query = searchInput.value.toLowerCase();
 
-            // Filtrar productos según la búsqueda
+            // Filtrar productos según la búsqueda y asegurarse que nombre y descripción existan
             const productosFiltrados = productos.filter(producto => 
-                producto.nombre.toLowerCase().includes(query) || 
-                producto.descripcion.toLowerCase().includes(query)
+                (producto.nombre && producto.nombre.toLowerCase().includes(query)) || 
+                (producto.descripcion && producto.descripcion.toLowerCase().includes(query))
             );
 
             mostrarProductos(productosFiltrados); // Mostrar productos filtrados
         });
     }
 
-    // Función para agregar eventos de "Recién Llegados"
     function agregarEventosRecienLlegados(productos) {
         const recienLlegadosLink = document.getElementById("recienLlegados");
 
@@ -136,7 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Función para filtrar productos "Recién Llegados"
     function filtrarRecienLlegados(productos) {
         const diasRecientes = 7; // Define cuántos días atrás consideras como "reciente"
         const fechaLimite = new Date();
@@ -148,4 +164,3 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-

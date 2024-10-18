@@ -6,12 +6,10 @@
       "descripcion": "Auriculares inalámbricos con tecnología de cancelación de ruido y luces LED personalizables.",
       "precio": 120000,
       "imagen": "img-productos/audifonos-1.png",
-      "categoria": "Electrónica",
+      "categoria": "electronicos",
       "stock": 10,
       "puntuacion": 4.5,
-      "fechaLlegada": "2024-10-10T00:00:00",
-      "puntuacion": 4.5,
-      "fechaLlegada": "2024-10-10"
+      "fechaLlegada": "2024-10-15T00:00:00"
     },
     {
       "id": 2,
@@ -19,10 +17,10 @@
       "descripcion": "Teclado mecánico RGB con switches intercambiables y diseño compacto ideal para gaming.",
       "precio": 80000,
       "imagen": "img-productos/teclado-1.png",
-      "categoria": "Periféricos",
+      "categoria": "electronicos",
       "stock": 10,
       "puntuacion": 4.5,
-      "fechaLlegada": "2024-10-10T00:00:00"
+      "fechaLlegada": "2024-10-15T00:00:00"
     },
     {
       "id": 3,
@@ -30,10 +28,10 @@
       "descripcion": "Camiseta de algodón con estampado holográfico reactivo a la luz.",
       "precio": 48000,
       "imagen": "img-productos/camisa-1.png",
-      "categoria": "Ropa",
+      "categoria": "ropa",
       "stock": 10,
       "puntuacion": 4.5,
-      "fechaLlegada": "2024-10-10T00:00:00"
+      "fechaLlegada": "2024-10-15T00:00:00"
     },
     {
       "id": 4,
@@ -41,10 +39,10 @@
       "descripcion": "Mochila ergonómica con sistema de distribución de peso y paneles de carga solar.",
       "precio": 170000,
       "imagen": "img-productos/mochila-1.png",
-      "categoria": "Accesorios",
+      "categoria": "accesorios",
       "stock": 10,
       "puntuacion": 4.5,
-      "fechaLlegada": "2024-10-10"
+      "fechaLlegada": "2024-10-15"
     },
     {
       "id": 5,
@@ -52,7 +50,7 @@
       "descripcion": "Lámpara futurista con control por voz y millones de colores RGB.",
       "precio": 90000,
       "imagen": "img-productos/lampara-1.png",
-      "categoria": "Hogar",
+      "categoria": "muebles",
       "stock": 10,
       "puntuacion": 4.5,
       "fechaLlegada": "2024-10-10"
@@ -63,7 +61,7 @@
       "descripcion": "Reloj de pulsera con pantalla holográfica interactiva y múltiples funciones de salud.",
       "precio": 97000,
       "imagen": "img-productos/smartwatch-1.png",
-      "categoria": "Accesorios",
+      "categoria": "accesorios",
       "stock": 10,
       "puntuacion": 4.5,
       "fechaLlegada": "2024-10-10"
@@ -74,7 +72,7 @@
       "descripcion": "Silla gaming ergonómica con soporte lumbar y reclinación de hasta 180 grados.",
       "precio": 650000,
       "imagen": "img-productos/sillagamer-1.png",
-      "categoria": "Muebles",
+      "categoria": "muebles",
       "stock": 10,
       "puntuacion": 4.5,
       "fechaLlegada": "2024-10-01"
@@ -85,7 +83,7 @@
       "descripcion": "Mouse óptico inalámbrico de alta precisión con iluminación RGB personalizable.",
       "precio": 87000,
       "imagen": "img-productos/mouse-1.png",
-      "categoria": "Periféricos",
+      "categoria": "electronicos",
       "stock": 10,
       "puntuacion": 4.5,
       "fechaLlegada": "2024-10-01"
@@ -96,7 +94,7 @@
       "descripcion": "Lentes de realidad aumentada con visualización holográfica y conexión Bluetooth.",
       "precio": 370000,
       "imagen": "img-productos/vr-1.png",
-      "categoria": "Electrónica",
+      "categoria": "electronicos",
       "stock": 10,
       "puntuacion": 4.5,
       "fechaLlegada": "2024-10-01"
@@ -107,7 +105,7 @@
       "descripcion": "Figura de edición limitada con detalles futuristas y articulaciones.",
       "precio": 55000,
       "imagen": "img-productos/figura-1.png",
-      "categoria": "Coleccionables",
+      "categoria": "coleccionables",
       "stock": 10,
       "puntuacion": 4.5,
       "fechaLlegada": "2024-10-01"

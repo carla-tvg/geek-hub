@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
     await mostrarCarrito(); // Mostrar el carrito al cargar la página
-    actualizarCarritoIcono();
+    actualizarCarritoIcono(); // Actualizar el número de productos en el ícono del carrito
 });
 
 async function mostrarCarrito() {
@@ -37,6 +37,7 @@ async function mostrarCarrito() {
     }
 
     totalAmount.innerText = `$${total.toLocaleString('es-CO')}`;
+    actualizarCarritoIcono(); // Asegurarse de actualizar el ícono cuando se muestra el carrito
 }
 
 function agregarAlCarrito(idProducto) {
@@ -54,7 +55,9 @@ function agregarAlCarrito(idProducto) {
 
     // Volver a mostrar el carrito
     mostrarCarrito();
+    actualizarCarritoIcono(); // Actualizar el número en el ícono del carrito
 }
+
 function eliminarDelCarrito(idProducto) {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || {};
     
@@ -72,9 +75,19 @@ function eliminarDelCarrito(idProducto) {
         
         // Volver a mostrar el carrito
         mostrarCarrito();
+        actualizarCarritoIcono(); // Actualizar el número en el ícono del carrito
     }
 }
-// Función para obtener un producto por ID (puedes modificar esto según tu implementación)
+
+// Función para actualizar el número en el ícono del carrito
+function actualizarCarritoIcono() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || {};
+    const carritoNumero = document.getElementById('carrito-numero');
+    const totalItems = Object.values(carrito).reduce((total, cantidad) => total + cantidad, 0);
+    carritoNumero.innerText = totalItems; // Mostrar el total de productos en el ícono
+}
+
+// Función para obtener un producto por ID
 async function obtenerProductoPorId(id) {
     try {
         const response = await fetch('/api/productos');

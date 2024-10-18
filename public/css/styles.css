@@ -141,33 +141,38 @@ body::before {
  .menu {
   position: relative; /* Esto asegura que el dropdown se posicione correctamente */
 }
-
-.dropdown {
-  display: none; /* Cambiar a block cuando se muestre */
+/* Ocultar el menú dropdown por defecto */
+.nav-links .dropdown {
+  display: none;
   position: absolute;
-  top: 100%; /* Asegura que esté justo debajo del menú */
-  left: 0; /* Alineación horizontal */
-  width: 200px; /* Ajusta según sea necesario */
-  background: #72009a;
-  border-radius: 15px;
-  padding: 10px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
-  z-index: 1000; /* Asegúrate de que este valor sea alto */
-  pointer-events: auto; /* Permite la interacción */
+  background-color: #72009a;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  list-style-type: none;
+  border-radius: 5px ;
 }
 
-.dropdown-item {
-  display: block; /* Asegura que los elementos del dropdown se muestren como bloques */
-  color: white; /* Color del texto */
-  padding: 5px 10px; /* Espaciado interno */
-  text-decoration: none; /* Quita el subrayado */
+/* Mostrar el dropdown cuando se pasa el mouse por encima del menú */
+.nav-links .menu:hover .dropdown {
+  display: block;
 }
 
-.dropdown-item:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Efecto hover */
+/* Estilos para los enlaces dentro del dropdown */
+.nav-links .dropdown li {
+  padding: 8px 16px;
+  text-align: left;
 }
 
+.nav-links .dropdown li a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  display: block;
+}
+
+.nav-links .dropdown li a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
 /* Buscador más ancho */
 .search-item {
   flex-grow: 3; /* Aumenta el ancho del buscador */
