@@ -12,7 +12,11 @@ body {
     justify-content: space-between; /* Espacio entre navbar, formulario y footer */
     align-items: center;
     min-height: 100vh;
+<<<<<<< HEAD
     background-image: url('fondo1.jpg'); /* Ruta de la imagen */
+=======
+    background-image: url('../img-carla/fondo-formulario.jpg'); /* Ruta de la imagen */
+>>>>>>> carlis/develop
     background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
@@ -24,6 +28,7 @@ body {
     background-color: rgba(255, 255, 255, 0.034); /* Fondo semitransparente para la navbar */
 }
 
+<<<<<<< HEAD
 .container-form{
     display: flex;
     justify-content: center;
@@ -34,29 +39,69 @@ body {
     position: relative;
     width: 400px;
     height: 500px;
+=======
+.container-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Asegura que el contenedor ocupe toda la altura */
+    padding: 20px; /* Espacio adicional para evitar que el contenido toque los bordes */
+    overflow: auto; /* Permite el desplazamiento si es necesario */
+}
+
+
+
+/* Estilos generales para ambos formularios */
+.form-wrapper {
+    display: none; /* Ambos formularios ocultos por defecto */
+    width: 100%; /* Asegura que los formularios ocupen todo el ancho disponible */
+}
+
+/* El formulario activo se muestra */
+.form-wrapper.active {
+    display: block; /* El formulario activo será visible */
+}
+
+.wrapper {
+    position: relative;
+    width: 400px;
+    min-height: 500px; /* Asegúrate de que la altura mínima sea suficiente */
+    max-height: 600px; /* Limita la altura máxima si es necesario */
+>>>>>>> carlis/develop
     background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
     backdrop-filter: blur(10px); /* Efecto de desenfoque */
     box-shadow: 0 0 50px #0ef; /* Sombra inicial */
     border-radius: 20px;
     padding: 40px;
+<<<<<<< HEAD
     overflow: hidden;
+=======
+    overflow: auto; /* Permite el desplazamiento si el contenido es demasiado grande */
+>>>>>>> carlis/develop
     transition: box-shadow 0.5s ease; /* Transición suave para la sombra */
     margin: 20px 0; /* Espacio entre la navbar y el footer */
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> carlis/develop
 .wrapper:hover {
     animation: animate 1s linear infinite; /* Animación al pasar el ratón */
 }
 
+<<<<<<< HEAD
 /* Resto de tus estilos... */
 
 
+=======
+>>>>>>> carlis/develop
 @keyframes animate {
     0% {
         box-shadow: 0 0 50px #0ef; /* Color inicial */
     }
     50% {
+<<<<<<< HEAD
         box-shadow: 0 0 50px #056dcf; /* Color intermedio (fucsia) */
     }
     100% {
@@ -87,6 +132,15 @@ body {
     transform: translateY(-450px);
 }
 
+=======
+        box-shadow: 0 0 50px #056dcf; /* Color intermedio */
+    }
+    100% {
+        box-shadow: 0 0 50px #34EDF3; /* Color final */
+    }
+}
+
+>>>>>>> carlis/develop
 h2 {
     font-size: 30px;
     color: #fff; /* Color del título */
@@ -152,12 +206,23 @@ button {
     border-radius: 30px;
     border: none;
     outline: none;
+<<<<<<< HEAD
+=======
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #34EDF3; /* Cambio de color al pasar el ratón */
+>>>>>>> carlis/develop
 }
 
 .signUp-link {
     font-size: 14px;
     text-align: center;
+<<<<<<< HEAD
     margin: 15px 0;
+=======
+>>>>>>> carlis/develop
 }
 
 .signUp-link p {
