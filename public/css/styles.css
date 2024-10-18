@@ -504,7 +504,11 @@ body::before {
     margin-top: 30px;
   }
   
+<<<<<<< HEAD
+  .card{
+=======
   .card-dif{
+>>>>>>> carlis/develop
     background-color: rgba(0, 0, 0, 0.3); /* Fondo más oscuro para las tarjetas */
     border-radius: 15px;
     padding: 20px;
@@ -533,14 +537,32 @@ body::before {
   .card-dif:hover {
     transform: translateY(-10px);
   }
+<<<<<<< HEAD
+  
+  .card::after, .card::before {
+=======
 
   .card-dif::before {
+>>>>>>> carlis/develop
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     height: 100%;
+<<<<<<< HEAD
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+}
+
+.card::before {
+    filter: blur(1.5rem);
+}
+=======
     border: 2px solid #34EDF3;
     border-radius: 15px;
     opacity: 0;
@@ -551,6 +573,7 @@ body::before {
   .card-dif:hover::before {
     opacity: 1;
   }
+>>>>>>> carlis/develop
 
 @keyframes spin {
     from {
