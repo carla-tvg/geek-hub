@@ -1,0 +1,19 @@
+/* Estilo para la sidebar */
+#sidebar {
+    background-color: #f8f9fa;
+    height: 100vh;
+  }
+  
+  #sidebar .nav-link {
+    font-weight: 500;
+  }
+  
+  #sidebar .nav-link.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Contenido Principal */
+  main {
+    margin-left: 240px; /* Esto ajusta el espacio para el sidebar */
+  }

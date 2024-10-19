@@ -1,0 +1,20 @@
+{
+  "name": "geek-hub-local",
+  "version": "1.0.0",
+  "description": "Repositorio de Ecommerce para artículos tecnológicos.",
+  "main": "productos.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.0",
+    "express-session": "^1.18.1",
+    "fs-extra": "^11.2.0",
+    "multer": "^1.4.5-lts.1"
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Auriculares NeonTech",
+      "descripcion": "Auriculares inalámbricos con tecnología de cancelación de ruido y luces LED personalizables.",
+      "precio": 120000,
+      "imagen": "img-productos/audifonos-1.png",
+      "categoria": "Electrónica",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-10T00:00:00",
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-10"
+    },
+    {
+      "id": 2,
+      "nombre": "Teclado Mecánico CyberStrike",
+      "descripcion": "Teclado mecánico RGB con switches intercambiables y diseño compacto ideal para gaming.",
+      "precio": 80000,
+      "imagen": "img-productos/teclado-1.png",
+      "categoria": "Periféricos",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-10T00:00:00"
+    },
+    {
+      "id": 3,
+      "nombre": "Camiseta HoloWave",
+      "descripcion": "Camiseta de algodón con estampado holográfico reactivo a la luz.",
+      "precio": 48000,
+      "imagen": "img-productos/camisa-1.png",
+      "categoria": "Ropa",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-10T00:00:00"
+    },
+    {
+      "id": 4,
+      "nombre": "Mochila Anti-Gravity",
+      "descripcion": "Mochila ergonómica con sistema de distribución de peso y paneles de carga solar.",
+      "precio": 170000,
+      "imagen": "img-productos/mochila-1.png",
+      "categoria": "Accesorios",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-10"
+    },
+    {
+      "id": 5,
+      "nombre": "Lámpara NeoPixel",
+      "descripcion": "Lámpara futurista con control por voz y millones de colores RGB.",
+      "precio": 90000,
+      "imagen": "img-productos/lampara-1.png",
+      "categoria": "Hogar",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-10"
+    },
+    {
+      "id": 6,
+      "nombre": "Reloj Holográfico ChronoX",
+      "descripcion": "Reloj de pulsera con pantalla holográfica interactiva y múltiples funciones de salud.",
+      "precio": 97000,
+      "imagen": "img-productos/smartwatch-1.png",
+      "categoria": "Accesorios",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-10"
+    },
+    {
+      "id": 7,
+      "nombre": "Silla Gamer OmegaFlux",
+      "descripcion": "Silla gaming ergonómica con soporte lumbar y reclinación de hasta 180 grados.",
+      "precio": 650000,
+      "imagen": "img-productos/sillagamer-1.png",
+      "categoria": "Muebles",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-01"
+    },
+    {
+      "id": 8,
+      "nombre": "Mouse Cyberspeed V2",
+      "descripcion": "Mouse óptico inalámbrico de alta precisión con iluminación RGB personalizable.",
+      "precio": 87000,
+      "imagen": "img-productos/mouse-1.png",
+      "categoria": "Periféricos",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-01"
+    },
+    {
+      "id": 9,
+      "nombre": "Lentes AR VisionX",
+      "descripcion": "Lentes de realidad aumentada con visualización holográfica y conexión Bluetooth.",
+      "precio": 370000,
+      "imagen": "img-productos/vr-1.png",
+      "categoria": "Electrónica",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-01"
+    },
+    {
+      "id": 10,
+      "nombre": "Figura Coleccionable NeoTrooper",
+      "descripcion": "Figura de edición limitada con detalles futuristas y articulaciones.",
+      "precio": 55000,
+      "imagen": "img-productos/figura-1.png",
+      "categoria": "Coleccionables",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-01"
+    },
+    {
+      "nombre": "prubea 1",
+      "descripcion": "prueba producto",
+      "precio": "232323",
+      "stock": "1",
+      "imagen": "/img-productos/imagen-1728568233948-177237066.png",
+      "id": 1728012378981
+    },
+    {
+      "id": 1728531645682,
+      "nombre": "prueba",
+      "descripcion": "pruebas",
+      "precio": 220,
+      "stock": 2,
+      "imagen": "/img-productos/imagen-1728531645670-138559306.png",
+      "categoria": "Sin categoría",
+      "puntuacion": 0
+    },
+    {
+      "id": 1728585614200,
+      "nombre": "prueba beto",
+      "descripcion": "beto producto",
+      "precio": 25522,
+      "stock": 12,
+      "imagen": "/img-productos/imagen-1728585614187-977394695.png",
+      "categoria": "Sin categoría",
+      "puntuacion": 0
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios - E-commerce</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Estilo para la tabla */
+        .table {
+            margin-top: 20px;
+        }
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+        .table tbody tr:hover {
+            background-color: #f1f1f1; /* Color al pasar el mouse */
+        }
+        .btn-icon {
+            padding: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Panel Lateral Izquierdo -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="gestionUsuarios.html">Gestión de Usuarios (En desarrollo)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gestionProductos.html">Gestión de Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Gestión de Inventario (En desarrollo)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Gestión de Categorías (En desarrollo)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Gestión de Pedidos (En desarrollo)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Gestión de Envíos (En desarrollo)</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Contenido principal -->
+            <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Gestión de Usuarios</h1>
+                    <button class="btn btn-danger" id="cerrarSesion">Cerrar Sesión</button>
+
+                </div>
+
+                <!-- Tabla para mostrar usuarios -->
+                <h3>Usuarios Registrados</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usuariosTable">
+                        <!-- Usuarios dinámicos aquí -->
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Luego incluye Bootstrap -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="../javascript/gestionUsuarios.js"></script>
+</body>
+</html>
