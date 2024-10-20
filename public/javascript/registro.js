@@ -1,13 +1,13 @@
-// Función para validar el formato del correo
+// Función para validar el correo
 function validarCorreo(correo) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(correo);
 }
 
-// Función para validar el número de teléfono
 function validarTelefono(telefono) {
-    const regex = /^[0-9]{10}$/;  // Asumiendo que el número debe tener 10 dígitos
-    return regex.test(telefono);
+    const regex = /^3[0-9]{9}$/; // Debe empezar con 3 y tener 10 dígitos
+    const isNumeric = /^\d+$/.test(telefono); // Verifica si es numérico
+    return regex.test(telefono) && isNumeric; // Retorna verdadero solo si ambas condiciones se cumplen
 }
 
 // Función para mostrar errores en el formulario
@@ -20,6 +20,49 @@ function limpiarErrores() {
     document.querySelectorAll(".error").forEach(span => span.innerText = "");
 }
 
+// Validar número de teléfono en tiempo real
+document.getElementById('telefono').addEventListener('input', function() {
+    // Permitir solo dígitos
+    this.value = this.value.replace(/[^3\d]/g, '');
+
+    // Limpia mensajes de error
+    limpiarErrores(); 
+
+    // Verifica el número de teléfono
+    const telefono = this.value.trim();
+    if (telefono) {
+        if (!validarTelefono(telefono)) {
+            mostrarError("Telefono", "El número debe comenzar con 3 y tener 10 dígitos");
+        }
+    } else {
+        mostrarError("Telefono", "El teléfono es obligatorio");
+    }
+});
+
+/// Validar contraseñas en tiempo real
+function validarPassword() {
+    const password = document.getElementById('password').value.trim();
+    const confirmPassword = document.getElementById('confirmPassword').value.trim();
+    const errorMessage = document.getElementById('errorConfirmPassword');
+    
+    errorMessage.innerText = ""; // Limpia el mensaje de error
+
+    // Solo muestra el mensaje si confirmPassword tiene un valor
+    if (confirmPassword) {
+        if (password === confirmPassword) {
+            // Solo limpiamos el mensaje si las contraseñas coinciden
+            errorMessage.style.color = ""; // Resetea el color
+        } else {
+            errorMessage.innerText = "Las contraseñas no coinciden";
+            errorMessage.style.color = "red"; // Cambia el color a rojo si no coinciden
+        }
+    }
+}
+
+// Evento para validar contraseñas en tiempo real
+document.getElementById('password').addEventListener('input', validarPassword);
+document.getElementById('confirmPassword').addEventListener('input', validarPassword);
+
 function registerUser(event) {
     event.preventDefault(); // Evita que el formulario se envíe
     limpiarErrores(); // Limpia mensajes de error previos
@@ -29,42 +72,42 @@ function registerUser(event) {
     const telefono = event.target.telefono.value.trim();
     const correo = event.target.correo.value.trim();
     const password = event.target.password.value.trim();
-    const confirmPassword = event.target.confirmPassword.value.trim();
+    const confirmPassword = document.getElementById('confirmPassword').value.trim(); // Cambiar aquí
 
     let isValid = true;
 
     // Validaciones con mensajes de error personalizados
     if (!nombreCompleto) {
-        mostrarError("Nombre", "El nombre es obligatorio");
+        showNotification("El nombre es obligatorio", "error");
         isValid = false;
     }
 
     if (!telefono) {
-        mostrarError("Telefono", "El teléfono es obligatorio");
+        showNotification("El teléfono es obligatorio", "error");
         isValid = false;
     } else if (!validarTelefono(telefono)) {
-        mostrarError("Telefono", "El número debe tener 10 dígitos");
+        showNotification("El número debe comenzar con 3 y tener 10 dígitos", "error");
         isValid = false;
     }
 
     if (!correo) {
-        mostrarError("Correo", "El correo es obligatorio");
+        showNotification("El correo es obligatorio", "error");
         isValid = false;
     } else if (!validarCorreo(correo)) {
-        mostrarError("Correo", "Formato de correo inválido");
+        showNotification("Formato de correo inválido", "error");
         isValid = false;
     }
 
     if (!password) {
-        mostrarError("Password", "La contraseña es obligatoria");
+        showNotification("La contraseña es obligatoria", "error");
         isValid = false;
     } else if (password.length < 6) {
-        mostrarError("Password", "La contraseña debe tener al menos 6 caracteres");
+        showNotification("La contraseña debe tener al menos 6 caracteres", "error");
         isValid = false;
     }
 
     if (password !== confirmPassword) {
-        mostrarError("ConfirmPassword", "Las contraseñas no coinciden");
+        showNotification("Las contraseñas no coinciden", "error");
         isValid = false;
     }
 
@@ -77,7 +120,7 @@ function registerUser(event) {
     console.log(usuario); //prueba
 
     // Enviar solicitud para agregar el usuario al servidor
-    fetch('/api/usuarios', {
+    fetch('http://localhost:3000/api/usuarios', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -88,12 +131,12 @@ function registerUser(event) {
         if (!response.ok) {
             return response.text().then(text => { throw new Error(text); });
         }
-        alert("Usuario registrado exitosamente");
+        showNotification("Usuario registrado exitosamente", "success");
         event.target.reset(); // Resetea el formulario
     })
     .catch(error => {
         console.error(error);
-        alert('No se pudo registrar el usuario: ' + error.message);
+        showNotification('No se pudo registrar el usuario: ' + error.message, "error");
     });
 }
 
@@ -103,4 +146,27 @@ function toggleForm() {
 
     registroForm.classList.toggle("active");
     loginForm.classList.toggle("active");
+}
+function togglePasswordVisibility(fieldId) {
+    const passwordField = document.getElementById(fieldId);
+    const toggleIcon = event.currentTarget.querySelector('i'); // Encuentra el ícono dentro del span
+
+    // Cambiar el tipo de input entre 'password' y 'text'
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text'; // Mostrar la contraseña
+        toggleIcon.classList.remove('fa-eye'); // Cambiar el ícono a "visible"
+        toggleIcon.classList.add('fa-eye-slash'); // Cambiar al ícono de "ocultar"
+    } else {
+        passwordField.type = 'password'; // Ocultar la contraseña
+        toggleIcon.classList.remove('fa-eye-slash'); // Cambiar al ícono a "ocultar"
+        toggleIcon.classList.add('fa-eye'); // Cambiar al ícono de "visible"
+    }
+}
+
+function showNotification(message, type) {
+    if (type === "success") {
+        toastr.success(message);
+    } else {
+        toastr.error(message);
+    }
 }
