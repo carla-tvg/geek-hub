@@ -8,30 +8,61 @@
 
 body {
     display: flex;
-    flex-direction: column; /* Cambia a columna para que la navbar y el footer estén en su lugar */
-    justify-content: space-between; /* Espacio entre navbar, formulario y footer */
+    justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url('../img-carla/fondo-formulario.jpg'); /* Ruta de la imagen */
-    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-}
-
-.navbar {
-    width: 100%;
-    padding: 20px; /* Espacio para la navbar */
-    background-color: rgba(255, 255, 255, 0.034); /* Fondo semitransparente para la navbar */
+    background-image: url('../img-carla/fondo-formulario.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .container-form {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Limita el ancho máximo */
     height: 100%; /* Asegura que el contenedor ocupe toda la altura */
-    padding: 20px; /* Espacio adicional para evitar que el contenido toque los bordes */
-    overflow: auto; /* Permite el desplazamiento si es necesario */
+    margin:20px auto; /* Espacio adicional para evitar que el contenido toque los bordes */
+    padding: 50px;
 }
+
+/* Contenedor de imagen */
+.image-container {
+    width: 55%; /* Toma la mitad izquierda */
+    background-image: url('../img-carla/banner_registro.jpg'); /* Cambia la ruta a tu imagen */
+    background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor */
+    background-position: center;
+    border-top-left-radius: 20px; /* Radio para la esquina superior izquierda */
+    border-bottom-left-radius: 20px; 
+}
+
+/* Estilos del formulario */
+.wrapper {
+    width: 45%;
+    flex: 1; /* Toma la mitad derecha */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    /*box-shadow: 0 0 50px #0ef;*/
+   padding: 40px;
+    overflow: auto;
+    margin-left: 0px; /* Espacio entre la imagen y el formulario */
+    border-top-right-radius: 20px; /* Radio para la esquina superior derecha */
+    border-bottom-right-radius: 20px; /* Radio para la esquina inferior derecha */
+    border-left: none; /* Elimina el borde izquierdo */
+}
+
+/* Estilos generales para ambos formularios */
+.form-wrapper {
+    display: none; /* Ambos formularios ocultos por defecto */
+    width: 100%; /* Asegura que los formularios ocupen todo el ancho disponible */
+}
+
+/* El formulario activo se muestra */
+.form-wrapper.active {
+    display: block; /* El formulario activo será visible */
+}
+
+/* Otros estilos existentes se mantienen igual */
 
 
 
@@ -46,20 +77,7 @@ body {
     display: block; /* El formulario activo será visible */
 }
 
-.wrapper {
-    position: relative;
-    width: 400px;
-    min-height: 500px; /* Asegúrate de que la altura mínima sea suficiente */
-    max-height: 600px; /* Limita la altura máxima si es necesario */
-    background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
-    backdrop-filter: blur(10px); /* Efecto de desenfoque */
-    box-shadow: 0 0 50px #0ef; /* Sombra inicial */
-    border-radius: 20px;
-    padding: 40px;
-    overflow: auto; /* Permite el desplazamiento si el contenido es demasiado grande */
-    transition: box-shadow 0.5s ease; /* Transición suave para la sombra */
-    margin: 20px 0; /* Espacio entre la navbar y el footer */
-}
+
 
 .wrapper:hover {
     animation: animate 1s linear infinite; /* Animación al pasar el ratón */

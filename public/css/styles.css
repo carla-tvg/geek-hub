@@ -73,9 +73,9 @@ body::before {
 }
 
 .logo-image {
-  height: 50px; /* Ajusta según sea necesario */
+  height: 40px; /* Ajusta según sea necesario */
   margin-right: 10px; /* Espacio entre el logo y el texto */
-  margin-top:40px;
+  margin-top:20px;
 }
 
 .logo-text {

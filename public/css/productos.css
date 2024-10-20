@@ -1,4 +1,5 @@
 /* Estilos generales para el contenedor de la sección */
+/* Estilos generales para el contenedor de la sección */
 .productos-container {
     display: flex;
     flex-wrap: wrap;
@@ -15,7 +16,6 @@
     color: white;
     text-align: left;
     border-radius: 10px;
-   /* z-index: -1;*/
     position: relative;
 }
 
@@ -103,7 +103,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+   background-image: conic-gradient(from var(--angle),#72009a, #34EDF3, #FF00FF);
     top: 50%;
     left: 50%;
     translate: -50% -50%;
@@ -178,4 +178,30 @@ body {
     color: white;
     font-weight: bold;
     margin-right: 5px;
+}
+
+/* Ajustes para pantallas medianas */
+@media (max-width: 768px) {
+    .product-card {
+        width: 100%; /* Asegura que solo haya una tarjeta por fila */
+    }
+
+    /* Para que las tarjetas se muestren en columna */
+    .productos-container {
+        flex-direction: column;
+        align-items: center; /* Opcional: centra las tarjetas */
+    }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 480px) {
+    .product-card {
+        width: 100%; /* Asegura que solo haya una tarjeta por fila */
+    }
+
+    /* Para que las tarjetas se muestren en columna */
+    .productos-container {
+        flex-direction: column;
+        align-items: center; /* Opcional: centra las tarjetas */
+    }
 }

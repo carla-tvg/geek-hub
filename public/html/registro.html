@@ -53,14 +53,15 @@
 
         <!-- Contenedor de formularios -->
 <div class="container-form">
+    <div class="image-container"></div> 
   <div class="wrapper">
       <!-- Formulario de Registro -->
       <div class="form-wrapper sign-up active">
-        <form id="registroForm" onsubmit="registerUser(event)"> 
+        <form id="registroForm" onsubmit="registerUser(event)" autocomplete="off"> 
             <h2>Registro</h2>
             
             <div class="input-group">
-                <input type="text" name="nombreCompleto" id="nombreCompleto" required>
+                <input type="text" name="nombreCompleto" id="nombreCompleto" required autocomplete="off">
                 <label for="nombreCompleto">Nombre Completo</label>
                 <span id="errorNombre" class="error"></span> <!-- Span para el error -->
             </div>
@@ -72,7 +73,7 @@
             </div>
             
             <div class="input-group">
-                <input type="email" name="correo" id="correo" required>
+                <input type="email" name="correo" id="correo" required autocomplete="off">
                 <label for="correo">Email (Nombre de Usuario)</label>
                 <span id="errorCorreo" class="error"></span> <!-- Span para el error -->
             </div>
