@@ -504,11 +504,7 @@ body::before {
     margin-top: 30px;
   }
   
-<<<<<<< HEAD
   .card{
-=======
-  .card-dif{
->>>>>>> carlis/develop
     background-color: rgba(0, 0, 0, 0.3); /* Fondo más oscuro para las tarjetas */
     border-radius: 15px;
     padding: 20px;
@@ -518,8 +514,6 @@ body::before {
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
   }
-  
- 
   
   .card-dif img {
     width: 100%;
@@ -537,17 +531,11 @@ body::before {
   .card-dif:hover {
     transform: translateY(-10px);
   }
-<<<<<<< HEAD
   
   .card::after, .card::before {
-=======
-
-  .card-dif::before {
->>>>>>> carlis/develop
     content: '';
     position: absolute;
     height: 100%;
-<<<<<<< HEAD
     width: 100%;
     background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
     top: 50%;
@@ -562,18 +550,6 @@ body::before {
 .card::before {
     filter: blur(1.5rem);
 }
-=======
-    border: 2px solid #34EDF3;
-    border-radius: 15px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-
-  .card-dif:hover::before {
-    opacity: 1;
-  }
->>>>>>> carlis/develop
 
 @keyframes spin {
     from {
@@ -610,8 +586,8 @@ body {
 
   /*FOOTER*/
 
-  #foot {
-    background: rgba(255, 255, 255, 0.1);/* Fondo oscuro y translúcido */
+#foot {
+    background: rgba(255, 255, 255, 0.1);/* Fondo espejo */
     backdrop-filter: blur(10px); /* Efecto de desenfoque */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     color: #faf9fa; /* Color base para el texto */
