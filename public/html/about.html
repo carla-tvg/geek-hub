@@ -7,67 +7,57 @@
   <title>Nosotros - Geek Hub</title>
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/styles-equipo.css">  
+  <link rel="stylesheet" href="../css/productos.css">
+
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script type="module" src="../javascript/productos.js"></script>
+  <style>
+    #productos {
+        display: none; /* Ocultar el contenedor de productos inicialmente */
+    }
+    #aboutContent {
+        display: block; /* Mostrar contenido de about inicialmente */
+    }
+  </style>
 </head>
 <body>
-
   <!-- Contenedor Principal -->
   <div class="container">
-    <img src="../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image">
+    <a href="/"> <img src="../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image"></a>
     <br><br>
+    
+    <div id="navbar-placeholder"></div>
 
+    <script>
+      fetch('navbar.html')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error al cargar el navbar');
+          }
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => {
+          console.error('Error al incluir el navbar:', error);
+        });
+    </script>
 
-    <nav class="navbar">
-      <div class="menu-toggle">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-      </div>
-      <ul class="nav-links">
-        <div class="menu">
-          <a class="account-button"><i class="fa fa-list"></i> Categorias</a>
-          <div class="dropdown">
-            <a href="#" class="dropdown-item">Electrónicos</a>
-            <a href="#" class="dropdown-item">Ropa</a>
-            <a href="#" class="dropdown-item">Accesorios</a>
-            <a href="#" class="dropdown-item">Coleccionables</a>
-            <a href="#" class="dropdown-item">Muebles</a>
-          </div>
-        </div>
-
-          <li><a href="recienllegado.html"><i class="fas fa-box"></i> Recién Llegado</a></li>
-          <li class="search-item">
-              <form class="search-form">
-                  <div class="search-container">
-                      <i class="fas fa-search search-icon"></i>
-                      <input type="text" class="search-input" placeholder="Buscar productos...">
-                  </div>
-                  <button type="submit" class="search-button">Buscar</button>
-              </form>
-          </li>
-          <li class="menu">
-            <a class="account-button"> <i class="fas fa-user"></i>Mi Cuenta</a>
-            <div class="dropdown">
-              <a href="#" class="dropdown-item">Iniciar Sesión</a>
-              <a href="#" class="dropdown-item">Registrarse</a>
-            </div>
-          </li>
-          <li><a href="contacto.html"><i class="fas fa-question-circle"></i> Ayuda</a></li>
-          <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
-      </ul>
-  </nav>
     <br><br>
+    
+    <div id="aboutContent"> 
+      <!-- Aquí va todo el contenido de About -->
+      <header class="header">
+        <h1>Somos la tienda geek del futuro</h1>
+        <p>Donde la tecnología y el futurismo se encuentran.</p>
+    
+      </header>
 
-    <!-- Encabezado -->
-    <header class="header">
-      <h1>Somos la tienda geek del futuro</h1>
-      <p>Donde la tecnología y el futurismo se encuentran.</p>
-    </header>
 
-
-    <!-- Sección: Quiénes Somos -->
+       <!-- Sección: Quiénes Somos -->
 <section class="section" id="quienes-somos">
   <div class="content">
     <h2>Bienvenidos a Geek Hub, tu universo digital</h2>
@@ -80,7 +70,6 @@
   </div>
 </section>
     
-
     <!-- Sección: Visión y Misión -->
     <section class="section" id="vision-mision">
       <div class="vision">
@@ -125,7 +114,7 @@
           <img src="../img-equipo/nelly.png" alt="Nelly">
         </div>
       </a>
-      <div class="info-container">
+      <div class="info-container-equipo">
         <h3>Nelly</h3>
         <strong></strong>
       </div>
@@ -137,7 +126,7 @@
           <img src="../img-equipo/nicole.png" alt="Nicole">
         </div>
       </a>
-      <div class="info-container">
+      <div class="info-container-equipo">
         <h3>Nicole</h3>
         <strong></strong>
       </div>
@@ -149,7 +138,7 @@
           <img src="../img-equipo/xiomara.png" alt="Xiomara">
         </div>
       </a>
-      <div class="info-container">
+      <div class="info-container-equipo">
         <h3>Xiomara</h3>
         <strong></strong>
       </div>
@@ -161,7 +150,7 @@
           <img src="../img-equipo/carla.png" alt="Carla">
         </div>
       </a>
-      <div class="info-container">
+      <div class="info-container-equipo">
         <h3>Carla</h3>
         <strong></strong>
       </div>
@@ -169,27 +158,33 @@
   </div>
 </section>
 
-
     <!-- Sección: CTA - Únete a la revolución -->
     <section class="section cta" id="revolucion">
       <h2>Únete a la comunidad Geek Hub</h2>
       <p>Forma parte de la revolución geek. Regístrate hoy y obtén un 10% de descuento en tu primera compra.</p>
-      <a href="formulariodeinicio.html" class="btn primary">¡ÚNETE AHORA!</a>
+      <a href="registro.html" class="btn primary">¡ÚNETE AHORA!</a>
     </section>
 
     <!-- Sección: Explora la tienda -->
     <section class="section cta" id="explora">
       <h2>La experiencia que va más allá de lo que conoces</h2>
       <p>No somos solo otra tienda. Queremos darte una experiencia inmersiva, personalizada y entretenida.</p>
-      <a href="productos.html" class="btn secondary">¡EXPLORA LA TIENDA!</a>
+      <a href="/" class="btn secondary">¡EXPLORA LA TIENDA!</a>
     </section>
+
+    </div> <!-- Fin del div aboutContent -->
+
+    <!-- Contenedor para mostrar productos -->
+    <div id="productos" class="productos-container">
+
+    </div> 
 
     <footer id="foot">
       <div class='foot-inner-container'>
           <div class="foot-inner-info">
               <h2><a href="" class="footer-header">Información de la empresa</a></h2>
               <ul class="footer-links">
-                  <li><a href="">Acerca de Geek Hub</a></li>
+                <li><a href="about.html" id="aboutContent"><i class="fas fa-info-circle"></i> Acerca de GeekHub</a></li>
                   <li><a href="">Política de devolución y reembolso</a></li>
                   <li><a href="">Política de propiedad intelectual</a></li>
                   <li><a href="">Política de envíos</a></li>
@@ -240,10 +235,38 @@
     </div>
 
   </footer>
-
-
-
   </div>
-<script src="../script.js"></script>
+
+  <script type="module">
+    import { cargarProductos, mostrarProductos, agregarEventosRecienLlegados, agregarEventosCategorias, agregarEventosBusqueda } from '../javascript/productos.js';
+
+    // Inicializar el carrito
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || {};
+
+    // Cargar los productos
+    cargarProductos().then(data => {
+        mostrarProductos(data); // Mostrar todos los productos al inicio
+        agregarEventosRecienLlegados(data); // Agregar el evento solo a "Recién Llegados"
+        agregarEventosCategorias(data); // Agregar eventos a las categorías
+        agregarEventosBusqueda(data); // Agregar evento a la búsqueda
+
+        // Agregar evento al enlace "Recién Llegados"
+        const recienLlegadosLink = document.getElementById('recienLlegados');
+        recienLlegadosLink.addEventListener('click', (event) => {
+            event.preventDefault(); // Evitar la acción por defecto del enlace
+
+            const aboutContent = document.getElementById('aboutContent');
+            const productosContainer = document.getElementById('productos');
+
+            // Ocultar contenido de about y mostrar productos
+            aboutContent.style.display = 'none'; // Ocultar el contenido de About
+            productosContainer.style.display = 'flex'; // Mostrar productos
+        });
+
+        // Agregar eventos a los enlaces de categorías y al formulario de búsqueda
+        agregarEventosCategorias(data);
+        agregarEventosBusqueda(data);
+    });
+</script>
 </body>
 </html>

@@ -164,3 +164,102 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+export function agregarEventosRecienLlegados(productos) {
+    const recienLlegadosLink = document.getElementById("recienLlegados");
+
+    recienLlegadosLink.addEventListener("click", (event) => {
+        event.preventDefault(); // Evitar la acción por defecto del enlace
+        const productosRecienLlegados = filtrarRecienLlegados(productos);
+        mostrarProductos(productosRecienLlegados); // Mostrar productos recién llegados
+    });
+}
+
+// Asegúrate de que la función filtrarRecienLlegados esté también disponible si no está dentro de agregarEventosRecienLlegados
+export function filtrarRecienLlegados(productos) {
+    const diasRecientes = 7; // Define cuántos días atrás consideras como "reciente"
+    const fechaLimite = new Date();
+    fechaLimite.setDate(fechaLimite.getDate() - diasRecientes);
+
+    return productos.filter(producto => {
+        const fechaLlegada = new Date(producto.fechaLlegada);
+        return fechaLlegada >= fechaLimite;
+    });
+}
+
+// También exporta mostrarProductos si no está exportada
+export function mostrarProductos(productos) {
+    const productosContainer = document.getElementById('productos');
+    productosContainer.innerHTML = '';
+
+    productos.forEach(producto => {
+        if (producto.nombre && producto.precio && producto.imagen && producto.descripcion) {
+            const productoHTML = `
+                <div class="product-card">
+                    <div class="img-container">
+                        <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image">
+                    </div>
+                    <div class="info-container">
+                        <h3 class="product-name">${producto.nombre}</h3>
+                        <p class="product-description">${producto.descripcion}</p>
+                        <strong class="product-price">$${Number(producto.precio).toLocaleString('es-CO')}</strong>
+                    </div>
+                </div>
+            `;
+            productosContainer.innerHTML += productoHTML;
+        }
+    });
+}
+
+export function cargarProductos() {
+    return fetch('/api/productos')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la red');
+            }
+            return response.json();
+        });
+}
+
+export function agregarEventosCategorias(data) {
+    const categoryLinks = document.querySelectorAll('.dropdown a[data-category]');
+    categoryLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const category = event.target.getAttribute('data-category');
+            const aboutContent = document.getElementById('aboutContent');
+            const productosContainer = document.getElementById('productos');
+
+            // Ocultar contenido de about y mostrar productos
+            aboutContent.style.display = 'none';
+            productosContainer.style.display = 'flex';
+
+            // Filtra los productos por categoría seleccionada
+            const filteredProducts = data.filter(product => product.categoria === category);
+            mostrarProductos(filteredProducts);
+        });
+    });
+}
+
+export function agregarEventosBusqueda(data) {
+    const searchForm = document.getElementById('searchForm');
+    const searchInput = document.getElementById('searchInput');
+    
+    searchForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const query = searchInput.value.toLowerCase();
+        const aboutContent = document.getElementById('aboutContent');
+        const productosContainer = document.getElementById('productos');
+
+        // Ocultar contenido de about y mostrar productos
+        aboutContent.style.display = 'none';
+        productosContainer.style.display = 'flex';
+
+        // Filtra los productos según la búsqueda
+        const filteredProducts = data.filter(product => 
+            product.nombre.toLowerCase().includes(query) || 
+            product.descripcion.toLowerCase().includes(query)
+        );
+        mostrarProductos(filteredProducts);
+    });
+}

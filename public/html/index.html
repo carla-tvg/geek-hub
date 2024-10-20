@@ -11,13 +11,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script type="module" src="../javascript/productos.js"></script>
+
 </head>
 <body>
 
 
     <!-- Contenedor Principal -->
   <div class="container">
-   <a href="localhost:3000"> <img src="../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image"></a>
+   <a href="/"> <img src="../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image"></a>
     <br><br>
 
 
@@ -61,7 +63,18 @@
     <!-- Aquí se cargarán los productos desde el JSON -->
   </div>
 
-
+  <script type="module">
+    import { cargarProductos, mostrarProductos, agregarEventosRecienLlegados } from '../javascript/productos.js';
+  
+    // Inicializar el carrito
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || {};
+  
+    // Cargar los productos
+    cargarProductos().then(data => {
+        mostrarProductos(data); // Mostrar todos los productos al inicio
+        agregarEventosRecienLlegados(data); // Agregar el evento solo a "Recién Llegados"
+    });
+  </script>
   
   
   <footer id="foot">
@@ -69,7 +82,7 @@
         <div class="foot-inner-info">
             <h2><a href="" class="footer-header">Información de la empresa</a></h2>
             <ul class="footer-links">
-                <li><a href="">Acerca de Geek Hub</a></li>
+                <li><a href="about.html" id="aboutContent"><i class="fas fa-info-circle"></i> Acerca de GeekHub</a></li>
                 <li><a href="">Política de devolución y reembolso</a></li>
                 <li><a href="">Política de propiedad intelectual</a></li>
                 <li><a href="">Política de envíos</a></li>

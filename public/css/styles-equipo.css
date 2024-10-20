@@ -39,12 +39,12 @@
 }
 
 /* Contenedor de información */
-.info-container {
+.info-container-equipo {
     padding: 15px;
 }
 
 /* Nombre */
-.info-container h3 {
+.info-container-equipo h3 {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.5rem; /* Tamaño relativo */
     text-align: center;
@@ -53,18 +53,18 @@
     transition: color 0.3s ease; /* Transición suave para el color */
 }
 
-.info-container h3:hover {
+.info-container-equipo h3:hover {
     color: #ffffff; /* Cambia el color al pasar el mouse */
 }
 
-.info-container strong {
+.info-container-equipo strong {
     font-size: 1rem; /* Tamaño relativo */
     text-align: center;
     color: #ffffff; /* Color para descripción */
     transition: color 0.3s ease; /* Transición suave para el color */
 }
 
-.info-container strong:hover {
+.info-container-equipo strong:hover {
     color: #34EDF3; /* Cambia el color al pasar el mouse */
 }
 
@@ -140,7 +140,7 @@ body {
         font-size: 1.2rem; /* Ajustar tamaño de fuente */
     }
 
-    .info-container strong {
+    .info-container-equipo strong {
         font-size: 0.9rem; /* Ajustar tamaño de fuente */
     }
 }

@@ -116,10 +116,13 @@ body {
 }
 
 h2 {
-    font-size: 30px;
-    color: #fff; /* Color del título */
+    font-size: 2rem;
+    color: #FF00FF;
+    font-family: 'Orbitron', sans-serif;
     text-align: center;
+    margin-bottom: 20px;
 }
+
 
 .input-group {
     position: relative;

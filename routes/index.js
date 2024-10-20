@@ -49,6 +49,14 @@ router.get('/admin/gestionEcommerce.html', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/html/admin/gestionEcommerce.html'));
 });
 
+router.get('/navbar.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/html/navbar.html'));
+});
+
+router.get('/about.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/html/about.html'));
+});
+
 // Usar las rutas de productos bajo /api/productos
 router.use('/api/productos', productosRoutes);
 
