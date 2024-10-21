@@ -7,10 +7,21 @@
   <title>Registro e Inicio de Sesión - Geek Hub</title>
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/styles-inicio.css">
+  <link rel="stylesheet" href="../css/productos.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <script type="module" src="../javascript/productos.js"></script>
+  <style>
+    #productos {
+        display: none; /* Ocultar el contenedor de productos inicialmente */
+    }
+    #aboutContent {
+        display: block; /* Mostrar contenido de about inicialmente */
+    }
+  </style>
+
 
 </head>
 <body>
@@ -19,40 +30,26 @@
         <img src="../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image">
         <br><br>
         
-        <nav class="navbar">
-            <div class="menu-toggle">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <ul class="nav-links">
-                <li class="menu">
-                <a ><i class="fa fa-list"></i> Categorias</a>
-                <ul class="dropdown">
-                  <li><a href="#" data-category="accesorios">Accesorios</a></li>
-                  <li><a href="#" data-category="coleccionables">Coleccionables</a></li>
-                  <li><a href="#" data-category="electronicos">Electrónicos</a></li>
-                  <li><a href="#" data-category="muebles">Muebles</a></li>
-                  <li><a href="#"data-category="ropa">Ropa</a></li>
-      
-                </ul>
-              </li>
-              <li><a href="#" id="recienLlegados"><i class="fas fa-box"></i> Recién Llegados</a></li>
-              <li class="search-item">
-                  <form class="search-form" id="searchForm"> <!-- Agregado ID -->
-                      <div class="search-container">
-                          <i class="fas fa-search search-icon"></i>
-                          <input type="text" class="search-input" id="searchInput" placeholder="Buscar productos..."> <!-- Agregado ID -->
-                      </div>
-                      <button type="submit" class="search-button">Buscar</button>
-                  </form>
-              </li>
-                <li><a href="registro.html"><i class="fas fa-user"></i> Iniciar Sesión / Registro</a></li>
-                <li><a href="/contacto"><i class="fas fa-question-circle"></i> Ayuda</a></li>
-                <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> (<span id="carrito-numero">0</span>)</a></li>
-            </ul>
-        </nav>
+        <div id="navbar-placeholder"></div>
 
+        <script>
+          fetch('navbar.html')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Error al cargar el navbar');
+              }
+              return response.text();
+            })
+            .then(data => {
+              document.getElementById('navbar-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+              console.error('Error al incluir el navbar:', error);
+            });
+        </script>
+
+
+<div id="aboutContent">
         <!-- Contenedor de formularios -->
 <div class="container-form">
     <div class="image-container">
@@ -135,8 +132,14 @@
     </div>
   </div>
 </div>
+</div>  <!--Fin Form Content-->
+
+<!-- Contenedor para mostrar productos -->
+<div id="productos" class="productos-container">
+</div> 
 
 
+<!-- Footer -->
 <footer id="foot">
     <div class='foot-inner-container'>
         <div class="foot-inner-info">
@@ -191,12 +194,11 @@
     <div class="footer-logo-container">
       <img src="../img-carla/geekhub.png" alt="Logo" class="footer-logo">
   </div>
-
-  
-
 </footer>
 
-    </div>
+    </div> <!--Fin de Contenedor Principal -->
+
+    <!--Inicio de JS'S -->
     <!-- Enlaza jQuery (requerido por Toastr) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Enlaza los archivos JS de Toastr -->
@@ -205,6 +207,38 @@
     <script src="../javascript/registro.js"></script>
     <script src="../javascript/gestionLogin.js"></script>
     <script src="../javascript/script.js"></script>
+
+    <script type="module">
+        import { cargarProductos, mostrarProductos, agregarEventosRecienLlegados, agregarEventosCategorias, agregarEventosBusqueda } from '../javascript/productos.js';
+    
+        // Inicializar el carrito
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || {};
+    
+        // Cargar los productos
+        cargarProductos().then(data => {
+            mostrarProductos(data); // Mostrar todos los productos al inicio
+            agregarEventosRecienLlegados(data); // Agregar el evento solo a "Recién Llegados"
+            agregarEventosCategorias(data); // Agregar eventos a las categorías
+            agregarEventosBusqueda(data); // Agregar evento a la búsqueda
+    
+            // Agregar evento al enlace "Recién Llegados"
+            const recienLlegadosLink = document.getElementById('recienLlegados');
+            recienLlegadosLink.addEventListener('click', (event) => {
+                event.preventDefault(); // Evitar la acción por defecto del enlace
+    
+                const aboutContent = document.getElementById('aboutContent');
+                const productosContainer = document.getElementById('productos');
+    
+                // Ocultar contenido de about y mostrar productos
+                aboutContent.style.display = 'none'; // Ocultar el contenido de About
+                productosContainer.style.display = 'flex'; // Mostrar productos
+            });
+    
+            // Agregar eventos a los enlaces de categorías y al formulario de búsqueda
+            agregarEventosCategorias(data);
+            agregarEventosBusqueda(data);
+        });
+    </script>
 
   </body>
 

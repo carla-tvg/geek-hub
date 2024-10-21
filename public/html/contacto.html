@@ -7,9 +7,20 @@
   <title>Registro e Inicio de Sesión - Geek Hub</title>
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/styles-contact.css">
+  <link rel="stylesheet" href="../css/productos.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script type="module" src="../javascript/productos.js"></script>
+  <style>
+    #productos {
+        display: none; /* Ocultar el contenedor de productos inicialmente */
+    }
+    #aboutContent {
+        display: block; /* Mostrar contenido de about inicialmente */
+    }
+  </style>
+
 </head>
 <body>
     <!-- Contenedor principal -->
@@ -17,33 +28,27 @@
         <img src="../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image">
         <br><br>
         
-        <!-- Barra de navegación -->
-        <nav class="navbar">
-            <div class="menu-toggle">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="masvendido.html"><i class="fas fa-fire"></i> Más Vendido</a></li>
-                <li><a href="recienllegado.html"><i class="fas fa-box"></i> Recién Llegado</a></li>
-                <li class="search-item">
-                    <form class="search-form">
-                        <div class="search-container">
-                            <i class="fas fa-search search-icon"></i>
-                            <input type="text" class="search-input" placeholder="Buscar productos...">
-                        </div>
-                        <button type="submit" class="search-button">Buscar</button>
-                    </form>
-                </li>
-                <li><a href="registro.html"><i class="fas fa-user"></i> Iniciar Sesión / Registro</a></li>
-                <li><a href="contacto.html"><i class="fas fa-question-circle"></i> Ayuda</a></li>
-                <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
-            </ul>
-        </nav>
+        <div id="navbar-placeholder"></div>
+
+        <script>
+          fetch('navbar.html')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Error al cargar el navbar');
+              }
+              return response.text();
+            })
+            .then(data => {
+              document.getElementById('navbar-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+              console.error('Error al incluir el navbar:', error);
+            });
+        </script>
 
         <!-- Contenedor de formularios -->
-        <div class="wrapper">
+         <div id="aboutContent">
+             <div class="wrapper">
             <h2>Contáctanos</h2>
             <form id='contact-form' action="https://formspree.io/f/xvgpjwra" method="POST">
                 <div class="input-group">
@@ -64,7 +69,14 @@
                 </div>
                 <button type="button" class="button-enviar">Enviar</button>
             </form>
+            </div>
+         </div>
+
+        <!-- Contenedor para mostrar productos -->
+        <div id="productos" class="productos-container">
         </div>
+
+
         <!-- Footer -->
         <footer id="foot">
             <div class='foot-inner-container'>
@@ -125,6 +137,40 @@
         </footer>
 
     </div>
+
+
+
+    <script type="module">
+        import { cargarProductos, mostrarProductos, agregarEventosRecienLlegados, agregarEventosCategorias, agregarEventosBusqueda } from '../javascript/productos.js';
+    
+        // Inicializar el carrito
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || {};
+    
+        // Cargar los productos
+        cargarProductos().then(data => {
+            mostrarProductos(data); // Mostrar todos los productos al inicio
+            agregarEventosRecienLlegados(data); // Agregar el evento solo a "Recién Llegados"
+            agregarEventosCategorias(data); // Agregar eventos a las categorías
+            agregarEventosBusqueda(data); // Agregar evento a la búsqueda
+    
+            // Agregar evento al enlace "Recién Llegados"
+            const recienLlegadosLink = document.getElementById('recienLlegados');
+            recienLlegadosLink.addEventListener('click', (event) => {
+                event.preventDefault(); // Evitar la acción por defecto del enlace
+    
+                const aboutContent = document.getElementById('aboutContent');
+                const productosContainer = document.getElementById('productos');
+    
+                // Ocultar contenido de about y mostrar productos
+                aboutContent.style.display = 'none'; // Ocultar el contenido de About
+                productosContainer.style.display = 'flex'; // Mostrar productos
+            });
+    
+            // Agregar eventos a los enlaces de categorías y al formulario de búsqueda
+            agregarEventosCategorias(data);
+            agregarEventosBusqueda(data);
+        });
+    </script>
 
     <!-- Enlace al archivo JavaScript -->
     <script src="../javascript/inicio-registro.js"></script>

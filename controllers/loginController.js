@@ -9,6 +9,7 @@ const login = (req, res) => {
     const usuario = usuarios.find(user => user.correo === correoLogin && user.password === passwordLogin);
 
     if (usuario) {
+        req.session.usuario = usuario;
         res.status(200).json({ success: true, message: 'Inicio de sesión exitoso' });
     } else {
         res.status(401).json({ success: false, message: 'Credenciales incorrectas' });

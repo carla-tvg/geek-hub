@@ -5,12 +5,12 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
     const password = document.getElementById('password').value;
 
     // Realizar la solicitud al backend para iniciar sesión
-    fetch('/api/usuarios/login', {
+    fetch('/api/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ correoLogin: email, passwordLogin: password  }),
     })
     .then(response => {
         if (!response.ok) {
@@ -20,7 +20,7 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
     })
     .then(data => {
         // Redirigir a la página de perfil
-        window.location.href = '/html/perfil.html'; // Asegúrate de que esta ruta esté configurada
+        window.location.href = '/html/perfil.html'; // Asegúrate de que esta ruta esté configurada*/
     })
     .catch(error => {
         console.error('Error:', error);

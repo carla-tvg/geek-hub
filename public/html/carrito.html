@@ -6,53 +6,49 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Tu carrito - Geek Hub</title>
   <link rel="stylesheet" href="../css/styles-carrito.css">
+
+  <link rel="stylesheet" href="../css/styles.css">
+
   <link rel="stylesheet" href="../css/productos.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script type="module" src="../javascript/productos.js"></script>
+  <style>
+    #productos {
+        display: none; /* Ocultar el contenedor de productos inicialmente */
+    }
+    #aboutContent {
+        display: block; /* Mostrar contenido de about inicialmente */
+    }
+  </style>
 </head>
 <body>
 
-  
-
     <!-- Contenedor Principal -->
   <div class="container">
-    <img src="../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image">
+    <a href="/"> <img src="../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image"></a>
     <br><br>
-    <nav class="navbar">
-        <div class="menu-toggle">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        <ul class="nav-links">
-            <li class="menu">
-            <a ><i class="fa fa-list"></i> Categorias</a>
-            <div class="dropdown">
-              <a href="#" class="dropdown-item">Electrónicos</a>
-              <a href="#" class="dropdown-item">Ropa</a>
-              <a href="#" class="dropdown-item">Accesorios</a>
-              <a href="#" class="dropdown-item">Coleccionables</a>
-              <a href="#" class="dropdown-item">Muebles</a>
-            </div>
-          </li>
-          <li><a href="#" id="recienLlegados"><i class="fas fa-box"></i> Recién Llegados</a></li>
-          <li class="search-item">
-              <form class="search-form" id="searchForm"> <!-- Agregado ID -->
-                  <div class="search-container">
-                      <i class="fas fa-search search-icon"></i>
-                      <input type="text" class="search-input" id="searchInput" placeholder="Buscar productos..."> <!-- Agregado ID -->
-                  </div>
-                  <button type="submit" class="search-button">Buscar</button>
-              </form>
-          </li>
-            <li><a href="registro.html"><i class="fas fa-user"></i> Iniciar Sesión / Registro</a></li>
-            <li><a href="contacto.html"><i class="fas fa-question-circle"></i> Ayuda</a></li>
-            <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> (<span id="carrito-numero">0</span>)</a></li>
-        </ul>
-    </nav>
-  
+    
+    <div id="navbar-placeholder"></div>
 
+    <script>
+      fetch('navbar.html')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error al cargar el navbar');
+          }
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => {
+          console.error('Error al incluir el navbar:', error);
+        });
+    </script>
+
+<div id="aboutContent">
   <div class="cart-container">
     <h2 class="cart-title">Tu Carrito</h2>
     <table class="cart-table">
@@ -73,6 +69,11 @@
       <p class="total-price">Total: <span id="total-amount">$0</span></p>
     </div>
   </div>
+</div>
+
+<!-- Contenedor para mostrar productos -->
+<div id="productos" class="productos-container">
+</div> 
 
   <footer id="foot">
     <div class='foot-inner-container'>
@@ -133,11 +134,44 @@
 
 </div>
 
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="javascript/script.js"></script>
 <script  src="javascript/productos.js" defer ></script>
-
 <script src="javascript/carrito.js" defer ></script>
+
+<script type="module">
+  import { cargarProductos, mostrarProductos, agregarEventosRecienLlegados, agregarEventosCategorias, agregarEventosBusqueda } from '../javascript/productos.js';
+
+  // Inicializar el carrito
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || {};
+
+  // Cargar los productos
+  cargarProductos().then(data => {
+      mostrarProductos(data); // Mostrar todos los productos al inicio
+      agregarEventosRecienLlegados(data); // Agregar el evento solo a "Recién Llegados"
+      agregarEventosCategorias(data); // Agregar eventos a las categorías
+      agregarEventosBusqueda(data); // Agregar evento a la búsqueda
+
+      // Agregar evento al enlace "Recién Llegados"
+      const recienLlegadosLink = document.getElementById('recienLlegados');
+      recienLlegadosLink.addEventListener('click', (event) => {
+          event.preventDefault(); // Evitar la acción por defecto del enlace
+
+          const aboutContent = document.getElementById('aboutContent');
+          const productosContainer = document.getElementById('productos');
+
+          // Ocultar contenido de about y mostrar productos
+          aboutContent.style.display = 'none'; // Ocultar el contenido de About
+          productosContainer.style.display = 'flex'; // Mostrar productos
+      });
+
+      // Agregar eventos a los enlaces de categorías y al formulario de búsqueda
+      agregarEventosCategorias(data);
+      agregarEventosBusqueda(data);
+  });
+</script>
 
 </body>
 </html>

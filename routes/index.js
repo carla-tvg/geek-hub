@@ -57,6 +57,14 @@ router.get('/about.html', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/html/about.html'));
 });
 
+router.get('/carrito.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/html/carrito.html'));
+});
+
+router.get('/perfil.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/html/perfil.html'));
+});
+
 // Usar las rutas de productos bajo /api/productos
 router.use('/api/productos', productosRoutes);
 
@@ -69,9 +77,6 @@ router.use('/api/login', gestionLogin); // Define la ruta base para las funcione
 // Usar las rutas de administradores bajo /api/admin
 router.use('/api/admin', adminsRoutes); // Define la ruta base para las funciones de admin
 
-router.get('/carrito.html', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/html/carrito.html'));
-});
 
 // Usar las rutas del carrito bajo /api/carrito
 router.use('/api/carrito', carritoRoutes);
