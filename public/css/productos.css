@@ -1,0 +1,207 @@
+/* Estilos generales para el contenedor de la sección */
+/* Estilos generales para el contenedor de la sección */
+.productos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribuye el espacio entre las tarjetas */
+    padding: 20px;
+}
+
+/* Estilo para cada tarjeta de producto */
+.product-card {
+    margin: 15px; /* Espaciado entre tarjetas */
+    padding: 20px; /* Ajustar el padding según sea necesario */
+    width: calc(33.33% - 30px); /* Ajustar el ancho para 3 tarjetas por fila */
+    background: #1c1f2b;
+    color: white;
+    text-align: left;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* Contenedor de imagen */
+.img-container {
+    overflow: hidden; /* Asegúrate de que la imagen no desborde la tarjeta */
+}
+
+.img-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease; /* Transición suave para el zoom */
+}
+
+.product-card:hover .img-container img {
+    transform: scale(1.1); /* Aumenta la imagen al pasar el mouse */
+}
+
+.promo {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    background: #72009a;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Contenedor de información */
+.info-container {
+    padding: 15px;
+}
+
+/* Títulos y precios */
+.info-container h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    color: #ff00ff;
+    margin: 10px 0;
+    transition: color 0.3s ease; /* Transición suave para el color */
+}
+
+.info-container h3:hover {
+    color: #ffffff; /* Cambia el color al pasar el mouse */
+}
+
+.info-container strong {
+    font-size: 16px;
+    color: #ff00ff; /* Color para el precio */
+    transition: color 0.3s ease; /* Transición suave para el color */
+}
+
+.info-container strong:hover {
+    color: #34EDF3; /* Cambia el color al pasar el mouse */
+}
+
+/* Estilo para el botón de añadir al carrito */
+.add-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #34EDF3;
+    color: #1d1d1d;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.add-cart:hover {
+    background: #72009a; /* Color más oscuro al pasar el ratón */
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.product-card::after, .product-card::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+   background-image: conic-gradient(from var(--angle),#72009a, #34EDF3, #FF00FF);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+}
+
+.product-card::before {
+    filter: blur(1.5rem);
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 20px;
+    background-color: #121212; /* Fondo oscuro */
+    margin: 0;
+    color: white; /* Color de texto general */
+}
+
+/* Contenedor para las acciones del carrito */
+.cart-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+/* Botones para añadir y quitar productos */
+.btn-decrease, .btn-increase {
+    background-color: #34EDF3;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-decrease:hover, .btn-increase:hover {
+    background-color: #34EDF3; /* Cambia el color al pasar el ratón */
+}
+
+/* Cantidad de productos */
+.product-quantity {
+    font-size: 16px;
+    color: #ff00ff;
+    margin: 0 10px;
+    min-width: 30px; /* Ancho mínimo para mantener espacio entre los botones */
+    text-align: center;
+}
+
+/* Ajuste para el texto de la cantidad */
+.product-quantity::before {
+    content: "Añadir: "; /* Texto que acompaña a la cantidad */
+    color: white;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Ajustes para pantallas medianas */
+@media (max-width: 768px) {
+    .product-card {
+        width: 100%; /* Asegura que solo haya una tarjeta por fila */
+    }
+
+    /* Para que las tarjetas se muestren en columna */
+    .productos-container {
+        flex-direction: column;
+        align-items: center; /* Opcional: centra las tarjetas */
+    }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 480px) {
+    .product-card {
+        width: 100%; /* Asegura que solo haya una tarjeta por fila */
+    }
+
+    /* Para que las tarjetas se muestren en columna */
+    .productos-container {
+        flex-direction: column;
+        align-items: center; /* Opcional: centra las tarjetas */
+    }
+}

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Nosotros - Geek Hub</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/styles-equipo.css">  
+  <link rel="stylesheet" href="../css/productos.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script type="module" src="../javascript/productos.js"></script>
+  <style>
+    #productos {
+        display: none; /* Ocultar el contenedor de productos inicialmente */
+    }
+    #aboutContent {
+        display: block; /* Mostrar contenido de about inicialmente */
+    }
+  </style>
+</head>
+<body>
+  <!-- Contenedor Principal -->
+  <div class="container">
+    <a href="/"> <img src="../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image"></a>
+    <br><br>
+    
+    <div id="navbar-placeholder"></div>
+
+    <script>
+      fetch('navbar.html')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error al cargar el navbar');
+          }
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => {
+          console.error('Error al incluir el navbar:', error);
+        });
+    </script>
+
+    <br><br>
+    
+    <div id="aboutContent"> 
+      <!-- Aquí va todo el contenido de About -->
+      <header class="header">
+        <h1>Somos la tienda geek del futuro</h1>
+        <p>Donde la tecnología y el futurismo se encuentran.</p>
+    
+      </header>
+
+
+       <!-- Sección: Quiénes Somos -->
+<section class="section" id="quienes-somos">
+  <div class="content">
+    <h2>Bienvenidos a Geek Hub, tu universo digital</h2>
+    <p>
+      Geek Hub no es solo una tienda. Somos un espacio donde lo geek, la tecnología y lo futurista colisionan
+      para crear una experiencia única. Nuestro equipo de entusiastas de la cultura geek se ha propuesto
+      transformar la forma en que accedes a tus productos favoritos.
+    </p>
+    <a href="index.html" class="btn primary">Conoce más</a> <!-- Botón CTA -->
+  </div>
+</section>
+    
+    <!-- Sección: Visión y Misión -->
+    <section class="section" id="vision-mision">
+      <div class="vision">
+        <h2>Visión</h2>
+        <p>Construir el futuro del e-commerce geek, donde la personalización y la innovación van de la mano.</p>
+      </div>
+      <div class="mision">
+        <h2>Misión</h2>
+        <p>Ofrecer productos exclusivos con una experiencia futurista y envolvente que hace que cada compra sea tan emocionante como abrir tu videojuego favorito.</p>
+      </div>
+    </section>
+
+    <!-- Sección: Diferenciadores -->
+<section class="section" id="diferenciadores">
+    <h2>¿Qué nos hace diferentes?</h2>
+    <div class="diferenciadores-container">
+      <div class="card-dif">
+        <img src="../img-carla/headphones.png" alt="Innovación constante">
+        <h3>Innovación constante</h3>
+      </div>
+      <div class="card-dif">
+        <img src="../img-carla/articulos-nuevo.png" alt="Productos exclusivos">
+        <h3>Productos exclusivos</h3>
+      </div>
+      <div class="card-dif">
+        <img src="../img-carla/diseño-inmersivo.jpg" alt="Diseño inmersivo">
+        <h3>Diseño inmersivo</h3>
+      </div>
+    </div>
+  </section>
+
+<!-- Sección: Nuestro equipo -->
+<section class="section" id="equipo">
+  <h2>Conoce al equipo detrás de Geek Hub</h2>
+  <p>Formado por desarrolladoras y apasionadas del mundo geek, cada una aporta algo único para construir la experiencia Geek Hub.</p>
+  
+  <!-- Tarjetas de presentación -->
+  <div class="container-equipo">
+    <div class="card-equipo">
+      <a href="#">
+        <div class="img-container-equipo">
+          <img src="../img-equipo/nelly.png" alt="Nelly">
+        </div>
+      </a>
+      <div class="info-container-equipo">
+        <h3>Nelly</h3>
+        <strong></strong>
+      </div>
+    </div>
+    
+    <div class="card-equipo">
+      <a href="#">
+        <div class="img-container-equipo">
+          <img src="../img-equipo/nicole.png" alt="Nicole">
+        </div>
+      </a>
+      <div class="info-container-equipo">
+        <h3>Nicole</h3>
+        <strong></strong>
+      </div>
+    </div>
+    
+    <div class="card-equipo">
+      <a href="#">
+        <div class="img-container-equipo">
+          <img src="../img-equipo/xiomara.png" alt="Xiomara">
+        </div>
+      </a>
+      <div class="info-container-equipo">
+        <h3>Xiomara</h3>
+        <strong></strong>
+      </div>
+    </div>
+    
+    <div class="card-equipo">
+      <a href="#">
+        <div class="img-container-equipo">
+          <img src="../img-equipo/carla.png" alt="Carla">
+        </div>
+      </a>
+      <div class="info-container-equipo">
+        <h3>Carla</h3>
+        <strong></strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Sección: CTA - Únete a la revolución -->
+    <section class="section cta" id="revolucion">
+      <h2>Únete a la comunidad Geek Hub</h2>
+      <p>Forma parte de la revolución geek. Regístrate hoy y obtén un 10% de descuento en tu primera compra.</p>
+      <a href="registro.html" class="btn primary">¡ÚNETE AHORA!</a>
+    </section>
+
+    <!-- Sección: Explora la tienda -->
+    <section class="section cta" id="explora">
+      <h2>La experiencia que va más allá de lo que conoces</h2>
+      <p>No somos solo otra tienda. Queremos darte una experiencia inmersiva, personalizada y entretenida.</p>
+      <a href="/" class="btn secondary">¡EXPLORA LA TIENDA!</a>
+    </section>
+
+    </div> <!-- Fin del div aboutContent -->
+
+    <!-- Contenedor para mostrar productos -->
+    <div id="productos" class="productos-container">
+    </div> 
+
+    <footer id="foot">
+      <div class='foot-inner-container'>
+          <div class="foot-inner-info">
+              <h2><a href="" class="footer-header">Información de la empresa</a></h2>
+              <ul class="footer-links">
+                <li><a href="about.html" id="aboutContent"><i class="fas fa-info-circle"></i> Acerca de GeekHub</a></li>
+                  <li><a href="">Política de devolución y reembolso</a></li>
+                  <li><a href="">Política de propiedad intelectual</a></li>
+                  <li><a href="">Política de envíos</a></li>
+                  <li><a href="">Reportar actividad sospechosa</a></li>
+              </ul>
+          </div>
+          <div class="foot-inner-info">
+              <h2><a href="" class="footer-header">Atención al cliente</a></h2>
+              <ul class="footer-links">
+                  <li><a href="">Preguntas frecuentes</a></li>
+                  <li><a href="">Centro de seguridad</a></li>
+                  <li><a href="">Protección de compras de Geek Hub</a></li>
+              </ul>
+          </div>
+          <div class="foot-inner-info">
+              <h2><a href="" class="footer-header">Ayuda</a></h2>
+              <ul class="footer-links">
+                  <li><a href="">Guía de usuario</a></li>
+                  <li><a href="">Contactar soporte</a></li>
+              </ul>
+          </div>
+      </div>
+      <div class="foot-inner-social">
+          <h2>Encuéntranos</h2>
+          <div class="social-container">
+              <a href="#" class="icono-transparente social-icon">
+                  <i class="fab fa-facebook"></i>
+              </a>
+              <a href="#" class="icono-transparente social-icon">
+                  <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="icono-transparente social-icon">
+                  <i class="fab fa-youtube"></i>
+              </a>
+              <a href="#" class="icono-transparente social-icon">
+                  <i class="fab fa-discord"></i>
+              </a>
+          </div>
+      </div>
+      <div class="subscribe-container">
+          <h2>¡Suscríbete a nuestro Newsletter!</h2>
+          <input type="email" id="email" placeholder="Dirección de correo" required>
+          <a href="#" class="subscribe-button" onclick="subscribe()">¡Suscríbete!</a>
+      </div>
+
+      <div class="footer-logo-container">
+        <img src="../img-carla/geekhub.png" alt="Logo" class="footer-logo">
+    </div>
+
+    </footer>
+  </div>
+
+  <script type="module">
+    import { cargarProductos, mostrarProductos, agregarEventosRecienLlegados, agregarEventosCategorias, agregarEventosBusqueda } from '../javascript/productos.js';
+
+    // Inicializar el carrito
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || {};
+
+    // Cargar los productos
+    cargarProductos().then(data => {
+        mostrarProductos(data); // Mostrar todos los productos al inicio
+        agregarEventosRecienLlegados(data); // Agregar el evento solo a "Recién Llegados"
+        agregarEventosCategorias(data); // Agregar eventos a las categorías
+        agregarEventosBusqueda(data); // Agregar evento a la búsqueda
+
+        // Agregar evento al enlace "Recién Llegados"
+        const recienLlegadosLink = document.getElementById('recienLlegados');
+        recienLlegadosLink.addEventListener('click', (event) => {
+            event.preventDefault(); // Evitar la acción por defecto del enlace
+
+            const aboutContent = document.getElementById('aboutContent');
+            const productosContainer = document.getElementById('productos');
+
+            // Ocultar contenido de about y mostrar productos
+            aboutContent.style.display = 'none'; // Ocultar el contenido de About
+            productosContainer.style.display = 'flex'; // Mostrar productos
+        });
+
+        // Agregar eventos a los enlaces de categorías y al formulario de búsqueda
+        agregarEventosCategorias(data);
+        agregarEventosBusqueda(data);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro e Inicio de Sesión - Geek Hub</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/styles-contact.css">
+  <link rel="stylesheet" href="../css/productos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script type="module" src="../javascript/productos.js"></script>
+  <style>
+    #productos {
+        display: none; /* Ocultar el contenedor de productos inicialmente */
+    }
+    #aboutContent {
+        display: block; /* Mostrar contenido de about inicialmente */
+    }
+  </style>
+
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <img src="../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image">
+        <br><br>
+        
+        <div id="navbar-placeholder"></div>
+
+        <script>
+          fetch('navbar.html')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Error al cargar el navbar');
+              }
+              return response.text();
+            })
+            .then(data => {
+              document.getElementById('navbar-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+              console.error('Error al incluir el navbar:', error);
+            });
+        </script>
+
+        <!-- Contenedor de formularios -->
+         <div id="aboutContent">
+             <div class="wrapper">
+            <h2>Contáctanos</h2>
+            <form id='contact-form' action="https://formspree.io/f/xvgpjwra" method="POST">
+                <div class="input-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" name="name" id="name" placeholder="Ingresa tu nombre" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" name="email" id="email" placeholder="Ingresa tu correo electrónico" required>
+                </div>
+                <div class="input-group">
+                    <label for="phone">Teléfono:</label>
+                    <input type="tel" name="phone" id="phone" placeholder="Ingresa tu teléfono" required pattern="[0-9]{10}">
+                </div>
+                <div class="input-group">
+                    <label for="message">Mensaje:</label>
+                    <textarea name="message" id="message" placeholder="Escribe tu mensaje" rows="4" required></textarea>
+                </div>
+                <button type="button" class="button-enviar">Enviar</button>
+            </form>
+            </div>
+         </div>
+
+        <!-- Contenedor para mostrar productos -->
+        <div id="productos" class="productos-container">
+        </div>
+
+
+        <!-- Footer -->
+        <footer id="foot">
+            <div class='foot-inner-container'>
+                <div class="foot-inner-info">
+                    <h2><a href="" class="footer-header">Información de la empresa</a></h2>
+                    <ul class="footer-links">
+                        <li><a href="">Acerca de Geek Hub</a></li>
+                        <li><a href="">Política de devolución y reembolso</a></li>
+                        <li><a href="">Política de propiedad intelectual</a></li>
+                        <li><a href="">Política de envíos</a></li>
+                        <li><a href="">Reportar actividad sospechosa</a></li>
+                    </ul>
+                </div>
+                <div class="foot-inner-info">
+                    <h2><a href="" class="footer-header">Atención al cliente</a></h2>
+                    <ul class="footer-links">
+                        <li><a href="">Preguntas frecuentes</a></li>
+                        <li><a href="">Centro de seguridad</a></li>
+                        <li><a href="">Protección de compras de Geek Hub</a></li>
+                    </ul>
+                </div>
+                <div class="foot-inner-info">
+                    <h2><a href="" class="footer-header">Ayuda</a></h2>
+                    <ul class="footer-links">
+                        <li><a href="">Guía de usuario</a></li>
+                        <li><a href="">Contactar soporte</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="foot-inner-social">
+                <h2>Encuéntranos</h2>
+                <div class="social-container">
+                    <a href="#" class="icono-transparente social-icon">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="icono-transparente social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="icono-transparente social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="icono-transparente social-icon">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="subscribe-container">
+                <h2>¡Suscríbete a nuestro Newsletter!</h2>
+                <input type="email" id="email" placeholder="Dirección de correo" required>
+                <a href="#" class="subscribe-button" onclick="subscribe()">¡Suscríbete!</a>
+            </div>
+        </footer>
+
+        <footer class="footer-bottom">
+            <div class="footer-logo-container">
+                <img src="../img-carla/geekhub.png" alt="Logo" class="footer-logo">
+            </div>
+        </footer>
+
+    </div>
+
+
+
+    <script type="module">
+        import { cargarProductos, mostrarProductos, agregarEventosRecienLlegados, agregarEventosCategorias, agregarEventosBusqueda } from '../javascript/productos.js';
+    
+        // Inicializar el carrito
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || {};
+    
+        // Cargar los productos
+        cargarProductos().then(data => {
+            mostrarProductos(data); // Mostrar todos los productos al inicio
+            agregarEventosRecienLlegados(data); // Agregar el evento solo a "Recién Llegados"
+            agregarEventosCategorias(data); // Agregar eventos a las categorías
+            agregarEventosBusqueda(data); // Agregar evento a la búsqueda
+    
+            // Agregar evento al enlace "Recién Llegados"
+            const recienLlegadosLink = document.getElementById('recienLlegados');
+            recienLlegadosLink.addEventListener('click', (event) => {
+                event.preventDefault(); // Evitar la acción por defecto del enlace
+    
+                const aboutContent = document.getElementById('aboutContent');
+                const productosContainer = document.getElementById('productos');
+    
+                // Ocultar contenido de about y mostrar productos
+                aboutContent.style.display = 'none'; // Ocultar el contenido de About
+                productosContainer.style.display = 'flex'; // Mostrar productos
+            });
+    
+            // Agregar eventos a los enlaces de categorías y al formulario de búsqueda
+            agregarEventosCategorias(data);
+            agregarEventosBusqueda(data);
+        });
+    </script>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="../javascript/inicio-registro.js"></script>
+</body>
+</html>

@@ -1,0 +1,584 @@
+/* Importación de fuentes futuristas */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #000; /* Fondo negro */
+  color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px;
+  position: relative;
+  height: auto; /* Para permitir que crezca si hay más contenido */
+  margin-top: -40px;
+}
+
+/* Fondo animado aplicado a todo el sitio */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Ocupa toda la altura del body */
+  background: linear-gradient(45deg, #040a26, #72009a, #1c748a);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  z-index: -1; /* Asegurarse de que esté detrás de todo */
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  margin-top: -40px;
+}
+
+/* Encabezado */
+.header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5rem;
+  letter-spacing: 0.2em;
+  color: #34EDF3; /* Color del título principal */
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 1.2rem;
+  color: #FFFFFF; /* Color blanco para subtítulo */
+  margin-bottom: 30px;
+}
+
+/* Estilos para el logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 50px; /* Ajusta según sea necesario */
+  margin-right: 10px; /* Espacio entre el logo y el texto */
+  margin-top:40px;
+}
+
+.logo-text {
+  font-size: 24px;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav-links li {
+  margin: 0 10px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  padding: 8px 12px;
+  transition: background 0.3s ease, color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: #000;
+  border-radius: 5px;
+}
+
+.nav-links i {
+  margin-right: 8px;
+}
+
+/* Buscador más ancho */
+.search-item {
+  flex-grow: 3; /* Aumenta el ancho del buscador */
+  display: flex;
+  justify-content: center;
+}
+
+/* Contenedor del formulario de búsqueda */
+.search-form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative; /* Permite manejar el layout más fácilmente */
+}
+
+.search-container {
+  flex-grow: 1; /* Permite que el contenedor del input ocupe el espacio */
+  position: relative;
+}
+
+.search-input {
+  padding: 8px 16px;
+  padding-left: 40px; /* Espacio para el ícono */
+  border: none;
+  border-radius: 5px; /* Bordes redondeados en todo el input */
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  width: 100%; /* Ocupa el 100% del contenedor */
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  pointer-events: none;
+}
+
+.search-button {
+  padding: 4px 8px; /* Reducir el padding a la mitad */
+  border: none;
+  background-color: rgb(255, 255, 255);
+  color: #4242429f;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0; /* Bordes redondeados solo en el lado derecho */
+  transition: background-color 0.3s ease;
+  position: relative; /* Colocamos el botón en el lado derecho */
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%; /* Aseguramos que el botón tenga la misma altura que el input */
+  width: 65px; /* Ajustar el ancho según sea necesario */
+}
+
+.search-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #000;
+}
+
+/* Media queries para dispositivos pequeños */
+.menu-toggle {
+  display: none; /* Ocultamos por defecto */
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px 0;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    display: none; /* Ocultamos el menú por defecto */
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  .menu-toggle {
+    display: flex; /* Aseguramos que el botón de menú sea visible */
+    cursor: pointer;
+    flex-direction: column;
+  }
+
+  /* Mostrar el menú cuando se activa */
+  .navbar.active .nav-links {
+    display: flex; /* Muestra el menú cuando está activo */
+  }
+
+  /* Buscador en móviles */
+  .search-form {
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+  }
+
+  .search-container {
+    flex-grow: 1;
+    position: relative;
+  }
+
+  .search-input {
+    width: calc(100% - 100px);
+  }
+
+  .search-button {
+    width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-input {
+    width: 70%; /* Ajuste para pantallas más pequeñas */
+  }
+
+  .search-button {
+    width: 30%;
+  }
+
+  .nav-links a {
+    font-size: 14px; /* Tamaño de fuente más pequeño para móviles */
+  }
+}
+
+/* Sección general */
+.section {
+  margin: 40px 0;
+}
+
+.section h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 0.1em;
+  color: #FF00FF; /* Color rosado neón */
+  margin-bottom: 20px;
+}
+
+.section p {
+  font-size: 1.2rem;
+  color: #FFFFFF; /* Texto en blanco */
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.section ul li {
+  font-size: 1.2rem;
+  color: #34EDF3; /* Cian vibrante para ítems de la lista */
+  margin: 10px 0;
+  letter-spacing: 0.05em;
+}
+
+/* Botones futuristas */
+.btn {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  color: #FFF;
+  border: 2px solid #F715AB; /* Borde rosado */
+  background-color: transparent;
+  border-radius: 8px;
+  transition: 0.3s;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+
+.btn:hover {
+  background-color: #F715AB; /* Fondo rosado al pasar el ratón */
+  color: #FFF;
+  cursor: pointer;
+}
+
+.btn.primary {
+  border-color: #34EDF3; /* Borde cian para botón principal */
+}
+
+.btn.primary:hover {
+  background-color: #34EDF3;
+  color: #000; /* Texto negro sobre fondo cian */
+}
+
+.btn.secondary {
+  border-color: #F715AB; /* Borde rosado para botón secundario */
+}
+
+.btn.secondary:hover {
+  background-color: #F715AB;
+  color: #FFF;
+}
+
+
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 20px;
+    background-color: #121212; /* Fondo oscuro */
+    margin: 0;
+    color: white; /* Color de texto general */
+}
+
+
+
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.profile-content {
+    flex: 2; /* Toma un ancho mayor que el sidebar */
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3)
+}
+
+.sidebar {
+    width: 250px; /* Ancho del panel lateral */
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    margin-right: 20px; /* Espacio entre el sidebar y el contenido */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+    text-align: left;
+}
+
+.sidebar h2 {
+    font-family: 'Orbitron', sans-serif; /* Fuente futurista para el título */
+    font-size: 1.5rem; /* Tamaño de fuente */
+    color: #34EDF3; /* Color del título */
+    margin-bottom: 15px; /* Margen inferior */
+}
+
+.sidebar-links {
+    list-style: none; /* Sin viñetas */
+}
+
+.sidebar-links li {
+    margin: 10px 0; /* Espacio entre los enlaces */
+}
+
+.sidebar-links a {
+    text-decoration: none; /* Sin subrayado */
+    color: #fff; /* Color de los enlaces */
+    padding: 8px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background 0.3s ease; /* Transición suave */
+}
+
+.sidebar-links a:hover {
+    background: rgba(255, 255, 255, 0.3); /* Fondo en hover */
+    color: #000; /* Color de texto en hover */
+}
+
+.profile-content {
+    flex-grow: 1; /* Permite que el contenido principal ocupe el espacio restante */
+    text-align: left; /* Alineación a la izquierda */
+}
+
+.profile-content h1 {
+    font-family: 'Orbitron', sans-serif; /* Fuente futurista */
+    font-size: 2.5rem; /* Tamaño del encabezado */
+    margin-bottom: 20px; /* Margen inferior */
+}
+  /* Ajustes para pantallas más pequeñas */
+  @media (max-width: 768px) {
+    .diferenciadores-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .card-dif {
+      width: 80%;
+      margin-bottom: 20px;
+    }
+  }
+
+  /*FOOTER*/
+
+  #foot {
+    background: rgba(255, 255, 255, 0.1);/* Fondo oscuro y translúcido */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #faf9fa; /* Color base para el texto */
+    padding: 40px 50px; /* Aumentar el padding para más espacio */
+    text-align: left; /* Alinear texto a la izquierda */
+    border-radius: 12px; /* Bordes redondeados */
+}
+
+.foot-inner-container {
+    display: flex;
+    justify-content: flex-start; /* Alinear enlaces a la izquierda */
+    margin-bottom: 30px; /* Espacio entre enlaces y Encuéntranos */
+    flex-wrap: wrap; /* Permitir que los enlaces se envuelvan si es necesario */
+}
+
+.foot-inner-info {
+    flex: 1;
+    margin-right: 50px; /* Espaciado entre grupos */
+}
+
+.footer-header {
+    color: #ffffff; /* Cambiar color de los encabezados a blanco */
+    text-decoration: none; /* Sin subrayado */
+    transition: color 0.3s;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    display: block; /* Cambiado a block para que estén en una columna */
+}
+
+.footer-links li {
+    margin: 10px 0; /* Espaciado vertical entre enlaces */
+}
+
+.footer-links a {
+    color: #34EDF3; /* Verde aguamarina */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #FF00FF; /* Color de hover */
+}
+
+.subscribe-container {
+    margin-top: 20px; /* Espacio superior */
+    text-align: center; /* Centrar contenido del contenedor de suscripción */
+}
+
+.subscribe-container input {
+    padding: 10px;
+    border: 2px solid rgba(52, 237, 243, 0.7); /* Borde color aguamarina y translúcido */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-right: 10px; /* Espaciado entre campo y botón */
+    width: 200px; /* Ancho del campo */
+    outline: none; /* Sin contorno */
+    background: rgba(255, 255, 255, 0.2); /* Fondo blanco translúcido */
+    color: #fff; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: border-color 0.3s, background-color 0.3s; /* Transiciones suaves */
+}
+
+.subscribe-container input::placeholder {
+    color: #ccc; /* Color del placeholder */
+}
+
+.subscribe-container input:focus {
+    border-color: #FF00FF; /* Borde al enfocar */
+    background-color: rgba(255, 255, 255, 0.4); /* Fondo más claro al enfocar */
+}
+
+.subscribe-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(0, 217, 255, 0.8); /* Color de fondo */
+    color: white; /* Color del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+.subscribe-button:hover {
+    background-color: #FF00FF; /* Color de fondo al pasar el mouse */
+    transform: scale(1.05); /* Efecto de aumento */
+}
+
+.foot-inner-social {
+    margin-bottom: 30px; /* Espacio adicional entre Encuéntranos y el logo */
+    text-align: center; /* Centrar contenido de Encuéntranos */
+}
+
+.foot-inner-social h2 {
+    margin-bottom: 10px; /* Espacio debajo del título Encuéntranos */
+    color: #ffffff; /* Cambiar color a blanco */
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+}
+
+.social-icon {
+    margin: 0 15px; /* Espaciado entre iconos aumentado */
+    color: #34EDF3; /* Verde aguamarina */
+    font-size: 24px;
+    transition: color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+.social-icon:hover {
+    color: #FF00FF; /* Fucsia en hover */
+    transform: scale(1.5); /* Efecto de aumento en hover */
+}
+
+.footer-bottom {
+    background-color: rgba(255, 255, 255, 0.1); /* Mismo color de fondo que el footer superior, con efecto cristal */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+}
+
+
+.footer-logo-container {
+  text-align: center; /* Centrar el contenido del contenedor */
+  margin-top: 20px; /* Opcional: espacio superior */
+}
+
+.footer-logo {
+  max-width: 200px; /* Ajustar el tamaño del logo */
+  display: inline-block; /* Asegura que el logo sea tratado como un bloque alineable */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .foot-inner-container {
+        flex-direction: column;
+        align-items: flex-start; /* Alinear al inicio en pantallas pequeñas */
+    }
+
+    .foot-inner-info, .foot-inner-social {
+        margin-bottom: 20px;
+    }
+}

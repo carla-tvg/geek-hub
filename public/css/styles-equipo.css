@@ -1,0 +1,146 @@
+.container-equipo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribuye el espacio entre las tarjetas */
+    padding: 10px;
+}
+
+/* Estilo para cada tarjeta de equipo */
+.card-equipo {
+    margin: 15px; /* Espaciado entre tarjetas */
+    padding: 20px; /* Ajustar el padding según sea necesario */
+    width: calc(25% - 30px); /* Ajustar el ancho para 4 tarjetas por fila */
+    background: #1c1f2b;
+    color: white;
+    text-align: left;
+    border-radius: 10px;
+    position: relative;
+    transition: transform 0.3s ease; /* Transición para el hover */
+}
+
+/* Contenedor de imagen */
+.img-container-equipo {
+    overflow: hidden; /* Asegúrate de que la imagen no desborde la tarjeta */
+    height: 200px; /* Altura fija para las imágenes */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-container-equipo img {
+    width: 100%;
+    height: 100%; /* Asegura que la imagen ocupe toda la altura */
+    object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
+    transition: transform 0.3s ease; /* Transición suave para el zoom */
+}
+
+.card-equipo:hover .img-container-equipo img {
+    transform: scale(1.1); /* Aumenta la imagen al pasar el mouse */
+}
+
+/* Contenedor de información */
+.info-container-equipo {
+    padding: 15px;
+}
+
+/* Nombre */
+.info-container-equipo h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem; /* Tamaño relativo */
+    text-align: center;
+    color: #ff00ff;
+    margin: 10px 0;
+    transition: color 0.3s ease; /* Transición suave para el color */
+}
+
+.info-container-equipo h3:hover {
+    color: #ffffff; /* Cambia el color al pasar el mouse */
+}
+
+.info-container-equipo strong {
+    font-size: 1rem; /* Tamaño relativo */
+    text-align: center;
+    color: #ffffff; /* Color para descripción */
+    transition: color 0.3s ease; /* Transición suave para el color */
+}
+
+.info-container-equipo strong:hover {
+    color: #34EDF3; /* Cambia el color al pasar el mouse */
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.card-equipo::after, .card-equipo::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle),  #72009a, #34EDF3, #FF00FF);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+}
+
+.card-equipo::before {
+    filter: blur(1.5rem);
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 20px;
+    background-color: #121212; /* Fondo oscuro */
+    margin: 0;
+    color: white; /* Color de texto general */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 1200px) {
+    .card-equipo {
+        width: calc(33.33% - 30px); /* 3 tarjetas por fila */
+    }
+}
+
+@media (max-width: 800px) {
+    .card-equipo {
+        width: calc(50% - 30px); /* 2 tarjetas por fila */
+    }
+}
+
+@media (max-width: 600px) {
+    .card-equipo {
+        width: calc(100% - 30px); /* 1 tarjeta por fila */
+    }
+
+    .img-container-equipo {
+        height: 150px; /* Ajustar altura para pantallas más pequeñas */
+    }
+
+    .info-container h3 {
+        font-size: 1.2rem; /* Ajustar tamaño de fuente */
+    }
+
+    .info-container-equipo strong {
+        font-size: 0.9rem; /* Ajustar tamaño de fuente */
+    }
+}
