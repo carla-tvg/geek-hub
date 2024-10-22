@@ -109,6 +109,7 @@ exports.editarProducto = (req, res) => {
     const { editarNombre, editarDescripcion, editarPrecio, editarStock } = req.body;
 
     console.log('Datos del formulario antes de enviar:', req.body);
+    console.log('Archivo de imagen:', req.file); // Verifica si se ha subido una imagen
 
     fs.readFile(dbPath, (err, data) => {
         if (err) {
@@ -132,8 +133,7 @@ exports.editarProducto = (req, res) => {
                 descripcion: editarDescripcion.trim(), // Usar la descripción del formulario
                 precio: parseFloat(editarPrecio), // Asegúrate de que sea un número
                 stock: parseInt(editarStock),     // Asegúrate de que sea un número
-                imagen: productos[productoIndex].imagen, // Mantener la imagen existente
-                // Agrega más campos aquí si es necesario
+                imagen: req.file ? `/img-productos/${req.file.filename}` : productos[productoIndex].imagen, // Actualizar la imagen si se proporciona
             };
 
             console.log('Producto a guardar:', productoEditado);
