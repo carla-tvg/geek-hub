@@ -1,35 +1,51 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Obtener el correo del usuario almacenado en localStorage
-    const correoUsuario = localStorage.getItem('correoUsuario');
+// perfil.js
 
-    // Verificar si el correo del usuario está presente
-    if (!correoUsuario) {
-        document.getElementById('perfilInfo').innerHTML = '<p>No se ha encontrado información del usuario. Por favor, inicie sesión.</p>';
-        return; // Detener la ejecución si no hay correo
+// Función para mostrar la información del perfil
+async function mostrarPerfil() {
+    // Obtener el ID del usuario del localStorage
+    const userId = localStorage.getItem('userId');
+
+    if (userId) {
+        try {
+            // Hacer una llamada al backend para obtener la información del usuario
+            const response = await fetch(`/api/usuarios/${userId}`);
+            if (!response.ok) throw new Error('Error al obtener la información del usuario');
+
+            const usuario = await response.json();
+
+            const perfilInfo = document.getElementById('perfilInfo');
+            perfilInfo.innerHTML = `
+                
+                <p><strong>Nombre:</strong> ${usuario.nombreCompleto || 'No disponible'}</p>
+                <p><strong>Email:</strong> ${usuario.correo || 'No disponible'}</p>
+                <p><strong>Teléfono:</strong> ${usuario.telefono || 'No disponible'}</p>
+            `;
+        } catch (error) {
+            console.error(error);
+            document.getElementById('perfilInfo').innerHTML = '<p>Error al cargar la información del perfil.</p>';
+        }
+    } else {
+        document.getElementById('perfilInfo').innerHTML = '<p>No se encontró información de usuario.</p>';
     }
+}
 
-    // Función para cargar los datos del usuario
-    function cargarDatosUsuario() {
-        fetch(`/api/usuarios/${correoUsuario}`) // Hacer la solicitud a la nueva ruta
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error al cargar los datos del usuario');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const perfilDiv = document.getElementById('perfilInfo');
-                perfilDiv.innerHTML = `
-                    <p><strong>Nombre:</strong> ${data.nombreCompleto}</p>
-                    <p><strong>Email:</strong> ${data.correo}</p>
-                    <p><strong>Teléfono:</strong> ${data.telefono || 'N/A'}</p>
-                `;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('perfilInfo').innerHTML = '<p>Error al cargar la información del usuario.</p>';
-            });
-    }
+// Llamar a la función al cargar la página
+document.addEventListener('DOMContentLoaded', mostrarPerfil);
 
-    cargarDatosUsuario(); // Llamar a la función para cargar los datos al cargar la página
+// Función para cerrar sesión
+function cerrarSesion() {
+    // Eliminar el ID de usuario del localStorage
+    localStorage.removeItem('userId');
+    
+    // Redirigir al usuario a la página de inicio
+    window.location.href = '/'; // Cambia esto a la URL que desees para la página de inicio
+}
+
+// Llamar a la función al cargar la página
+document.addEventListener('DOMContentLoaded', mostrarPerfil);
+
+// Agregar evento al enlace de cerrar sesión
+document.getElementById('cerrarSesion').addEventListener('click', (event) => {
+    event.preventDefault(); // Evitar la acción por defecto del enlace
+    cerrarSesion();
 });

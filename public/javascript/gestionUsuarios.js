@@ -15,7 +15,7 @@ function cargarUsuarios() {
 
             // Verificar si hay usuarios
             if (usuarios.length === 0) {
-                usuariosTableBody.innerHTML = '<tr><td colspan="3">No hay usuarios registrados.</td></tr>';
+                usuariosTableBody.innerHTML = '<tr><td colspan="4">No hay usuarios registrados.</td></tr>';
                 return;
             }
 
@@ -23,28 +23,28 @@ function cargarUsuarios() {
             usuarios.forEach(usuario => {
                 const fila = document.createElement("tr");
                 fila.innerHTML = `
+                    <td>${usuario.id}</td>
                     <td>${usuario.nombreCompleto}</td>
                     <td>${usuario.correo}</td>
-                    <td><button onclick="eliminarUsuario('${usuario.correo}')">Eliminar</button></td>
+                    <td><button onclick="eliminarUsuario('${usuario.id}')">Eliminar</button></td>
                 `;
                 usuariosTableBody.appendChild(fila);
             });
         })
         .catch(error => {
             console.error(error);
-            usuariosTableBody.innerHTML = '<tr><td colspan="3">No se pudieron cargar los usuarios.</td></tr>';
+            usuariosTableBody.innerHTML = '<tr><td colspan="4">No se pudieron cargar los usuarios.</td></tr>';
         });
 }
 
 // Función para eliminar un usuario
-function eliminarUsuario(correo) {
+function eliminarUsuario(id) {
     if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
-        fetch(`/api/usuarios`, {
+        fetch(`/api/usuarios/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ correo: correo })
+            }
         })
         .then(response => {
             if (!response.ok) {
@@ -59,7 +59,6 @@ function eliminarUsuario(correo) {
     }
 }
 
-
 const cerrarSesionBtn = document.getElementById("cerrarSesion");
 cerrarSesionBtn.addEventListener("click", function () {
     // Aquí puedes manejar la lógica de cierre de sesión
@@ -71,4 +70,3 @@ cerrarSesionBtn.addEventListener("click", function () {
 
 // Cargar usuarios cuando la página se cargue
 window.onload = cargarUsuarios;
-

@@ -35,6 +35,7 @@ body {
     border-bottom-left-radius: 20px; /* Borde inferior izquierdo */
     position: relative; /* Necesario para el posicionamiento absoluto del texto */
     overflow: hidden; /* Evita que el contenido se salga del contenedor */
+    z-index: -1;
 }
 
 /* Contenedor del título sobre la imagen */
@@ -170,6 +171,15 @@ h2 {
     accent-color: #0ef; /* Color del checkbox */
 }
 
+.remember a {
+    color: #0ef; /* Color del enlace */
+    text-decoration: underline;
+    font-weight: 500;
+
+}
+
+
+
 
 .button-sign-in{
     font-family: 'Orbitron', sans-serif;
@@ -231,6 +241,27 @@ h2 {
 }
 
 .signIn-link p a:hover {
+    text-decoration: underline; /* Subrayado en hover */
+}
+
+
+.terms-link {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.terms-link p {
+    color: #fff; /* Texto blanco */
+}
+
+.terms-link p a {
+    color: #0ef; /* Color del enlace */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.terms p a:hover {
     text-decoration: underline; /* Subrayado en hover */
 }
 

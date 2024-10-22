@@ -9,7 +9,7 @@
       "categoria": "electronicos",
       "stock": 10,
       "puntuacion": 4.5,
-      "fechaLlegada": "2024-10-15T00:00:00"
+      "fechaLlegada": "2024-10-22T00:00:00"
     },
     {
       "id": 2,
@@ -20,7 +20,7 @@
       "categoria": "electronicos",
       "stock": 10,
       "puntuacion": 4.5,
-      "fechaLlegada": "2024-10-15T00:00:00"
+      "fechaLlegada": "2024-10-22T00:00:00"
     },
     {
       "id": 3,
@@ -31,7 +31,7 @@
       "categoria": "ropa",
       "stock": 10,
       "puntuacion": 4.5,
-      "fechaLlegada": "2024-10-15T00:00:00"
+      "fechaLlegada": "2024-10-22T00:00:00"
     },
     {
       "id": 4,
@@ -104,11 +104,16 @@
       "nombre": "Figura Coleccionable NeoTrooper",
       "descripcion": "Figura de edición limitada con detalles futuristas y articulaciones.",
       "precio": 55000,
-      "imagen": "/img-productos/imagen-1729568148420-495148365.png",
-      "categoria": "coleccionables",
       "stock": 10,
-      "puntuacion": 4.5,
-      "fechaLlegada": "2024-10-01"
+      "imagen": "/img-productos/imagen-1729568148420-495148365.png"
+    },
+    {
+      "id": 1729585841293,
+      "nombre": "pruebasss",
+      "descripcion": "pruebasss",
+      "precio": 52555333,
+      "stock": 1,
+      "imagen": "/img-productos/imagen-1729585841275-556427419.png"
     }
   ]
 }
