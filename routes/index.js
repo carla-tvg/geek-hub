@@ -69,6 +69,10 @@ router.get('/centrodeseguridad.html', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/html/politicas/centrodeseguridad.html'));
 });
 
+router.get('/terminosycondiciones.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/html/politicas/terminosycondiciones.html'));
+});
+
 // Usar las rutas de productos bajo /api/productos
 router.use('/api/productos', productosRoutes);
 

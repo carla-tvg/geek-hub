@@ -68,7 +68,7 @@
     },
     {
       "id": 7,
-      "nombre": "Silla Gamer OmegaFlux",
+      "nombre": "Silla Gamer OmegaTech",
       "descripcion": "Silla gaming ergonómica con soporte lumbar y reclinación de hasta 180 grados.",
       "precio": 650000,
       "imagen": "img-productos/sillagamer-1.png",
@@ -104,7 +104,7 @@
       "nombre": "Figura Coleccionable NeoTrooper",
       "descripcion": "Figura de edición limitada con detalles futuristas y articulaciones.",
       "precio": 55000,
-      "imagen": "img-productos/figura-1.png",
+      "imagen": "/img-productos/imagen-1729568148420-495148365.png",
       "categoria": "coleccionables",
       "stock": 10,
       "puntuacion": 4.5,
