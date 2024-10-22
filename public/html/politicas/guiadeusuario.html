@@ -16,51 +16,25 @@
   <div class="container">
     <img src="../../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image">
     <br><br>
+    <div id="navbar-placeholder"></div> 
 
-    <nav class="navbar">
-      <div class="menu-toggle">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-      </div> 
-      <ul class="nav-links">
-          
-        <div class="menu">
-          <a class="account"><i class="fa fa-list"></i> Categorias</a>
-          <div class="dropdown">
-            <a href="#" class="dropdown-item">Categoria 1</a>
-            <a href="#" class="dropdown-item">Categoria 2</a>
-            <a href="#" class="dropdown-item">Categoria 3</a>
-            <a href="#" class="dropdown-item">Categoria 4</a>
-            <a href="#" class="dropdown-item">Categoria 5</a>
-          </div>
-        </div>
+    <script>
+      fetch('../navbar.html')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error al cargar el navbar');
+          }
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => {
+          console.error('Error al incluir el navbar:', error);
+        });
+    </script>
 
-        <li><a href="recienllegado.html"><i class="fas fa-box"></i> Recién Llegado</a></li>
-      
-        <li class="search-item">
-          <form class="search-form">
-            <div class="search-container">
-              <i class="fas fa-search search-icon"></i>
-              <input type="text" class="search-input" placeholder="Buscar productos...">
-            </div>
-            <button type="submit" class="search-button">Buscar</button>
-          </form>
-        </li>
-
-        <div class="menu">
-          <a class="account-button"> <i class="fas fa-user"></i>Mi Cuenta</a>
-          <div class="dropdown">
-            <a href="#" class="dropdown-item">Iniciar Sesión</a>
-            <a href="#" class="dropdown-item">Registrarse</a>
-          </div>
-        </div>
-
-        <li><a href="contacto.html"><i class="fas fa-question-circle"></i> Ayuda</a></li>
-        
-        <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
-      </ul>
-    </nav>
+    
     <br><br>
 
     <!-- Encabezado -->
