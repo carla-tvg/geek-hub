@@ -1,5 +1,4 @@
 /* Estilos generales para el contenedor de la sección */
-/* Estilos generales para el contenedor de la sección */
 .productos-container {
     display: flex;
     flex-wrap: wrap;
@@ -149,10 +148,10 @@ body {
 /* Botones para añadir y quitar productos */
 .btn-decrease, .btn-increase {
     background-color: #34EDF3;
-    color: white;
+    color: black;
     border: none;
     padding: 8px 12px;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     border-radius: 5px;
     margin: 0 5px;
@@ -165,8 +164,9 @@ body {
 
 /* Cantidad de productos */
 .product-quantity {
-    font-size: 16px;
+    font-size: 20px;
     color: #ff00ff;
+    font-weight: 800;
     margin: 0 10px;
     min-width: 30px; /* Ancho mínimo para mantener espacio entre los botones */
     text-align: center;
@@ -179,6 +179,29 @@ body {
     font-weight: bold;
     margin-right: 5px;
 }
+
+.btn-secondary {
+    font-family: 'Orbitron', sans-serif;
+    padding: 15px 15px;
+    font-size: 15px;
+    color: #FFF;
+    border: 2px solid #F715AB; /* Borde rosado */
+    background-color: transparent;
+    border-radius: 8px;
+    transition: 0.3s;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+  }
+
+  .btn-secondary:hover {
+    background-color: #F715AB;
+    color: #FFF;
+  }
+
 
 /* Ajustes para pantallas medianas */
 @media (max-width: 768px) {
