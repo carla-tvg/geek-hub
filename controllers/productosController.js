@@ -107,6 +107,7 @@ exports.eliminarProducto = (req, res) => {
 exports.editarProducto = (req, res) => {
     const id = parseInt(req.params.id); // Asegúrate de que sea un número
     const { editarNombre, editarDescripcion, editarPrecio, editarStock } = req.body;
+    const imagenNueva = req.file ? `/img-productos/${req.file.filename}` : null; // Nueva imagen si se proporciona
 
     console.log('Datos del formulario antes de enviar:', req.body);
     console.log('Archivo de imagen:', req.file); // Verifica si se ha subido una imagen
@@ -129,11 +130,11 @@ exports.editarProducto = (req, res) => {
             // Crear un nuevo objeto de producto actualizado
             const productoEditado = {
                 id: id, // Mantener el mismo ID
-                nombre: editarNombre.trim(), // Usar el nombre del formulario
-                descripcion: editarDescripcion.trim(), // Usar la descripción del formulario
-                precio: parseFloat(editarPrecio), // Asegúrate de que sea un número
-                stock: parseInt(editarStock),     // Asegúrate de que sea un número
-                imagen: req.file ? `/img-productos/${req.file.filename}` : productos[productoIndex].imagen, // Actualizar la imagen si se proporciona
+                nombre: editarNombre ? editarNombre.trim() : productos[productoIndex].nombre, // Usar el nombre del formulario o mantener el existente
+                descripcion: editarDescripcion ? editarDescripcion.trim() : productos[productoIndex].descripcion, // Usar la descripción del formulario o mantener la existente
+                precio: editarPrecio ? parseFloat(editarPrecio) : productos[productoIndex].precio, // Usar el precio del formulario o mantener el existente
+                stock: editarStock ? parseInt(editarStock) : productos[productoIndex].stock, // Usar el stock del formulario o mantener el existente
+                imagen: imagenNueva || productos[productoIndex].imagen, // Actualizar la imagen si se proporciona
             };
 
             console.log('Producto a guardar:', productoEditado);
