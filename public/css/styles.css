@@ -140,17 +140,18 @@ body::before {
  
  .menu {
   position: relative; /* Esto asegura que el dropdown se posicione correctamente */
+  z-index: 10;
 }
 /* Ocultar el menú dropdown por defecto */
 .nav-links .dropdown {
   display: none;
-  position: absolute;
+  position: fixed;
   background-color: #72009a;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  z-index: 999;
   list-style-type: none;
-  border-radius: 5px ;
+  border-radius: 5px;
 }
 
 /* Mostrar el dropdown cuando se pasa el mouse por encima del menú */
