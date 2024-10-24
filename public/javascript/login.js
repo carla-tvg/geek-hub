@@ -20,7 +20,7 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
     })
     .then(data => {
         // Redirigir a la página de perfil
-        window.location.href = '/html/perfil.html'; // Asegúrate de que esta ruta esté configurada*/
+        window.location.href = '/perfil.html'; // Asegúrate de que esta ruta esté configurada*/
     })
     .catch(error => {
         console.error('Error:', error);

@@ -394,9 +394,9 @@ body {
   
   /* Estilo para botones de eliminar */
   .remove-button {
-    background: #FF0000; /* Rojo para el botón de eliminar */
+    background: #71009a42; /* Rojo para el botón de eliminar */
     color: white;
-    border: none;
+    border: #72009a;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -404,10 +404,10 @@ body {
   }
   
   .remove-button:hover {
-    background: #FF4D4D; /* Efecto hover */
+    background: #410274; /* Efecto hover */
   }
 
-  button {
+  button{
     padding: 10px 15px; /* Espaciado interno */
     margin: 0 5px; /* Espaciado entre botones */
     border: none;

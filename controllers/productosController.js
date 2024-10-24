@@ -21,12 +21,10 @@ exports.obtenerProductos = (req, res) => {
 exports.agregarProducto = (req, res) => {
     const { nombre, descripcion, precio, stock } = req.body;
 
-    // Validar que todos los campos requeridos están presentes y son correctos
     if (!nombre || !descripcion || !precio || !stock || !req.file) {
         return res.status(400).send('Faltan campos requeridos');
     }
 
-    // Asegúrate de que precio y stock sean números
     const precioNum = parseFloat(precio);
     const stockNum = parseInt(stock);
 
@@ -45,7 +43,6 @@ exports.agregarProducto = (req, res) => {
         puntuacion: 0 // Valor por defecto
     };
 
-    // Guardar el nuevo producto en el archivo db.json
     fs.readFile(dbPath, (err, data) => {
         if (err) {
             return res.status(500).send('Error al leer la base de datos');
@@ -77,28 +74,23 @@ exports.eliminarProducto = (req, res) => {
 
         try {
             let productos = JSON.parse(data).productos || [];
-            const productoIndex = productos.findIndex(p => p.id === id); // Busca el índice del producto a eliminar
+            const productoIndex = productos.findIndex(p => p.id === id);
 
             if (productoIndex === -1) {
                 return res.status(404).send('Producto no encontrado');
             }
 
-            // Si se encuentra, eliminar la imagen
             const productoEliminado = productos[productoIndex];
             const imagenPath = path.join(__dirname, '..', 'public', productoEliminado.imagen);
 
-            // Intentar eliminar la imagen del sistema de archivos
             fs.unlink(imagenPath, (err) => {
                 if (err) {
                     console.error('Error al eliminar la imagen:', err);
-                    // Aun así continuamos eliminando el producto
                 }
             });
 
-            // Filtrar el producto a eliminar
             productos = productos.filter(producto => producto.id !== id);
 
-            // Guardar los cambios en db.json
             fs.writeFile(dbPath, JSON.stringify({ productos }, null, 2), (err) => {
                 if (err) {
                     return res.status(500).send('Error al guardar la base de datos');
@@ -113,10 +105,12 @@ exports.eliminarProducto = (req, res) => {
 };
 
 exports.editarProducto = (req, res) => {
-    console.log('Solicitud PUT recibida para editar producto con ID:', req.params.id);
-    const id = parseInt(req.params.id);
-    const { nombre, descripcion, precio, stock } = req.body;
-    const imagenNueva = req.file ? `/img-productos/${req.file.filename}` : null;
+    const id = parseInt(req.params.id); // Asegúrate de que sea un número
+    const { editarNombre, editarDescripcion, editarPrecio, editarStock } = req.body;
+    const imagenNueva = req.file ? `/img-productos/${req.file.filename}` : null; // Nueva imagen si se proporciona
+
+    console.log('Datos del formulario antes de enviar:', req.body);
+    console.log('Archivo de imagen:', req.file); // Verifica si se ha subido una imagen
 
     fs.readFile(dbPath, (err, data) => {
         if (err) {
@@ -133,25 +127,27 @@ exports.editarProducto = (req, res) => {
                 return res.status(404).send('Producto no encontrado');
             }
 
-            // Mantener los valores existentes y actualizar solo los que se envían
-            const productoActualizado = {
-                ...productos[productoIndex],
-                ...(nombre && { nombre: nombre.trim() }),
-                ...(descripcion && { descripcion: descripcion.trim() }),
-                ...(precio && { precio: parseFloat(precio) }),
-                ...(stock && { stock: parseInt(stock) }),
-                imagen: imagenNueva || productos[productoIndex].imagen // Mantener la imagen actual si no se proporciona una nueva
+            // Crear un nuevo objeto de producto actualizado
+            const productoEditado = {
+                id: id, // Mantener el mismo ID
+                nombre: editarNombre ? editarNombre.trim() : productos[productoIndex].nombre, // Usar el nombre del formulario o mantener el existente
+                descripcion: editarDescripcion ? editarDescripcion.trim() : productos[productoIndex].descripcion, // Usar la descripción del formulario o mantener la existente
+                precio: editarPrecio ? parseFloat(editarPrecio) : productos[productoIndex].precio, // Usar el precio del formulario o mantener el existente
+                stock: editarStock ? parseInt(editarStock) : productos[productoIndex].stock, // Usar el stock del formulario o mantener el existente
+                imagen: imagenNueva || productos[productoIndex].imagen, // Actualizar la imagen si se proporciona
             };
 
-            productos[productoIndex] = productoActualizado;
+            console.log('Producto a guardar:', productoEditado);
+            productos[productoIndex] = productoEditado; // Reemplazar el producto antiguo
 
+            // Guardar el archivo
             fs.writeFile(dbPath, JSON.stringify({ productos }, null, 2), (err) => {
                 if (err) {
                     console.error('Error al guardar el producto:', err);
                     return res.status(500).send('Error al guardar el producto');
                 }
-                console.log('Producto actualizado:', productoActualizado);
-                res.status(200).json(productoActualizado);
+                console.log('Producto guardado correctamente en db.json:', productoEditado);
+                res.status(200).json(productoEditado); // Devolver el producto editado
             });
         } catch (e) {
             console.error('Error al procesar la base de datos:', e);

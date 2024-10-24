@@ -10,7 +10,8 @@ const login = (req, res) => {
 
     if (usuario) {
         req.session.usuario = usuario;
-        res.status(200).json({ success: true, message: 'Inicio de sesión exitoso' });
+        // Devolver el ID del usuario junto con el mensaje de éxito
+        res.status(200).json({ success: true, message: 'Inicio de sesión exitoso', user: { id: usuario.id } });
     } else {
         res.status(401).json({ success: false, message: 'Credenciales incorrectas' });
     }

@@ -100,19 +100,47 @@ function eliminarProducto(id) {
     });
 }
 
-// Función para abrir el modal de edición
 function abrirEditar(id) {
-    console.log('Abrir edición para ID:', id);
     const producto = productos.find(p => p.id === id);
     if (producto) {
         document.getElementById('editarId').value = producto.id;
         document.getElementById('editarNombre').value = producto.nombre;
         document.getElementById('editarDescripcion').value = producto.descripcion;
         document.getElementById('editarPrecio').value = producto.precio;
-        document.getElementById('editarStock').value = producto.stock; // Agregando stock
-        $('#editarProductoModal').modal('show'); // Mostrar el modal de edición
+        document.getElementById('editarStock').value = producto.stock;
+        $('#editarProductoModal').modal('show'); // Muestra el modal
     }
 }
+
+document.getElementById('editarProductoForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // Evita que se recargue la página
+    const formData = new FormData(this);
+    const id = formData.get('editarId');
+
+    // Verifica si se ha seleccionado una nueva imagen
+    const imagenInput = document.getElementById('editarImagen');
+    if (imagenInput.files.length === 0) {
+        formData.delete('imagen'); // No envía el campo de imagen si no se selecciona una nueva
+    }
+
+    fetch(`/api/productos/editar_producto/${id}`, {
+        method: 'PUT',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) throw new Error('Error al editar el producto');
+        return response.json();
+    })
+    .then(data => {
+        console.log('Producto editado:', data);
+        cargarProductos(); // Actualiza la lista de productos
+        $('#editarProductoModal').modal('hide'); // Cierra el modal
+    })
+    .catch(error => {
+        console.error('Error al editar:', error);
+        alert('No se pudo editar el producto. Inténtalo más tarde.');
+    });
+});
 
 // Evento para cargar productos al inicio
 document.addEventListener('DOMContentLoaded', () => {

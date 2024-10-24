@@ -35,6 +35,7 @@ body {
     border-bottom-left-radius: 20px; /* Borde inferior izquierdo */
     position: relative; /* Necesario para el posicionamiento absoluto del texto */
     overflow: hidden; /* Evita que el contenido se salga del contenedor */
+    z-index: -1;
 }
 
 /* Contenedor del título sobre la imagen */
@@ -170,30 +171,43 @@ h2 {
     accent-color: #0ef; /* Color del checkbox */
 }
 
-.button-registro {
-    position: relative;
-    width: 100%;
-    height: 40px;
-    background: #0ef; /* Color del botón */
-    box-shadow: 0 0 10px #0ef; /* Sombra del botón */
-    font-size: 16px;
-    color: #000; /* Texto negro */
+.remember a {
+    color: #0ef; /* Color del enlace */
+    text-decoration: underline;
     font-weight: 500;
-    cursor: pointer;
-    border-radius: 30px;
-    border: none;
-    outline: none;
-    transition: background-color 0.3s ease;
-    margin: 15px;
+
 }
 
-button:hover {
-    background-color: #34EDF3; /* Cambio de color al pasar el ratón */
+
+
+
+.button-sign-in{
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    padding: 15px 30px;
+    font-size: 1rem; /* Aumentado para mejor legibilidad */
+    color: #FFF;
+    border-radius: 8px;
+    transition: 0.3s;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    display: block; /* Cambiado a block para permitir el centrado */
+    margin: 20px auto; /* Margen automático para centrar */
+    background-color: #34EDF3; 
+    border: none; /* Eliminar borde por defecto */
+}
+
+.button-sign-in:hover {
+    background-color: transparent;
+    border: 2px solid #34EDF3;
+    color: #34EDF3; /* Cambiado a color de fondo para un mejor efecto */
+    cursor: pointer;
 }
 
 .signUp-link {
     font-size: 14px;
     text-align: center;
+    margin: 15px 0;
 }
 
 .signUp-link p {
@@ -210,11 +224,56 @@ button:hover {
     text-decoration: underline; /* Subrayado en hover */
 }
 
+.signIn-link {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.signIn-link p {
+    color: #fff; /* Texto blanco */
+}
+
+.signIn-link p a {
+    color: #0ef; /* Color del enlace */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signIn-link p a:hover {
+    text-decoration: underline; /* Subrayado en hover */
+}
+
+
+.terms-link {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.terms-link p {
+    color: #fff; /* Texto blanco */
+}
+
+.terms-link p a {
+    color: #0ef; /* Color del enlace */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.terms p a:hover {
+    text-decoration: underline; /* Subrayado en hover */
+}
+
+
+
 .input-group {
     position: relative;
     margin: 30px 0;
     border-bottom: 2px solid #fff;
 }
+
+
 
 .input-group input {
     width: 100%;
