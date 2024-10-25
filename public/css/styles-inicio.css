@@ -61,10 +61,9 @@ body {
 .wrapper {
     width: 45%;
     flex: 1; /* Toma la mitad derecha */
-    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    /*box-shadow: 0 0 50px #0ef;*/
-   padding: 40px;
+    background: rgba(21, 21, 31, 0.493);
+    padding: 40px;
     overflow: auto;
     margin-left: 0px; /* Espacio entre la imagen y el formulario */
     border-top-right-radius: 20px; /* Radio para la esquina superior derecha */
@@ -96,12 +95,6 @@ body {
 /* El formulario activo se muestra */
 .form-wrapper.active {
     display: block; /* El formulario activo será visible */
-}
-
-
-
-.wrapper:hover {
-    animation: animate 1s linear infinite; /* Animación al pasar el ratón */
 }
 
 @keyframes animate {
@@ -186,7 +179,7 @@ h2 {
     text-transform: uppercase;
     padding: 15px 30px;
     font-size: 1rem; /* Aumentado para mejor legibilidad */
-    color: #FFF;
+    color: black;
     border-radius: 8px;
     transition: 0.3s;
     letter-spacing: 0.1em;

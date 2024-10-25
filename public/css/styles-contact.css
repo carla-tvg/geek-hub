@@ -20,18 +20,14 @@ body {
   width: 400px;
   height: auto; 
   margin: 20px auto; 
-  background: rgba(255, 255, 255, 0.1); 
+  background: rgba(21, 21, 31, 0.493);
   backdrop-filter: blur(10px); 
-  box-shadow: 0 0 50px #0ef; 
   border-radius: 20px;
   padding: 40px;
   overflow: hidden;
   transition: box-shadow 0.5s ease; 
 }
 
-.wrapper:hover {
-  animation: animate 1s linear infinite; 
-}
 
 @keyframes animate {
   0% {
@@ -99,7 +95,7 @@ h2 {
   text-transform: uppercase;
   padding: 15px 30px;
   font-size: 1rem; /* Aumentado para mejor legibilidad */
-  color: #FFF;
+  color: black;
   border-radius: 8px;
   transition: 0.3s;
   letter-spacing: 0.1em;

@@ -466,7 +466,7 @@ body::before {
 }
 
 #vision-mision p {
-  color: #C0C0C0; /* Color gris claro para subtítulos */
+  color: white; /* Color gris claro para subtítulos */
 }
 
 #equipo p {
