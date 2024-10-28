@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <span class="product-quantity" id="cantidad-${producto.id}">${cantidadEnCarrito}</span>
                                 <button class="btn-increase" data-id="${producto.id}">+</button>
                             </div>
+                            <a class="btn-secondary" data-id="${producto.id}">Añadir al Carrito</a>
                         </div>
                     </div>
                 `;
@@ -71,6 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         agregarEventosCarrito(); // Agregar eventos a los botones de agregar y eliminar
+
+        añadirCarrito();
+
     }
 
     function agregarEventosCarrito() {
@@ -84,6 +88,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 actualizarCarrito(idProducto); // Actualizar carrito solo para este producto
             });
         });
+
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('btn-secondary')) {
+                const productId = e.target.getAttribute('data-id');
+                // Incrementar la cantidad del producto en el carrito
+                if (carrito[productId]) {
+                    carrito[productId]++;
+                } else {
+                    carrito[productId] = 1;
+                }
+                // Actualizar la cantidad mostrada en la interfaz
+                document.getElementById(`cantidad-${productId}`).textContent = carrito[productId];
+                console.log(`Producto ${productId} añadido al carrito. Cantidad actual: ${carrito[productId]}`);
+                }
+            actualizarCarrito();
+        }); 
+
 
         botonesDisminuir.forEach(boton => {
             boton.addEventListener('click', (e) => {
@@ -204,11 +225,15 @@ export function mostrarProductos(productos) {
                         <p class="product-description">${producto.descripcion}</p>
                         <strong class="product-price">$${Number(producto.precio).toLocaleString('es-CO')}</strong>
                     </div>
+                     <a class="btn-secondary" data-id="${producto.id}">Añadir al Carrito</a>
+
                 </div>
             `;
             productosContainer.innerHTML += productoHTML;
         }
     });
+
+    añadirCarrito();
 }
 
 export function cargarProductos() {

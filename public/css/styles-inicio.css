@@ -61,10 +61,9 @@ body {
 .wrapper {
     width: 45%;
     flex: 1; /* Toma la mitad derecha */
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(21, 21, 31, 0.493);
     backdrop-filter: blur(10px);
-    /*box-shadow: 0 0 50px #0ef;*/
-   padding: 40px;
+    padding: 40px;
     overflow: auto;
     margin-left: 0px; /* Espacio entre la imagen y el formulario */
     border-top-right-radius: 20px; /* Radio para la esquina superior derecha */
@@ -98,12 +97,6 @@ body {
     display: block; /* El formulario activo será visible */
 }
 
-
-
-.wrapper:hover {
-    animation: animate 1s linear infinite; /* Animación al pasar el ratón */
-}
-
 @keyframes animate {
     0% {
         box-shadow: 0 0 50px #0ef; /* Color inicial */
@@ -116,6 +109,14 @@ body {
     }
 }
 
+h1 {
+    font-size: 2.5rem;
+    color: #FF00FF;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 h2 {
     font-size: 2rem;
     color: #FF00FF;
@@ -124,19 +125,18 @@ h2 {
     margin-bottom: 20px;
 }
 
-
 .input-group {
-    position: relative;
-    margin: 30px 0;
-    border-bottom: 2px solid #fff; /* Línea blanca */
+    border-bottom: 1px solid #fff; /* Línea blanca */
 }
 
 .input-group label {
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 5px;
+    bottom: 40px;
     transform: translateY(-50%);
     font-size: 16px;
+    font-weight: 500;
     color: #fff; /* Color de las etiquetas */
     pointer-events: none;
     transition: .5s;
@@ -147,7 +147,7 @@ h2 {
     height: 40px;
     font-size: 16px;
     color: #fff; /* Texto blanco */
-    padding: 0 5px;
+    padding: 20px 5px;
     background: transparent;
     border: none;
     outline: none;
@@ -155,7 +155,7 @@ h2 {
 
 .input-group input:focus~label,
 .input-group input:valid~label {
-    top: -5px;
+    top: -15px;
 }
 
 .remember {
@@ -175,18 +175,14 @@ h2 {
     color: #0ef; /* Color del enlace */
     text-decoration: underline;
     font-weight: 500;
-
 }
-
-
-
 
 .button-sign-in{
     font-family: 'Orbitron', sans-serif;
     text-transform: uppercase;
     padding: 15px 30px;
     font-size: 1rem; /* Aumentado para mejor legibilidad */
-    color: #FFF;
+    color: black;
     border-radius: 8px;
     transition: 0.3s;
     letter-spacing: 0.1em;
@@ -205,7 +201,7 @@ h2 {
 }
 
 .signUp-link {
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     margin: 15px 0;
 }
@@ -217,7 +213,7 @@ h2 {
 .signUp-link p a {
     color: #0ef; /* Color del enlace */
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .signUp-link p a:hover {
@@ -225,7 +221,7 @@ h2 {
 }
 
 .signIn-link {
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     margin: 15px 0;
 }
@@ -237,16 +233,15 @@ h2 {
 .signIn-link p a {
     color: #0ef; /* Color del enlace */
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .signIn-link p a:hover {
     text-decoration: underline; /* Subrayado en hover */
 }
 
-
 .terms-link {
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     margin: 15px 0;
 }
@@ -265,15 +260,11 @@ h2 {
     text-decoration: underline; /* Subrayado en hover */
 }
 
-
-
 .input-group {
     position: relative;
     margin: 30px 0;
     border-bottom: 2px solid #fff;
 }
-
-
 
 .input-group input {
     width: 100%;

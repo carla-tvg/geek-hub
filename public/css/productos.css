@@ -1,5 +1,4 @@
 /* Estilos generales para el contenedor de la sección */
-/* Estilos generales para el contenedor de la sección */
 .productos-container {
     display: flex;
     flex-wrap: wrap;
@@ -11,12 +10,10 @@
     margin: 15px; /* Espaciado entre tarjetas */
     padding: 20px; /* Ajustar el padding según sea necesario */
     width: calc(33.33% - 30px); /* Ajustar el ancho para 3 tarjetas por fila */
-    background: #1c1f2b;
+    background:  #1c1f2b8f;
     color: white;
     text-align: left;
     border-radius: 10px;
-    position: relative;
-    /*z-index: -1;*/
 }
 
 /* Contenedor de imagen */
@@ -48,7 +45,7 @@
 
 /* Contenedor de información */
 .info-container {
-    padding: 15px;
+    padding: 15px; 
 }
 
 /* Títulos y precios */
@@ -103,7 +100,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-   background-image: conic-gradient(from var(--angle),#72009a, #34EDF3, #FF00FF);
+
     top: 50%;
     left: 50%;
     translate: -50% -50%;
@@ -149,10 +146,10 @@ body {
 /* Botones para añadir y quitar productos */
 .btn-decrease, .btn-increase {
     background-color: #34EDF3;
-    color: white;
+    color: black;
     border: none;
     padding: 8px 12px;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     border-radius: 5px;
     margin: 0 5px;
@@ -165,7 +162,8 @@ body {
 
 /* Cantidad de productos */
 .product-quantity {
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 800;
     color: #ff00ff;
     margin: 0 10px;
     min-width: 30px; /* Ancho mínimo para mantener espacio entre los botones */
@@ -178,6 +176,28 @@ body {
     color: white;
     font-weight: bold;
     margin-right: 5px;
+}
+
+.btn-secondary {
+    font-family: 'Orbitron', sans-serif;
+    padding: 15px 15px;
+    font-size: 15px;
+    color: #FFF;
+    border: 2px solid #F715AB; /* Borde rosado */
+    background-color: transparent;
+    border-radius: 8px;
+    transition: 0.3s;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.btn-secondary:hover {
+    background-color: #F715AB;
+    color: #FFF;
 }
 
 /* Ajustes para pantallas medianas */
