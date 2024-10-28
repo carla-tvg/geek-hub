@@ -28,22 +28,6 @@ body {
   transition: box-shadow 0.5s ease; 
 }
 
-.wrapper:hover {
-  animation: animate 1s linear infinite; 
-}
-
-@keyframes animate {
-  0% {
-    box-shadow: 0 0 50px #0ef; 
-  }
-  50% {
-    box-shadow: 0 0 50px #056dcf; 
-  }
-  100% {
-    box-shadow: 0 0 50px #34EDF3; 
-  }
-}
-
 h2 {
   font-size: 2rem;
   color: #34EDF3;
