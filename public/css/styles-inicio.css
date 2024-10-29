@@ -61,6 +61,7 @@ body {
 .wrapper {
     width: 45%;
     flex: 1; /* Toma la mitad derecha */
+    background: rgba(21, 21, 31, 0.493);
     backdrop-filter: blur(10px);
     background: rgba(21, 21, 31, 0.493);
     padding: 40px;
@@ -109,6 +110,14 @@ body {
     }
 }
 
+h1 {
+    font-size: 2.5rem;
+    color: #FF00FF;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 h2 {
     font-size: 2rem;
     color: #FF00FF;
@@ -117,19 +126,18 @@ h2 {
     margin-bottom: 20px;
 }
 
-
 .input-group {
-    position: relative;
-    margin: 30px 0;
-    border-bottom: 2px solid #fff; /* Línea blanca */
+    border-bottom: 1px solid #fff; /* Línea blanca */
 }
 
 .input-group label {
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 5px;
+    bottom: 40px;
     transform: translateY(-50%);
     font-size: 16px;
+    font-weight: 500;
     color: #fff; /* Color de las etiquetas */
     pointer-events: none;
     transition: .5s;
@@ -140,7 +148,7 @@ h2 {
     height: 40px;
     font-size: 16px;
     color: #fff; /* Texto blanco */
-    padding: 0 5px;
+    padding: 20px 5px;
     background: transparent;
     border: none;
     outline: none;
@@ -148,7 +156,7 @@ h2 {
 
 .input-group input:focus~label,
 .input-group input:valid~label {
-    top: -5px;
+    top: -15px;
 }
 
 .remember {
@@ -168,11 +176,7 @@ h2 {
     color: #0ef; /* Color del enlace */
     text-decoration: underline;
     font-weight: 500;
-
 }
-
-
-
 
 .button-sign-in{
     font-family: 'Orbitron', sans-serif;
@@ -198,7 +202,7 @@ h2 {
 }
 
 .signUp-link {
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     margin: 15px 0;
 }
@@ -210,7 +214,7 @@ h2 {
 .signUp-link p a {
     color: #0ef; /* Color del enlace */
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .signUp-link p a:hover {
@@ -218,7 +222,7 @@ h2 {
 }
 
 .signIn-link {
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     margin: 15px 0;
 }
@@ -230,16 +234,15 @@ h2 {
 .signIn-link p a {
     color: #0ef; /* Color del enlace */
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .signIn-link p a:hover {
     text-decoration: underline; /* Subrayado en hover */
 }
 
-
 .terms-link {
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     margin: 15px 0;
 }
@@ -258,15 +261,11 @@ h2 {
     text-decoration: underline; /* Subrayado en hover */
 }
 
-
-
 .input-group {
     position: relative;
     margin: 30px 0;
     border-bottom: 2px solid #fff;
 }
-
-
 
 .input-group input {
     width: 100%;
