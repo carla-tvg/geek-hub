@@ -12,29 +12,41 @@
 </head>
 <body>
 
+
+
     <nav class="navbar">
-      <div class="menu-toggle">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-      </div>
-      <ul class="nav-links">
-          <li><a href="masvendido.html"><i class="fas fa-fire"></i> Más Vendido</a></li>
-          <li><a href="recienllegado.html"><i class="fas fa-box"></i> Recién Llegado</a></li>
+        <div class="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-links">
+            <li class="menu">
+            <a ><i class="fa fa-list"></i> Categorias</a>
+            <ul class="dropdown">
+              <li><a href="#" data-category="accesorios">Accesorios</a></li>
+              <li><a href="#" data-category="coleccionables">Coleccionables</a></li>
+              <li><a href="#" data-category="electronicos">Electrónicos</a></li>
+              <li><a href="#" data-category="muebles">Muebles</a></li>
+              <li><a href="#"data-category="ropa">Ropa</a></li>
+    
+            </ul>
+          </li>
+          <li><a href="#" id="recienLlegados"><i class="fas fa-box"></i> Recién Llegados</a></li>
           <li class="search-item">
-              <form class="search-form">
+              <form class="search-form" id="searchForm"> <!-- Agregado ID -->
                   <div class="search-container">
                       <i class="fas fa-search search-icon"></i>
-                      <input type="text" class="search-input" placeholder="Buscar productos...">
+                      <input type="text" class="search-input" id="searchInput" placeholder="Buscar productos..."> <!-- Agregado ID -->
                   </div>
                   <button type="submit" class="search-button">Buscar</button>
               </form>
           </li>
-          <li><a href="formulariodeinicio.html"><i class="fas fa-user"></i> Iniciar Sesión / Registro</a></li>
-          <li><a href="contacto.html"><i class="fas fa-question-circle"></i> Ayuda</a></li>
-          <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
-      </ul>
-  </nav>
+            <li><a href="registro.html"><i class="fas fa-user"></i> Iniciar Sesión / Registro</a></li>
+            <li><a href="/contacto"><i class="fas fa-question-circle"></i> Ayuda</a></li>
+            <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> (<span id="carrito-numero">0</span>)</a></li>
+        </ul>
+    </nav>
   
   <footer id="foot">
     <div class='foot-inner-container'>
