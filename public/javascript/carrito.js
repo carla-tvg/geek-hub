@@ -22,6 +22,7 @@ async function mostrarCarrito() {
 
             // Crear las celdas de la fila
             tr.innerHTML = `
+             <td><img src="${producto.imagen}" alt="${producto.nombre}" class="cart-product-image" style="width: 50px; height: auto;"></td>
                 <td>${producto.nombre}</td>
                 <td>$${producto.precio.toLocaleString('es-CO')}</td>
                 <td>
@@ -29,7 +30,7 @@ async function mostrarCarrito() {
                     <span>${cantidad}</span>
                     <button class="button" onclick="cambiarCantidad(${producto.id}, 1)">+</button>
                 </td>
-                <td>$${subtotal.toLocaleString('es-CO')}</td>
+                <td>$${subtotal.toLocaleString('es-CO')}</td>s
                 <td>
                     <button class="remove-button" onclick="eliminarDelCarrito(${producto.id})">Eliminar</button>
                 </td>
