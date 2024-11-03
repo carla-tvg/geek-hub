@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <span class="product-quantity" id="cantidad-${producto.id}">${cantidadEnCarrito}</span>
                                 <button class="btn-increase" data-id="${producto.id}">+</button>
                             </div>
-                            <a class="btn-secondary" data-id="${producto.id}">Añadir al Carrito</a>
+                        
                         </div>
                     </div>
                 `;
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         agregarEventosCarrito(); // Agregar eventos a los botones de agregar y eliminar
 
-      
+        /*  <a class="btn-secondary" data-id="${producto.id}">Añadir al Carrito</a>*/
 
     }
 
