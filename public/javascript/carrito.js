@@ -3,16 +3,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     actualizarCarritoIcono(); // Actualizar el número de productos en el ícono del carrito
 });
 
+
 async function mostrarCarrito() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || {};
     const cartItemsContainer = document.getElementById('cart-items');
     const totalAmount = document.getElementById('total-amount');
     let total = 0;
 
-    cartItemsContainer.innerHTML = '';
+    cartItemsContainer.innerHTML = ''; // Limpiar el contenedor de los productos
 
     for (let idProducto in carrito) {
-        const cantidad = carrito[idProducto];
+        const cantidad = parseInt(carrito[idProducto], 10); // Asegurar que sea un número
         const producto = await obtenerProductoPorId(idProducto);
 
         if (producto) {
@@ -20,19 +21,18 @@ async function mostrarCarrito() {
             const subtotal = producto.precio * cantidad;
             total += subtotal;
 
-            // Crear las celdas de la fila
             tr.innerHTML = `
-             <td><img src="${producto.imagen}" alt="${producto.nombre}" class="cart-product-image" style="width: 50px; height: auto;"></td>
+                <td><img src="${producto.imagen}" alt="${producto.nombre}" class="cart-product-image" style="width: 50px; height: auto;"></td>
                 <td>${producto.nombre}</td>
                 <td>$${producto.precio.toLocaleString('es-CO')}</td>
                 <td>
-                    <button class="button" onclick="cambiarCantidad(${producto.id}, -1)">-</button>
+                    <button class="button" onclick="cambiarCantidad('${producto.id}', -1)">-</button>
                     <span>${cantidad}</span>
-                    <button class="button" onclick="cambiarCantidad(${producto.id}, 1)">+</button>
+                    <button class="button" onclick="cambiarCantidad('${producto.id}', 1)">+</button>
                 </td>
-                <td>$${subtotal.toLocaleString('es-CO')}</td>s
+                <td>$${subtotal.toLocaleString('es-CO')}</td>
                 <td>
-                    <button class="remove-button" onclick="eliminarDelCarrito(${producto.id})">Eliminar</button>
+                    <button class="remove-button" onclick="eliminarDelCarrito('${producto.id}')">Eliminar</button>
                 </td>
             `;
             
@@ -41,27 +41,26 @@ async function mostrarCarrito() {
     }
 
     totalAmount.innerText = `$${total.toLocaleString('es-CO')}`;
-    actualizarCarritoIcono(); // Asegurarse de actualizar el ícono cuando se muestra el carrito
+    actualizarCarritoIcono(); // Actualizar el ícono del carrito
 }
 
 function cambiarCantidad(idProducto, cambio) {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || {};
-    
+
     // Verificar si el producto existe en el carrito
-    if (carrito[idProducto]) {
-        carrito[idProducto] += cambio; // Cambiar la cantidad
-        
-        // Si la cantidad llega a cero, eliminar el producto del carrito
+    if (carrito[idProducto] != null) {
+        carrito[idProducto] = (parseInt(carrito[idProducto], 10) || 0) + cambio; // Cambiar la cantidad
+
+        // Si la cantidad llega a cero o menos, eliminar el producto del carrito
         if (carrito[idProducto] <= 0) {
             delete carrito[idProducto];
         }
-        
-        // Guardar el carrito actualizado
+
+        // Guardar el carrito actualizado en localStorage
         localStorage.setItem('carrito', JSON.stringify(carrito));
-        
+
         // Volver a mostrar el carrito
         mostrarCarrito();
-        actualizarCarritoIcono(); // Actualizar el número en el ícono del carrito
     }
 }
 
@@ -104,11 +103,10 @@ function finalizarCompra() {
     vaciarCarrito();
 }
 
-// Función para actualizar el número en el ícono del carrito
 function actualizarCarritoIcono() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || {};
     const carritoNumero = document.getElementById('carrito-numero');
-    const totalItems = Object.values(carrito).reduce((total, cantidad) => total + cantidad, 0);
+    const totalItems = Object.values(carrito).reduce((total, cantidad) => total + parseInt(cantidad, 10), 0);
     carritoNumero.innerText = totalItems; // Mostrar el total de productos en el ícono
 }
 

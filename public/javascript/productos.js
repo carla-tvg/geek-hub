@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         agregarEventosCarrito(); // Agregar eventos a los botones de agregar y eliminar
 
-        /*  <a class="btn-secondary" data-id="${producto.id}">Añadir al Carrito</a>*/
+        /* */
 
     }
 
@@ -156,7 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
             event.preventDefault(); // Evitar que se recargue la página
             const query = searchInput.value.toLowerCase();
 
-            // Filtrar productos según la búsqueda y asegurarse que nombre y descripción existan
             const productosFiltrados = productos.filter(producto => 
                 (producto.nombre && producto.nombre.toLowerCase().includes(query)) || 
                 (producto.descripcion && producto.descripcion.toLowerCase().includes(query))
@@ -177,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function filtrarRecienLlegados(productos) {
-        const diasRecientes = 7; // Define cuántos días atrás consideras como "reciente"
+        const diasRecientes = 7; 
         const fechaLimite = new Date();
         fechaLimite.setDate(fechaLimite.getDate() - diasRecientes);
 
@@ -198,9 +197,8 @@ export function agregarEventosRecienLlegados(productos) {
     });
 }
 
-// Asegúrate de que la función filtrarRecienLlegados esté también disponible si no está dentro de agregarEventosRecienLlegados
 export function filtrarRecienLlegados(productos) {
-    const diasRecientes = 7; // Define cuántos días atrás consideras como "reciente"
+    const diasRecientes = 7; 
     const fechaLimite = new Date();
     fechaLimite.setDate(fechaLimite.getDate() - diasRecientes);
 
@@ -235,7 +233,6 @@ export function mostrarProductos(productos) {
         }
     });
 
-    añadirCarrito();
 }
 
 export function cargarProductos() {
