@@ -24,7 +24,8 @@ function cargarUsuarios() {
                 const fila = document.createElement("tr");
                 fila.innerHTML = `
                     <td>${usuario.id}</td>
-                    <td>${usuario.nombreCompleto}</td>
+                    <td>${usuario.nombre}</td>
+                    <td>${usuario.apellido}</td>
                     <td>${usuario.correo}</td>
                     <td><button onclick="eliminarUsuario('${usuario.id}')">Eliminar</button></td>
                 `;
