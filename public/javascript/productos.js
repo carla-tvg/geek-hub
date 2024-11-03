@@ -22,18 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para agregar eventos a las categorías del menú
     function agregarEventosCategorias(productos) {
         const botonesCategorias = document.querySelectorAll('.dropdown a');
-
+        console.log('Botones de categoría encontrados:', botonesCategorias); // Verifica los elementos encontrados
+    
         botonesCategorias.forEach(boton => {
             boton.addEventListener('click', (event) => {
                 event.preventDefault(); // Evitar la acción por defecto del enlace
                 const categoriaSeleccionada = event.target.getAttribute('data-category');
-
-                // Verificar que la categoría seleccionada y los productos tengan categoría
-                const productosFiltrados = productos.filter(producto => 
-                    producto.categoria && 
+                console.log('Categoría seleccionada:', categoriaSeleccionada); // Confirmar la categoría seleccionada
+    
+                const productosFiltrados = productos.filter(producto =>
+                    producto.categoria &&
                     producto.categoria.toLowerCase() === categoriaSeleccionada.toLowerCase()
                 );
-
+    
+                console.log('Productos filtrados:', productosFiltrados); // Muestra los productos filtrados
                 mostrarProductos(productosFiltrados); // Mostrar los productos filtrados
             });
         });
@@ -73,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         agregarEventosCarrito(); // Agregar eventos a los botones de agregar y eliminar
 
-        añadirCarrito();
+      
 
     }
 
