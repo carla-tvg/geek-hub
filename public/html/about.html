@@ -30,7 +30,6 @@
     
     <div id="navbar-placeholder"></div>
 
-<<<<<<< HEAD
     <nav class="navbar">
       <div class="menu-toggle">
           <div class="bar"></div>
@@ -75,24 +74,6 @@
         <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
       </ul>
     </nav>
-=======
-    <script>
-      fetch('navbar.html')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Error al cargar el navbar');
-          }
-          return response.text();
-        })
-        .then(data => {
-          document.getElementById('navbar-placeholder').innerHTML = data;
-        })
-        .catch(error => {
-          console.error('Error al incluir el navbar:', error);
-        });
-    </script>
-
->>>>>>> origin/carlis/develop
     <br><br>
     
     <div id="aboutContent"> 
@@ -104,7 +85,6 @@
       </header>
 
 
-<<<<<<< HEAD
     <!-- Sección: Quiénes Somos -->
     <section class="section" id="quienes-somos">
       <div class="content">
@@ -113,20 +93,6 @@
         <a href="index.html" class="btn primary">Conoce más</a> <!-- Botón CTA -->
       </div>
     </section>
-=======
-       <!-- Sección: Quiénes Somos -->
-<section class="section" id="quienes-somos">
-  <div class="content">
-    <h2>Bienvenidos a Geek Hub, tu universo digital</h2>
-    <p>
-      Geek Hub no es solo una tienda. Somos un espacio donde lo geek, la tecnología y lo futurista colisionan
-      para crear una experiencia única. Nuestro equipo de entusiastas de la cultura geek se ha propuesto
-      transformar la forma en que accedes a tus productos favoritos.
-    </p>
-    <a href="index.html" class="btn primary">Conoce más</a> <!-- Botón CTA -->
-  </div>
-</section>
->>>>>>> origin/carlis/develop
     
     <!-- Sección: Visión y Misión -->
     <section class="section" id="vision-mision">
@@ -141,7 +107,6 @@
     </section>
 
     <!-- Sección: Diferenciadores -->
-<<<<<<< HEAD
     <section class="section" id="diferenciadores">
       <h2>¿Qué nos hace diferentes?</h2>
       <div class="diferenciadores-container">
@@ -159,25 +124,6 @@
         </div>
       </div>
     </section>
-=======
-<section class="section" id="diferenciadores">
-    <h2>¿Qué nos hace diferentes?</h2>
-    <div class="diferenciadores-container">
-      <div class="card-dif">
-        <img src="../img-carla/headphones.png" alt="Innovación constante">
-        <h3>Innovación constante</h3>
-      </div>
-      <div class="card-dif">
-        <img src="../img-carla/articulos-nuevo.png" alt="Productos exclusivos">
-        <h3>Productos exclusivos</h3>
-      </div>
-      <div class="card-dif">
-        <img src="../img-carla/diseño-inmersivo.jpg" alt="Diseño inmersivo">
-        <h3>Diseño inmersivo</h3>
-      </div>
-    </div>
-  </section>
->>>>>>> origin/carlis/develop
 
 <!-- Sección: Nuestro equipo -->
 <section class="section" id="equipo">
@@ -258,7 +204,6 @@
 
     <footer id="foot">
       <div class='foot-inner-container'>
-<<<<<<< HEAD
         <div class="foot-inner-info">
           <h2><a href="" class="footer-header">Información de la empresa</a></h2>
           <ul class="footer-links">
@@ -284,33 +229,6 @@
             <li><a href="">Contactar soporte</a></li>
           </ul>
         </div>
-=======
-          <div class="foot-inner-info">
-              <h2><a href="" class="footer-header">Información de la empresa</a></h2>
-              <ul class="footer-links">
-                <li><a href="about.html" id="aboutContent"><i class="fas fa-info-circle"></i> Acerca de GeekHub</a></li>
-                  <li><a href="centrodeseguridad.html">Política de devolución y reembolso</a></li>
-                  <li><a href="">Política de propiedad intelectual</a></li>
-                  <li><a href="">Política de envíos</a></li>
-                  <li><a href="">Reportar actividad sospechosa</a></li>
-              </ul>
-          </div>
-          <div class="foot-inner-info">
-              <h2><a href="" class="footer-header">Atención al cliente</a></h2>
-              <ul class="footer-links">
-                  <li><a href="">Preguntas frecuentes</a></li>
-                  <li><a href="">Centro de seguridad</a></li>
-                  <li><a href="">Protección de compras de Geek Hub</a></li>
-              </ul>
-          </div>
-          <div class="foot-inner-info">
-              <h2><a href="" class="footer-header">Ayuda</a></h2>
-              <ul class="footer-links">
-                  <li><a href="">Guía de usuario</a></li>
-                  <li><a href="">Contactar soporte</a></li>
-              </ul>
-          </div>
->>>>>>> origin/carlis/develop
       </div>
 
       <div class="foot-inner-social">
@@ -327,57 +245,16 @@
           <input type="email" id="email" placeholder="Dirección de correo" required>
           <a href="#" class="subscribe-button" onclick="subscribe()">¡Suscríbete!</a>
       </div>
-<<<<<<< HEAD
     </footer>
     <footer class="footer-bottom">
       <div class="footer-logo-container">
         <img src="../img-carla/geekhub.png" alt="Logo" class="footer-logo">
       </div>
     </footer>
-=======
-
-      <div class="footer-logo-container">
-        <img src="../img-carla/geekhub.png" alt="Logo" class="footer-logo">
-    </div>
->>>>>>> origin/carlis/develop
 
     </footer>
   </div>
 
-<<<<<<< HEAD
 <script src="../javascript/script.js"></script>
-=======
-  <script type="module">
-    import { cargarProductos, mostrarProductos, agregarEventosRecienLlegados, agregarEventosCategorias, agregarEventosBusqueda } from '../javascript/productos.js';
-
-    // Inicializar el carrito
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || {};
-
-    // Cargar los productos
-    cargarProductos().then(data => {
-        mostrarProductos(data); // Mostrar todos los productos al inicio
-        agregarEventosRecienLlegados(data); // Agregar el evento solo a "Recién Llegados"
-        agregarEventosCategorias(data); // Agregar eventos a las categorías
-        agregarEventosBusqueda(data); // Agregar evento a la búsqueda
-
-        // Agregar evento al enlace "Recién Llegados"
-        const recienLlegadosLink = document.getElementById('recienLlegados');
-        recienLlegadosLink.addEventListener('click', (event) => {
-            event.preventDefault(); // Evitar la acción por defecto del enlace
-
-            const aboutContent = document.getElementById('aboutContent');
-            const productosContainer = document.getElementById('productos');
-
-            // Ocultar contenido de about y mostrar productos
-            aboutContent.style.display = 'none'; // Ocultar el contenido de About
-            productosContainer.style.display = 'flex'; // Mostrar productos
-        });
-
-        // Agregar eventos a los enlaces de categorías y al formulario de búsqueda
-        agregarEventosCategorias(data);
-        agregarEventosBusqueda(data);
-    });
-</script>
->>>>>>> origin/carlis/develop
 </body>
 </html>
