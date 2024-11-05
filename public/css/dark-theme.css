@@ -1,0 +1,21 @@
+body {
+    background-color: #343a40; /* Fondo oscuro */
+    color: #ffffff; /* Texto claro */
+}
+
+.sidebar {
+    background-color: #495057; /* Fondo oscuro del sidebar */
+}
+
+.table th {
+    background-color: #007bff; /* Fondo de encabezados */
+    color: white;
+}
+
+.table tbody tr {
+    background-color: #495057; /* Fondo de filas */
+}
+
+.table tbody tr:hover {
+    background-color: #6c757d; /* Color al pasar el mouse en modo oscuro */
+}

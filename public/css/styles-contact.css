@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif; 
+}
+
+body {
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between; 
+  min-height: 100vh; 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+}
+
+.wrapper {
+  position: relative;
+  width: 400px;
+  height: auto; 
+  margin: 70px auto; 
+  background: rgba(0, 0, 0, 0.39); 
+  backdrop-filter: blur(10px); 
+  border-radius: 20px;
+  padding: 40px;
+  overflow: hidden;
+  transition: box-shadow 0.5s ease; 
+}
+
+h2 {
+  font-size: 2rem;
+  color: #34EDF3;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  position: relative;
+  margin: 30px 0;
+  border-bottom: 2px solid #fff; 
+}
+
+.input-group label {
+  position: absolute;
+  top: 0px; /* Ajustar la posición para evitar superposición */
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #fff; 
+  pointer-events: none;
+  transition: .5s;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  color: #fff; 
+  padding: 0 5px;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.input-group textarea {
+  height: auto; 
+  padding-top: 10px; /* Espacio superior para el textarea */
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+  top: -15px; /* Ajustar para que suba más al enfocarse */
+  font-size: 12px; /* Cambiar tamaño al enfocarse */
+  color: #0ef; /* Color al enfocarse */
+}
+
+.button-enviar {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  padding: 15px 30px;
+  font-size: 1rem; /* Aumentado para mejor legibilidad */
+  color: black;
+  border-radius: 8px;
+  transition: 0.3s;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  display: block; /* Cambiado a block para permitir el centrado */
+  margin: 20px auto; /* Margen automático para centrar */
+  background-color: #34EDF3; 
+  border: none; /* Eliminar borde por defecto */
+}
+
+.button-enviar:hover {
+  background-color: transparent;
+  border: 2px solid #34EDF3;
+  color: #34EDF3; /* Cambiado a color de fondo para un mejor efecto */
+  cursor: pointer;
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1730487069394",
+    "nombre": "carla",
+    "apellido": "valderrama",
+    "telefono": "3186275644",
+    "correo": "carla25@gmail.com",
+    "password": "123456"
+  },
+  {
+    "id": "1730495936793",
+    "nombre": "carla",
+    "apellido": "garzon",
+    "telefono": "3225544778",
+    "correo": "carla27@gmail.com",
+    "password": "123456"
+  }
+]

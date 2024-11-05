@@ -1,0 +1,331 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Auriculares NeonTech",
+      "descripcion": "Auriculares inalámbricos con tecnología de cancelación de ruido y luces LED personalizables.",
+      "precio": 120000,
+      "imagen": "img-productos/audifonos-1.png",
+      "categoria": "electronicos",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-22T00:00:00"
+    },
+    {
+      "id": 2,
+      "nombre": "Teclado Mecánico CyberStrike",
+      "descripcion": "Teclado mecánico RGB con switches intercambiables y diseño compacto ideal para gaming.",
+      "precio": 80000,
+      "imagen": "img-productos/teclado-1.png",
+      "categoria": "electronicos",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-22T00:00:00"
+    },
+    {
+      "id": 3,
+      "nombre": "Camiseta HoloWave",
+      "descripcion": "Camiseta de algodón con estampado holográfico reactivo a la luz.",
+      "precio": 48000,
+      "imagen": "img-productos/camisa-1.png",
+      "categoria": "ropa",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-22T00:00:00"
+    },
+    {
+      "id": 4,
+      "nombre": "Mochila Anti-Gravity",
+      "descripcion": "Mochila ergonómica con sistema de distribución de peso y paneles de carga solar.",
+      "precio": 170000,
+      "imagen": "img-productos/mochila-1.png",
+      "categoria": "accesorios",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-15"
+    },
+    {
+      "id": 5,
+      "nombre": "Lámpara NeoPixel",
+      "descripcion": "Lámpara futurista con control por voz y millones de colores RGB.",
+      "precio": 90000,
+      "imagen": "img-productos/lampara-1.png",
+      "categoria": "muebles",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-10"
+    },
+    {
+      "id": 6,
+      "nombre": "Reloj Holográfico ChronoX",
+      "descripcion": "Reloj de pulsera con pantalla holográfica interactiva y múltiples funciones de salud.",
+      "precio": 97000,
+      "imagen": "img-productos/smartwatch-1.png",
+      "categoria": "accesorios",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-10"
+    },
+    {
+      "id": 7,
+      "nombre": "Silla Gamer OmegaTech",
+      "descripcion": "Silla gaming ergonómica con soporte lumbar y reclinación de hasta 180 grados.",
+      "precio": 650000,
+      "imagen": "img-productos/sillagamer-1.png",
+      "categoria": "muebles",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-01"
+    },
+    {
+      "id": 8,
+      "nombre": "Mouse Cyberspeed V2",
+      "descripcion": "Mouse óptico inalámbrico de alta precisión con iluminación RGB personalizable.",
+      "precio": 87000,
+      "imagen": "img-productos/mouse-1.png",
+      "categoria": "electronicos",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-01"
+    },
+    {
+      "id": 9,
+      "nombre": "Lentes AR VisionX",
+      "descripcion": "Lentes de realidad aumentada con visualización holográfica y conexión Bluetooth.",
+      "precio": 370000,
+      "imagen": "img-productos/vr-1.png",
+      "categoria": "electronicos",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-01"
+    },
+    {
+      "id": 10,
+      "nombre": "Figura Coleccionable NeoTrooper",
+      "descripcion": "Figura de edición limitada con detalles futuristas y articulaciones.",
+      "precio": 55000,
+      "imagen": "img-productos/figura-1.png",
+      "categoria": "coleccionables",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-01"
+    },
+    {
+      "id": 11,
+      "nombre": "Auriculares Inalámbricos SoundWave",
+      "descripcion": "Auriculares con conexión Bluetooth y sonido de alta fidelidad.",
+      "precio": 130000,
+      "imagen": "img-productos/audifonos-2.png",
+      "categoria": "electronicos",
+      "stock": 10,
+      "puntuacion": 4.6,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 12,
+      "nombre": "Teclado Compacto MiniKey",
+      "descripcion": "Teclado mecánico compacto ideal para espacios reducidos.",
+      "precio": 75000,
+      "imagen": "img-productos/teclado-3.png",
+      "categoria": "electronicos",
+      "stock": 10,
+      "puntuacion": 4.4,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 13,
+      "nombre": "Camiseta Retro Gamer",
+      "descripcion": "Camiseta de algodón con diseño retro de videojuegos clásicos.",
+      "precio": 46000,
+      "imagen": "img-productos/producto13.png",
+      "categoria": "ropa",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 14,
+      "nombre": "Mochila Gamer Ultimate",
+      "descripcion": "Mochila con múltiples compartimentos y diseño ergonómico.",
+      "precio": 140000,
+      "imagen": "img-productos/producto14.png",
+      "categoria": "accesorios",
+      "stock": 10,
+      "puntuacion": 4.7,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 15,
+      "nombre": "Juego de barras LED RGB",
+      "descripcion": "Lámpara con control remoto y múltiples modos de iluminación.",
+      "precio": 78000,
+      "imagen": "img-productos/producto15.png",
+      "categoria": "hogar",
+      "stock": 10,
+      "puntuacion": 4.6,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 16,
+      "nombre": "Reloj Inteligente FitTrack",
+      "descripcion": "Reloj con seguimiento de actividad física y notificaciones inteligentes.",
+      "precio": 95000,
+      "imagen": "img-productos/producto16.png",
+      "categoria": "accesorios",
+      "stock": 10,
+      "puntuacion": 4.6,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 17,
+      "nombre": "Silla Gamer ProElite",
+      "descripcion": "Silla de juego con soporte ergonómico y materiales de alta calidad.",
+      "precio": 700000,
+      "imagen": "img-productos/producto17.png",
+      "categoria": "muebles",
+      "stock": 10,
+      "puntuacion": 4.9,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 18,
+      "nombre": "Mouse Gaming SpeedFreak",
+      "descripcion": "Mouse con sensor de alta precisión y luces RGB personalizables.",
+      "precio": 80000,
+      "imagen": "img-productos/producto18.png",
+      "categoria": "electronicos",
+      "stock": 10,
+      "puntuacion": 4.7,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 19,
+      "nombre": "Lentes VR Immersive",
+      "descripcion": "Lentes de realidad virtual con control de movimiento y sonido envolvente.",
+      "precio": 400000,
+      "imagen": "img-productos/producto19.png",
+      "categoria": "electronicos",
+      "stock": 10,
+      "puntuacion": 4.8,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 20,
+      "nombre": "Figura Coleccionable RetroHero",
+      "descripcion": "Figura de edición limitada con diseño retro y detalles únicos.",
+      "precio": 60000,
+      "imagen": "img-productos/producto20.png",
+      "categoria": "coleccionables",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 21,
+      "nombre": "Auriculares Bluetooth WaveSound",
+      "descripcion": "Auriculares inalámbricos con cancelación de ruido y sonido premium.",
+      "precio": 140000,
+      "imagen": "img-productos/producto21.png",
+      "categoria": "electronicos",
+      "stock": 10,
+      "puntuacion": 4.6,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 22,
+      "nombre": "Teclado Mecánico RGB Pro",
+      "descripcion": "Teclado mecánico con retroiluminación RGB y teclas programables.",
+      "precio": 95000,
+      "imagen": "img-productos/producto22.png",
+      "categoria": "electronicos",
+      "stock": 10,
+      "puntuacion": 4.7,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 23,
+      "nombre": "Camiseta de Manga Larga Gamer",
+      "descripcion": "Camiseta de manga larga con diseños inspirados en videojuegos.",
+      "precio": 52000,
+      "imagen": "img-productos/producto23.png",
+      "categoria": "ropa",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 24,
+      "nombre": "Mochila de Viaje Gamer",
+      "descripcion": "Mochila ideal para gamers en movimiento con compartimentos seguros.",
+      "precio": 130000,
+      "imagen": "img-productos/producto24.png",
+      "categoria": "accesorios",
+      "stock": 10,
+      "puntuacion": 4.6,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 25,
+      "nombre": "Lámpara de Mesa LED Gamer",
+      "descripcion": "Lámpara de mesa con luz regulable y diseño moderno.",
+      "precio": 70000,
+      "imagen": "img-productos/producto25.png",
+      "categoria": "hogar",
+      "stock": 10,
+      "puntuacion": 4.5,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 26,
+      "nombre": "Reloj de Pulsera SmartFit",
+      "descripcion": "Reloj inteligente con monitor de ritmo cardíaco y notificaciones.",
+      "precio": 90000,
+      "imagen": "img-productos/producto26.png",
+      "categoria": "accesorios",
+      "stock": 10,
+      "puntuacion": 4.6,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 27,
+      "nombre": "Silla Gamer Elite",
+      "descripcion": "Silla de juego con diseño ergonómico y materiales premium.",
+      "precio": 750000,
+      "imagen": "img-productos/producto27.png",
+      "categoria": "muebles",
+      "stock": 10,
+      "puntuacion": 4.8,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 28,
+      "nombre": "Mouse Gamer Precision",
+      "descripcion": "Mouse ergonómico con sensor óptico y retroiluminación RGB.",
+      "precio": 85000,
+      "imagen": "img-productos/producto28.png",
+      "categoria": "electronicos",
+      "stock": 10,
+      "puntuacion": 4.7,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 29,
+      "nombre": "Lentes VR Xtreme",
+      "descripcion": "Lentes de realidad virtual con tecnología avanzada y audio integrado.",
+      "precio": 450000,
+      "imagen": "img-productos/producto29.png",
+      "categoria": "electronicos",
+      "stock": 10,
+      "puntuacion": 4.9,
+      "fechaLlegada": "2024-10-22"
+    },
+    {
+      "id": 30,
+      "nombre": "Figura Coleccionable Batman Dark",
+      "descripcion": "Figura de edición limitada con detalles de.",
+      "precio": 650000,
+      "stock": 10,
+      "imagen": "/img-productos/imagen-1729606336126-523262637.png"
+    }
+  ]
+}
