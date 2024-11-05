@@ -8,7 +8,6 @@
 
 body {
     display: flex;
-<<<<<<< HEAD
     flex-direction: column; /* Cambia a columna para que la navbar y el footer estén en su lugar */
     justify-content: space-between; /* Espacio entre navbar, formulario y footer */
     align-items: center;
@@ -53,103 +52,12 @@ body {
 
 /* Resto de tus estilos... */
 
-=======
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-image: url('../img-carla/fondo-formulario.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.container-form {
-    display: flex;
-    width: 100%;
-    max-width: 1200px; /* Limita el ancho máximo */
-    height: 100%; /* Asegura que el contenedor ocupe toda la altura */
-    margin:20px auto; /* Espacio adicional para evitar que el contenido toque los bordes */
-    padding: 50px;
-}
-/* Contenedor de la imagen */
-.image-container {
-    width: 55%; /* Tamaño de la imagen */
-    background-image: url('../img-carla/banner_registro.jpg'); /* Cambia la ruta a tu imagen */
-    background-size: cover; /* Cubre todo el contenedor */
-    background-position: center;
-    border-top-left-radius: 20px; /* Borde superior izquierdo */
-    border-bottom-left-radius: 20px; /* Borde inferior izquierdo */
-    position: relative; /* Necesario para el posicionamiento absoluto del texto */
-    overflow: hidden; /* Evita que el contenido se salga del contenedor */
-    z-index: -1;
-}
-
-/* Contenedor del título sobre la imagen */
-.image-title {
-    position: absolute;
-    bottom: 5%; /* Posiciona el texto en la parte inferior */
-    left: 0; /* Alineado al borde izquierdo */
-    width: 100%; /* Ocupa todo el ancho del contenedor */
-    color: white;
-    font-size: 2rem; /* Ajusta el tamaño del texto según sea necesario */
-    font-family: 'Orbitron', sans-serif; /* Fuente Orbitron */
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-    text-align: center; /* Cambia a center si prefieres que esté centrado */
-    padding: 20px 0; /* Espacio adicional para que no toque el borde */
-    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
-    white-space: nowrap; /* Evita que el texto se corte en múltiples líneas */
-    overflow: hidden; /* Asegura que no se desborde */
-    text-overflow: ellipsis; /* Muestra "..." si el texto es demasiado largo */
-}
-
-
-/* Estilos del formulario */
-.wrapper {
-    width: 45%;
-    flex: 1; /* Toma la mitad derecha */
-    background: rgba(21, 21, 31, 0.493);
-    backdrop-filter: blur(10px);
-    padding: 40px;
-    overflow: auto;
-    margin-left: 0px; /* Espacio entre la imagen y el formulario */
-    border-top-right-radius: 20px; /* Radio para la esquina superior derecha */
-    border-bottom-right-radius: 20px; /* Radio para la esquina inferior derecha */
-    border-left: none; /* Elimina el borde izquierdo */
-}
-
-/* Estilos generales para ambos formularios */
-.form-wrapper {
-    display: none; /* Ambos formularios ocultos por defecto */
-    width: 100%; /* Asegura que los formularios ocupen todo el ancho disponible */
-}
-
-/* El formulario activo se muestra */
-.form-wrapper.active {
-    display: block; /* El formulario activo será visible */
-}
-
-/* Otros estilos existentes se mantienen igual */
-
-
-
-/* Estilos generales para ambos formularios */
-.form-wrapper {
-    display: none; /* Ambos formularios ocultos por defecto */
-    width: 100%; /* Asegura que los formularios ocupen todo el ancho disponible */
-}
-
-/* El formulario activo se muestra */
-.form-wrapper.active {
-    display: block; /* El formulario activo será visible */
-}
->>>>>>> origin/carlis/develop
 
 @keyframes animate {
     0% {
         box-shadow: 0 0 50px #0ef; /* Color inicial */
     }
     50% {
-<<<<<<< HEAD
         box-shadow: 0 0 50px #056dcf; /* Color intermedio (fucsia) */
     }
     100% {
@@ -190,50 +98,14 @@ h2 {
     position: relative;
     margin: 30px 0;
     border-bottom: 2px solid #fff; /* Línea blanca */
-=======
-        box-shadow: 0 0 50px #056dcf; /* Color intermedio */
-    }
-    100% {
-        box-shadow: 0 0 50px #34EDF3; /* Color final */
-    }
-}
-
-h1 {
-    font-size: 2.5rem;
-    color: #FF00FF;
-    font-family: 'Orbitron', sans-serif;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-h2 {
-    font-size: 2rem;
-    color: #FF00FF;
-    font-family: 'Orbitron', sans-serif;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.input-group {
-    border-bottom: 1px solid #fff; /* Línea blanca */
->>>>>>> origin/carlis/develop
 }
 
 .input-group label {
     position: absolute;
-<<<<<<< HEAD
     top: 50%;
     left: 5px;
     transform: translateY(-50%);
     font-size: 16px;
-=======
-    top: 20%;
-    left: 5px;
-    bottom: 40px;
-    transform: translateY(-50%);
-    font-size: 16px;
-    font-weight: 500;
->>>>>>> origin/carlis/develop
     color: #fff; /* Color de las etiquetas */
     pointer-events: none;
     transition: .5s;
@@ -244,11 +116,7 @@ h2 {
     height: 40px;
     font-size: 16px;
     color: #fff; /* Texto blanco */
-<<<<<<< HEAD
     padding: 0 5px;
-=======
-    padding: 20px 5px;
->>>>>>> origin/carlis/develop
     background: transparent;
     border: none;
     outline: none;
@@ -256,11 +124,7 @@ h2 {
 
 .input-group input:focus~label,
 .input-group input:valid~label {
-<<<<<<< HEAD
     top: -5px;
-=======
-    top: -15px;
->>>>>>> origin/carlis/develop
 }
 
 .remember {
@@ -276,7 +140,6 @@ h2 {
     accent-color: #0ef; /* Color del checkbox */
 }
 
-<<<<<<< HEAD
 button {
     position: relative;
     width: 100%;
@@ -294,39 +157,6 @@ button {
 
 .signUp-link {
     font-size: 14px;
-=======
-.remember a {
-    color: #0ef; /* Color del enlace */
-    text-decoration: underline;
-    font-weight: 500;
-}
-
-.button-sign-in{
-    font-family: 'Orbitron', sans-serif;
-    text-transform: uppercase;
-    padding: 15px 30px;
-    font-size: 1rem; /* Aumentado para mejor legibilidad */
-    color: black;
-    border-radius: 8px;
-    transition: 0.3s;
-    letter-spacing: 0.1em;
-    text-decoration: none;
-    display: block; /* Cambiado a block para permitir el centrado */
-    margin: 20px auto; /* Margen automático para centrar */
-    background-color: #34EDF3; 
-    border: none; /* Eliminar borde por defecto */
-}
-
-.button-sign-in:hover {
-    background-color: transparent;
-    border: 2px solid #34EDF3;
-    color: #34EDF3; /* Cambiado a color de fondo para un mejor efecto */
-    cursor: pointer;
-}
-
-.signUp-link {
-    font-size: 16px;
->>>>>>> origin/carlis/develop
     text-align: center;
     margin: 15px 0;
 }
@@ -338,133 +168,9 @@ button {
 .signUp-link p a {
     color: #0ef; /* Color del enlace */
     text-decoration: none;
-<<<<<<< HEAD
     font-weight: 500;
-=======
-    font-weight: 700;
->>>>>>> origin/carlis/develop
 }
 
 .signUp-link p a:hover {
     text-decoration: underline; /* Subrayado en hover */
 }
-<<<<<<< HEAD
-=======
-
-.signIn-link {
-    font-size: 16px;
-    text-align: center;
-    margin: 15px 0;
-}
-
-.signIn-link p {
-    color: #fff; /* Texto blanco */
-}
-
-.signIn-link p a {
-    color: #0ef; /* Color del enlace */
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.signIn-link p a:hover {
-    text-decoration: underline; /* Subrayado en hover */
-}
-
-.terms-link {
-    font-size: 16px;
-    text-align: center;
-    margin: 15px 0;
-}
-
-.terms-link p {
-    color: #fff; /* Texto blanco */
-}
-
-.terms-link p a {
-    color: #0ef; /* Color del enlace */
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.terms p a:hover {
-    text-decoration: underline; /* Subrayado en hover */
-}
-
-.input-group {
-    position: relative;
-    margin: 30px 0;
-    border-bottom: 2px solid #fff;
-}
-
-.input-group input {
-    width: 100%;
-    height: 40px;
-    font-size: 16px;
-    color: #fff;
-    padding: 0 40px 0 5px; /* Añadir espacio a la derecha para el ícono */
-    background: transparent;
-    border: none;
-    outline: none;
-}
-
-.toggle-password {
-    position: absolute;
-    top: 50%;
-    right: 10px; /* Espacio entre el borde derecho y el ícono */
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #fff;
-}
-
-.toggle-password i {
-    font-size: 18px;
-}
-
-.message {
-    font-size: 14px;
-    margin: 8px;
-    text-align: center;
-    color: red; /* Por defecto en rojo, se cambiará dinámicamente */
-}
-
-.message-telefono {
-    font-size: 14px;
-    margin-top: 5px;
-    text-align: center;
-}
-
-#notification-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000; /* Asegúrate de que aparezca sobre otros elementos */
-}
-
-.notification {
-    background-color: #f44336; /* Rojo por defecto */
-    color: white;
-    padding: 15px;
-    margin: 5px;
-    border-radius: 5px;
-    transition: opacity 0.5s ease;
-}
-
-.notification.success {
-    background-color: #4CAF50; /* Verde para éxito */
-}
-
-.notification.error {
-    background-color: #f44336; /* Rojo para errores */
-}
-
-.notification.info {
-    background-color: #2196F3; /* Azul para información */
-}
-
-.notification.hide {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
->>>>>>> origin/carlis/develop

@@ -189,7 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
 export function agregarEventosRecienLlegados(productos) {
     const recienLlegadosLink = document.getElementById("recienLlegados");
 
-<<<<<<< HEAD
     productos.forEach(producto => {
         const estrellasHTML = crearEstrellas(producto.puntuacion);
         const productoHTML = `<div class="product-card"> <!-- Cambié 'product-card' a 'card' -->
@@ -206,12 +205,6 @@ export function agregarEventosRecienLlegados(productos) {
             </div>
         `;
         productosContainer.innerHTML += productoHTML;
-=======
-    recienLlegadosLink.addEventListener("click", (event) => {
-        event.preventDefault(); // Evitar la acción por defecto del enlace
-        const productosRecienLlegados = filtrarRecienLlegados(productos);
-        mostrarProductos(productosRecienLlegados); // Mostrar productos recién llegados
->>>>>>> origin/carlis/develop
     });
 }
 

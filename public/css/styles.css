@@ -129,7 +129,6 @@ body::before {
   margin-right: 8px;
 }
 
-<<<<<<< HEAD
 
 /*Categorias y Mi Cuenta*/
 .account-button {
@@ -167,52 +166,6 @@ body::before {
 
 
 
-=======
-/*Categorias y Mi Cuenta*/
-.account-button {
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
- }
- 
- .menu {
-  position: relative; /* Esto asegura que el dropdown se posicione correctamente */
-}
-/* Ocultar el menú dropdown por defecto */
-.nav-links .dropdown {
-  display: none;
-  position: absolute;
-  background-color: #72009a;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  list-style-type: none;
-  border-radius: 5px ;
-}
-
-/* Mostrar el dropdown cuando se pasa el mouse por encima del menú */
-.nav-links .menu:hover .dropdown {
-  display: block;
-}
-
-/* Estilos para los enlaces dentro del dropdown */
-.nav-links .dropdown li {
-  padding: 8px 16px;
-  text-align: left;
-}
-
-.nav-links .dropdown li a {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  display: block;
-}
-
-.nav-links .dropdown li a:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-}
->>>>>>> origin/carlis/develop
 /* Buscador más ancho */
 .search-item {
   flex-grow: 3; /* Aumenta el ancho del buscador */
@@ -549,11 +502,7 @@ body::before {
     margin-top: 30px;
   }
   
-<<<<<<< HEAD
   .card{
-=======
-  .card-dif{
->>>>>>> origin/carlis/develop
     background-color: rgba(0, 0, 0, 0.3); /* Fondo más oscuro para las tarjetas */
     border-radius: 15px;
     padding: 20px;
@@ -582,17 +531,11 @@ body::before {
   .card-dif:hover {
     transform: translateY(-10px);
   }
-<<<<<<< HEAD
   
   .card::after, .card::before {
-=======
-
-  .card-dif::before {
->>>>>>> origin/carlis/develop
     content: '';
     position: absolute;
     height: 100%;
-<<<<<<< HEAD
     width: 100%;
     background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
     top: 50%;
@@ -607,18 +550,6 @@ body::before {
 .card::before {
     filter: blur(1.5rem);
 }
-=======
-    border: 2px solid #34EDF3;
-    border-radius: 15px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-
-  .card-dif:hover::before {
-    opacity: 1;
-  }
->>>>>>> origin/carlis/develop
 
 @keyframes spin {
     from {
