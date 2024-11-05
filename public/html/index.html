@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Nosotros - Geek Hub</title>
-  <link rel="icon" href="ruta_al_favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/productos.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <script type="module" src="../javascript/productos.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nosotros - Geek Hub</title>
+    <link rel="icon" href="ruta_al_favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/productos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type="module" src="../javascript/productos.js"></script>
+    <link rel="stylesheet" href="../css/style-carrusel.css">
 
 </head>
 <body>
-
 
     <!-- Contenedor Principal -->
   <div class="container">
@@ -59,6 +60,35 @@
   <br><br>
   <h1>Productos</h1>
   
+  <!-- carrusel -->
+  <div class="container-carousel">
+    <div class="carruseles" id="slider">
+        <section class="slider-section">
+            <img src="../img-carrusel/1.svg">
+        </section>
+        <section class="slider-section">
+            <img src="../img-carrusel/2.svg">
+        </section>
+        <section class="slider-section">
+            <img src="../img-carrusel/3.svg">
+        </section>
+        <section class="slider-section">
+            <img src="../img-carrusel/4.svg">
+        </section>
+        <section class="slider-section">
+            <img src="../img-carrusel/5.svg">
+        </section>
+        <section class="slider-section">
+            <img src="../img-carrusel/6.svg">
+        </section>
+    </div>
+    <div class="btn-left"><i class='bx bx-chevron-left'></i></div>
+    <div class="btn-right"><i class='bx bx-chevron-right'></i></div>
+</div>
+<script src="../javascript/script-carrusel.js"></script>
+
+
+
   <div id="productos" class="productos-container">
     <!-- Aquí se cargarán los productos desde el JSON -->
   </div>
