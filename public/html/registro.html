@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro e Inicio de Sesión - Geek Hub</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/styles-inicio.css">
+  <link rel="stylesheet" href="../css/productos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <script type="module" src="../javascript/productos.js"></script>
+  <style>
+    #productos {
+        display: none; /* Ocultar el contenedor de productos inicialmente */
+    }
+    #aboutContent {
+        display: block; /* Mostrar contenido de about inicialmente */
+    }
+  </style>
+
+
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <a href="/"> <img src="../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image"></a>
+        <br><br>
+        
+        <div id="navbar-placeholder"></div>
+
+        <script>
+          fetch('navbar.html')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Error al cargar el navbar');
+              }
+              return response.text();
+            })
+            .then(data => {
+              document.getElementById('navbar-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+              console.error('Error al incluir el navbar:', error);
+            });
+        </script>
+
+
+<div id="aboutContent">
+        <!-- Contenedor de formularios -->
+<div class="container-form">
+    <div class="image-container">
+        <div class="image-title">Aquí empieza la aventura</div> <!-- Título sobre la imagen -->
+    </div> 
+
+    <div class="wrapper">
+      <!-- Formulario de Registro -->
+      <div class="form-wrapper sign-up active">
+        <form id="registroForm" onsubmit="registerUser(event)" autocomplete="off"> 
+            <h1>Registro</h1>
+            <br>
+            <div class="input-group">
+                <input type="text" name="nombre" id="nombre" required autocomplete="off">
+                <label for="nombreCompleto">Nombre</label>
+                <span id="errorNombre" class="error"></span>
+            </div>
+            <div class="input-group">
+                <input type="text" name="apellido" id="apellido" required autocomplete="off">
+                <label for="nombreCompleto">Apellido</label>
+                <span id="errorApellido" class="error"></span>
+            </div>
+            <div class="input-group">
+                <input type="tel" name="telefono" id="telefono" required>
+                <label for="telefono">Número de Teléfono</label>
+                <span id="errorTelefono" class="error"></span>
+            </div>
+            <div class="input-group">
+                <input type="email" name="correo" id="correo" required autocomplete="off">
+                <label for="correo">Email</label>
+                <span id="errorCorreo" class="error"></span>
+            </div>
+            
+            <div class="input-group">
+                <input type="password" id="password" required oninput="validarPassword()">
+                <label for="password">Contraseña</label>
+                <span class="toggle-password" onclick="togglePasswordVisibility('password')">
+                    <i class="fas fa-eye"></i>
+                </span>
+            </div>
+            
+            <div class="input-group">
+                <input type="password" id="confirmPassword" required oninput="validarPassword()">
+                <label for="confirmPassword">Confirmar Contraseña</label>
+                <span class="toggle-password" onclick="togglePasswordVisibility('confirmPassword')">
+                    <i class="fas fa-eye"></i>
+                </span>
+                <span id="errorConfirmPassword" class="error"></span> <!-- Span para el error de confirmación -->
+            </div>
+            
+            <div class="remember">
+                <label><input type="checkbox" id="terms" required><a href="terminosycondiciones.html" > He leído los términos y condiciones</a></label>
+            </div>
+            
+            <button class="button-sign-in" type="submit">Registrarme</button>
+            
+            <div class="signUp-link">
+                <p>¿Ya tienes una cuenta? <a href="#" class="signInBtn-link" onclick="toggleForm()">Iniciar Sesión</a></p>
+            </div>
+            
+            <div id="errorMessages" class="error-messages"></div>
+        </form>
+    </div>
+    
+    <!-- Formulario de Inicio de Sesión -->
+    <div class="form-wrapper sign-in">
+        <form id="loginForm" onsubmit="loginUser(event)">
+            <h2>Inicio de Sesión</h2>
+            <div class="input-group">
+                <input type="email" name="correoLogin" required>
+                <label for="">Email</label>
+            </div>
+            <div style="height: 1px;"></div>
+            <div class="input-group">
+                <input type="password" name="passwordLogin" required>
+                <label for="">Contraseña</label>
+            </div>
+            <button class="button-sign-in " type="submit">Iniciar Sesión</button>
+            <div class="signIn-link">
+                <p>¿No tienes una cuenta? <a href="#" class="signInBtn-link" onclick="toggleForm()">Registrarte</a></p>
+            </div>
+            <div id="loginErrorMessages" class="error-messages"></div>
+        </form>
+    </div>
+  </div>
+</div>
+</div>  <!--Fin Form Content-->
+
+<!-- Contenedor para mostrar productos -->
+<div id="productos" class="productos-container">
+</div> 
+
+
+<!-- Footer -->
+<footer id="foot">
+    <div class='foot-inner-container'>
+        <div class="foot-inner-info">
+            <h2><a href="" class="footer-header">Información de la empresa</a></h2>
+            <ul class="footer-links">
+                <li><a href="">Acerca de Geek Hub</a></li>
+                <li><a href="">Política de devolución y reembolso</a></li>
+                <li><a href="">Política de propiedad intelectual</a></li>
+                <li><a href="">Política de envíos</a></li>
+                <li><a href="">Reportar actividad sospechosa</a></li>
+            </ul>
+        </div>
+        <div class="foot-inner-info">
+            <h2><a href="" class="footer-header">Atención al cliente</a></h2>
+            <ul class="footer-links">
+                <li><a href="">Preguntas frecuentes</a></li>
+                <li><a href="">Centro de seguridad</a></li>
+                <li><a href="">Protección de compras de Geek Hub</a></li>
+            </ul>
+        </div>
+        <div class="foot-inner-info">
+            <h2><a href="" class="footer-header">Ayuda</a></h2>
+            <ul class="footer-links">
+                <li><a href="">Guía de usuario</a></li>
+                <li><a href="">Contactar soporte</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="foot-inner-social">
+        <h2>Encuéntranos</h2>
+        <div class="social-container">
+            <a href="#" class="icono-transparente social-icon">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="icono-transparente social-icon">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="icono-transparente social-icon">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="icono-transparente social-icon">
+                <i class="fab fa-discord"></i>
+            </a>
+        </div>
+    </div>
+    <div class="subscribe-container">
+        <h2>¡Suscríbete a nuestro Newsletter!</h2>
+        <input type="email" id="email" placeholder="Dirección de correo" required>
+        <a href="#" class="subscribe-button" onclick="subscribe()">¡Suscríbete!</a>
+    </div>
+
+    <div class="footer-logo-container">
+      <img src="../img-carla/geekhub.png" alt="Logo" class="footer-logo">
+  </div>
+</footer>
+
+    </div> <!--Fin de Contenedor Principal -->
+
+    <!--Inicio de JS'S -->
+    <!-- Enlaza jQuery (requerido por Toastr) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Enlaza los archivos JS de Toastr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script src="../javascript/registro.js"></script>
+    <script src="../javascript/gestionLogin.js"></script>
+    <script src="../javascript/script.js"></script>
+
+    <script type="module">
+        import { cargarProductos, mostrarProductos, agregarEventosRecienLlegados, agregarEventosCategorias, agregarEventosBusqueda } from '../javascript/productos.js';
+    
+        // Inicializar el carrito
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || {};
+    
+        // Cargar los productos
+        cargarProductos().then(data => {
+            mostrarProductos(data); // Mostrar todos los productos al inicio
+            agregarEventosRecienLlegados(data); // Agregar el evento solo a "Recién Llegados"
+            agregarEventosCategorias(data); // Agregar eventos a las categorías
+            agregarEventosBusqueda(data); // Agregar evento a la búsqueda
+    
+            // Agregar evento al enlace "Recién Llegados"
+            const recienLlegadosLink = document.getElementById('recienLlegados');
+            recienLlegadosLink.addEventListener('click', (event) => {
+                event.preventDefault(); // Evitar la acción por defecto del enlace
+    
+                const aboutContent = document.getElementById('aboutContent');
+                const productosContainer = document.getElementById('productos');
+    
+                // Ocultar contenido de about y mostrar productos
+                aboutContent.style.display = 'none'; // Ocultar el contenido de About
+                productosContainer.style.display = 'flex'; // Mostrar productos
+            });
+    
+            // Agregar eventos a los enlaces de categorías y al formulario de búsqueda
+            agregarEventosCategorias(data);
+            agregarEventosBusqueda(data);
+        });
+    </script>
+
+  </body>
+
+
+</html>

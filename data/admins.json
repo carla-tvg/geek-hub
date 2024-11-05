@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "nombre": "Super Admin",
+        "email": "superadmin@geekhub.com",
+        "password": "superadminpassword",
+        "role": "superadmin"
+    },
+    {
+        "id": 2,
+        "nombre": "Admin",
+        "email": "admin@geekhub.com",
+        "password": "adminpassword",
+        "role": "admin"
+    }
+]

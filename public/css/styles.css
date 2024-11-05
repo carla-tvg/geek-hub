@@ -19,6 +19,7 @@ body {
   padding: 40px;
   position: relative;
   height: auto; /* Para permitir que crezca si hay más contenido */
+  margin-top: -40px;
 }
 
 /* Fondo animado aplicado a todo el sitio */
@@ -72,8 +73,9 @@ body::before {
 }
 
 .logo-image {
-  height: 50px; /* Ajusta según sea necesario */
+  height: 40px; /* Ajusta según sea necesario */
   margin-right: 10px; /* Espacio entre el logo y el texto */
+  margin-top:20px;
 }
 
 .logo-text {
@@ -92,6 +94,7 @@ body::before {
   backdrop-filter: blur(10px);
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .nav-links {
@@ -126,6 +129,7 @@ body::before {
   margin-right: 8px;
 }
 
+<<<<<<< HEAD
 
 /*Categorias y Mi Cuenta*/
 .account-button {
@@ -163,6 +167,52 @@ body::before {
 
 
 
+=======
+/*Categorias y Mi Cuenta*/
+.account-button {
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+ }
+ 
+ .menu {
+  position: relative; /* Esto asegura que el dropdown se posicione correctamente */
+}
+/* Ocultar el menú dropdown por defecto */
+.nav-links .dropdown {
+  display: none;
+  position: absolute;
+  background-color: #72009a;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  list-style-type: none;
+  border-radius: 5px ;
+}
+
+/* Mostrar el dropdown cuando se pasa el mouse por encima del menú */
+.nav-links .menu:hover .dropdown {
+  display: block;
+}
+
+/* Estilos para los enlaces dentro del dropdown */
+.nav-links .dropdown li {
+  padding: 8px 16px;
+  text-align: left;
+}
+
+.nav-links .dropdown li a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  display: block;
+}
+
+.nav-links .dropdown li a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+>>>>>>> origin/carlis/develop
 /* Buscador más ancho */
 .search-item {
   flex-grow: 3; /* Aumenta el ancho del buscador */
@@ -385,7 +435,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(90deg, rgba(21, 21, 31, 0.95) 50%, rgba(255, 255, 255, 0) 100%), url('../img-carla/headphones.png') no-repeat right center;
+  background: linear-gradient(90deg, rgba(21, 21, 31, 0.95) 40%, rgba(255, 255, 255, 0) 70%), url('../img-carla/banner.png') no-repeat right center;
   background-size: contain;
   padding: 60px 20px;
   border-radius: 12px;
@@ -432,7 +482,7 @@ body::before {
 @media (max-width: 768px) {
   #quienes-somos {
     background: linear-gradient(180deg, rgba(21, 21, 31, 0.95) 50%, rgba(255, 255, 255, 0) 100%),
-                url('../img-carla/banner.jpg') no-repeat center top;
+                url('../img-carla/banner.png') no-repeat center top;
     background-size: cover; /* La imagen cubre toda la sección en pantallas pequeñas */
     text-align: center;
     flex-direction: column;
@@ -499,7 +549,11 @@ body::before {
     margin-top: 30px;
   }
   
+<<<<<<< HEAD
   .card{
+=======
+  .card-dif{
+>>>>>>> origin/carlis/develop
     background-color: rgba(0, 0, 0, 0.3); /* Fondo más oscuro para las tarjetas */
     border-radius: 15px;
     padding: 20px;
@@ -512,27 +566,33 @@ body::before {
   
  
   
-  .card img {
+  .card-dif img {
     width: 100%;
     height: auto;
     border-radius: 10px;
   }
   
-  .card h3 {
+  .card-dif h3 {
     font-family: 'Orbitron', sans-serif;
     color: #34EDF3; /* Color cian para los títulos de las tarjetas */
     margin-top: 15px;
     font-size: 1.5rem;
   }
   
-  .card:hover {
+  .card-dif:hover {
     transform: translateY(-10px);
   }
+<<<<<<< HEAD
   
   .card::after, .card::before {
+=======
+
+  .card-dif::before {
+>>>>>>> origin/carlis/develop
     content: '';
     position: absolute;
     height: 100%;
+<<<<<<< HEAD
     width: 100%;
     background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
     top: 50%;
@@ -547,6 +607,18 @@ body::before {
 .card::before {
     filter: blur(1.5rem);
 }
+=======
+    border: 2px solid #34EDF3;
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+
+  .card-dif:hover::before {
+    opacity: 1;
+  }
+>>>>>>> origin/carlis/develop
 
 @keyframes spin {
     from {
@@ -575,7 +647,7 @@ body {
       align-items: center;
     }
   
-    .card {
+    .card-dif {
       width: 80%;
       margin-bottom: 20px;
     }
@@ -584,13 +656,13 @@ body {
   /*FOOTER*/
 
   #foot {
-    background: rgba(4, 10, 38, 0.7); /* Fondo oscuro y translúcido */
+    background: rgba(255, 255, 255, 0.1);/* Fondo oscuro y translúcido */
     backdrop-filter: blur(10px); /* Efecto de desenfoque */
-    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     color: #faf9fa; /* Color base para el texto */
     padding: 40px 50px; /* Aumentar el padding para más espacio */
     text-align: left; /* Alinear texto a la izquierda */
-    border-radius: 0px; /* Bordes redondeados */
+    border-radius: 12px; /* Bordes redondeados */
 }
 
 .foot-inner-container {
@@ -701,14 +773,21 @@ body {
 }
 
 .footer-bottom {
-    background-color: rgba(4, 10, 38, 0.7); /* Mismo color de fondo que el footer superior, con efecto cristal */
+    background-color: rgba(255, 255, 255, 0.1); /* Mismo color de fondo que el footer superior, con efecto cristal */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    text-align: center; /* Centrar el contenido del footer inferior */
-    border-radius: 0px; /* Bordes redondeados */
+    text-align: center;
+}
+
+
+.footer-logo-container {
+  text-align: center; /* Centrar el contenido del contenedor */
+  margin-top: 20px; /* Opcional: espacio superior */
 }
 
 .footer-logo {
-    max-width: 200px; /* Ajustar el tamaño del logo */
+  max-width: 200px; /* Ajustar el tamaño del logo */
+  display: inline-block; /* Asegura que el logo sea tratado como un bloque alineable */
 }
 
 /* Responsive Design */
