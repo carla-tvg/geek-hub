@@ -95,6 +95,7 @@ body::before {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   position: relative;
+  z-index: 100;
 }
 
 .nav-links {
@@ -139,7 +140,8 @@ body::before {
  }
  
  .menu {
-  position: relative; /* Esto asegura que el dropdown se posicione correctamente */
+  position: relative; 
+  z-index: 10;/* Esto asegura que el dropdown se posicione correctamente */
 }
 /* Ocultar el menú dropdown por defecto */
 .nav-links .dropdown {
@@ -148,9 +150,9 @@ body::before {
   background-color: #72009a;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  z-index: 1000;
   list-style-type: none;
-  border-radius: 5px ;
+  border-radius: 5px;
 }
 
 /* Mostrar el dropdown cuando se pasa el mouse por encima del menú */
@@ -162,17 +164,20 @@ body::before {
 .nav-links .dropdown li {
   padding: 8px 16px;
   text-align: left;
+  z-index: 10;
 }
 
 .nav-links .dropdown li a {
   color: rgb(255, 255, 255);
   text-decoration: none;
   display: block;
+  z-index: 10;
 }
 
 .nav-links .dropdown li a:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
+
 /* Buscador más ancho */
 .search-item {
   flex-grow: 3; /* Aumenta el ancho del buscador */
@@ -188,6 +193,7 @@ body::before {
   max-width: 600px;
   margin: 0 auto;
   position: relative; /* Permite manejar el layout más fácilmente */
+  overflow: hidden;
 }
 
 .search-container {
@@ -199,7 +205,7 @@ body::before {
   padding: 8px 16px;
   padding-left: 40px; /* Espacio para el ícono */
   border: none;
-  border-radius: 5px; /* Bordes redondeados en todo el input */
+  border-radius: 5px 0 0 5px; /* Bordes redondeados en todo el input */
   background-color: rgba(0, 0, 0, 0.3);
   color: #fff;
   width: 100%; /* Ocupa el 100% del contenedor */
@@ -228,10 +234,7 @@ body::before {
   cursor: pointer;
   border-radius: 0 5px 5px 0; /* Bordes redondeados solo en el lado derecho */
   transition: background-color 0.3s ease;
-  position: relative; /* Colocamos el botón en el lado derecho */
-  right: 0;
-  top: 0;
-  bottom: 0;
+  
   height: 100%; /* Aseguramos que el botón tenga la misma altura que el input */
   width: 65px; /* Ajustar el ancho según sea necesario */
 }

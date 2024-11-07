@@ -1,3 +1,10 @@
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.0rem;
+    letter-spacing: 0.1em;
+    color: #34EDF3; /* Color del título principal */
+}
+
 /* Estilos generales para el contenedor de la sección */
 .productos-container {
     display: flex;
@@ -10,10 +17,13 @@
     margin: 15px; /* Espaciado entre tarjetas */
     padding: 20px; /* Ajustar el padding según sea necesario */
     width: calc(33.33% - 30px); /* Ajustar el ancho para 3 tarjetas por fila */
-    background:  #1c1f2b8f;
+    background:  #1c1f2bd0;
     color: white;
     text-align: left;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Contenedor de imagen */
@@ -95,25 +105,6 @@
     inherits: false;
 }
 
-.product-card::after, .product-card::before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    z-index: -1;
-    padding: 3px;
-    border-radius: 10px;
-    animation: 3s spin linear infinite;
-}
-
-.product-card::before {
-    filter: blur(1.5rem);
-}
-
 @keyframes spin {
     from {
         --angle: 0deg;
@@ -140,7 +131,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin: 30px 0;
 }
 
 /* Botones para añadir y quitar productos */
@@ -148,7 +139,7 @@ body {
     background-color: #34EDF3;
     color: black;
     border: none;
-    padding: 8px 12px;
+    padding: 5px 10px;
     font-size: 20px;
     cursor: pointer;
     border-radius: 5px;
@@ -180,7 +171,7 @@ body {
 
 .btn-secondary {
     font-family: 'Orbitron', sans-serif;
-    padding: 15px 15px;
+    padding: 13px 13px;
     font-size: 15px;
     color: #FFF;
     border: 2px solid #F715AB; /* Borde rosado */
@@ -190,10 +181,13 @@ body {
     letter-spacing: 0.1em;
     text-decoration: none;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    margin-top: 25px;
+    
+
+    margin: 0 auto;
+    display: block;
 }
+
+
 
 .btn-secondary:hover {
     background-color: #F715AB;

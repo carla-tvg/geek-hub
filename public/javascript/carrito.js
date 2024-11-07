@@ -30,7 +30,7 @@ async function mostrarCarrito() {
                     <span>${cantidad}</span>
                     <button class="button" onclick="cambiarCantidad(${producto.id}, 1)">+</button>
                 </td>
-                <td>$${subtotal.toLocaleString('es-CO')}</td>s
+                <td>$${subtotal.toLocaleString('es-CO')}</td>
                 <td>
                     <button class="remove-button" onclick="eliminarDelCarrito(${producto.id})">Eliminar</button>
                 </td>

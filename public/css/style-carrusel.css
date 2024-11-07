@@ -9,7 +9,8 @@
     width:100%;
     background-color: #e0e0e077;
     overflow: hidden;
-    margin: 50px 0;
+    margin-bottom: 50px;
+    z-index: 1;
 }
 
 .carruseles {
@@ -21,11 +22,13 @@
 .slider-section {
     width: calc(100% / 10);
     width: 100%;
+    z-index: 2;
 }
 
 .slider-section img {
     width: 100%;
     height: 100%;
+    z-index: 2;
 }
 
 .btn-left,
@@ -43,6 +46,7 @@
     transform: translate(0,-50%);
     transition: .5s ease;
     user-select: none;
+    z-index: 1;
 }
 
 .btn-left:hover,
