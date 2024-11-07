@@ -192,8 +192,6 @@ body::before {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  position: relative; /* Permite manejar el layout más fácilmente */
-  overflow: hidden;
 }
 
 .search-container {
@@ -208,8 +206,8 @@ body::before {
   border-radius: 5px 0 0 5px; /* Bordes redondeados en todo el input */
   background-color: rgba(0, 0, 0, 0.3);
   color: #fff;
+  flex-grow: 1;
   width: 100%; /* Ocupa el 100% del contenedor */
-  outline: none;
 }
 
 .search-input::placeholder {
@@ -227,16 +225,14 @@ body::before {
 }
 
 .search-button {
-  padding: 4px 8px; /* Reducir el padding a la mitad */
+  padding: 4px 8px !important; /* Reducir el padding a la mitad */
   border: none;
-  background-color: rgb(255, 255, 255);
-  color: #4242429f;
-  cursor: pointer;
-  border-radius: 0 5px 5px 0; /* Bordes redondeados solo en el lado derecho */
-  transition: background-color 0.3s ease;
-  
-  height: 100%; /* Aseguramos que el botón tenga la misma altura que el input */
-  width: 65px; /* Ajustar el ancho según sea necesario */
+  background-color: rgb(255, 255, 255) !important;
+  color: #4242429f !important;
+  cursor: pointer !important;
+  border-radius: 0 5px 5px 0 !important; /* Bordes redondeados solo en el lado derecho */
+  height: 100% !important; /* Aseguramos que el botón tenga la misma altura que el input */
+  width: 65px !important; /* Ajustar el ancho según sea necesario */
 }
 
 .search-button:hover {

@@ -124,7 +124,7 @@ function crearEstrellas(puntuacion) {
 }
 
 // Función para agregar eventos de búsqueda
-function agregarEventosBusqueda(productos) {
+/* export function agregarEventosBusqueda(productos) {
     const searchForm = document.getElementById("searchForm");
     const searchInput = document.getElementById("searchInput");
 
@@ -138,7 +138,31 @@ function agregarEventosBusqueda(productos) {
 
         mostrarProductos(productosFiltrados);
     });
+} */
+
+// Función para agregar eventos de búsqueda
+// Asegúrate de exportar la función en productos.js
+export function agregarEventosBusqueda(productos) {
+    const searchForm = document.getElementById("searchForm");
+    const searchInput = document.getElementById("searchInput");
+
+    if (searchForm && searchInput) {
+        searchForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const query = searchInput.value.toLowerCase();
+            const productosFiltrados = productos.filter(producto =>
+                (producto.nombre && producto.nombre.toLowerCase().includes(query)) ||
+                (producto.descripcion && producto.descripcion.toLowerCase().includes(query))
+            );
+
+            mostrarProductos(productosFiltrados); // Asegúrate de importar o definir esta función
+        });
+    } else {
+        console.error("Elementos 'searchForm' o 'searchInput' no encontrados.");
+    }
 }
+
+
 
 // Función para agregar eventos de recién llegados
 function agregarEventosRecienLlegados(productos) {
@@ -164,7 +188,7 @@ function filtrarRecienLlegados(productos) {
 }
 
 // Función para agregar eventos de categorías
-function agregarEventosCategorias(productos) {
+export function agregarEventosCategorias(productos) {
     const botonesCategorias = document.querySelectorAll('.dropdown a[data-category]');
 
     botonesCategorias.forEach(boton => {
