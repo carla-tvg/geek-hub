@@ -1,13 +1,14 @@
 .container-equipo {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Distribuye el espacio entre las tarjetas */
+    justify-content: center;
+    gap: 8%;
     padding: 10px;
 }
 
 /* Estilo para cada tarjeta de equipo */
 .card-equipo {
-    margin: 15px; /* Espaciado entre tarjetas */
+    margin: 5px; /* Espaciado entre tarjetas */
     padding: 20px; /* Ajustar el padding según sea necesario */
     width: calc(25% - 30px); /* Ajustar el ancho para 4 tarjetas por fila */
     background: #1c1f2b;
@@ -79,7 +80,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: conic-gradient(from var(--angle),  #71009a80, #34edf388, #ff00ff52);
+    background-image: conic-gradient(from var(--angle),  #71009aab, #34edf388, #ff00ff3a);
     top: 50%;
     left: 50%;
     translate: -50% -50%;
@@ -118,6 +119,7 @@ body {
 @media (max-width: 1200px) {
     .card-equipo {
         width: calc(33.33% - 30px); /* 3 tarjetas por fila */
+        margin-top: 7%;
     }
 }
 
