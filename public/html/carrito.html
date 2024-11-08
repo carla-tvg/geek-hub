@@ -39,6 +39,7 @@
           return response.text();
         })
         .then(data => {
+          console.log("Navbar cargado correctamente");
           document.getElementById('navbar-placeholder').innerHTML = data;
         })
         .catch(error => {
