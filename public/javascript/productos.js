@@ -75,11 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         agregarEventosCarrito(); // Agregar eventos a los botones de agregar y eliminar
 
-<<<<<<< HEAD
         añadirCarrito(); 
-=======
-        /* */
->>>>>>> origin/carlis/develop
 
     }
 
