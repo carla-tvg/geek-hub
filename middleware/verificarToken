@@ -1,0 +1,20 @@
+const jwt = require('jsonwebtoken');
+
+// Middleware para verificar el token
+function verificarToken(req, res, next) {
+    const token = req.header('Authorization');
+    if (!token) {
+        return res.status(401).json({ message: 'Acceso denegado, no se encontró token.' });
+    }
+    try {
+        // El token se envía como 'Bearer <token>', así que lo extraemos
+        const tokenSinBearer = token.split(' ')[1]; 
+        const decoded = jwt.verify(tokenSinBearer, 'mi_clave_secreta'); // Asegúrate de usar el mismo secreto que el que usaste al generar el token
+        req.usuario = decoded; // Guardamos la información del usuario en req.usuario
+        next(); // Continuamos con la ejecución de la siguiente función
+    } catch (error) {
+        res.status(400).json({ message: 'Token no válido' });
+    }
+}
+
+module.exports = verificarToken;

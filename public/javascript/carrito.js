@@ -24,13 +24,10 @@ async function mostrarCarrito() {
             tr.innerHTML = `
                 <td>${producto.nombre}</td>
                 <td>$${producto.precio.toLocaleString('es-CO')}</td>
-                <td>
-                    <button class="button" onclick="cambiarCantidad(${producto.id}, -1)">-</button>
-                    <span>${cantidad}</span>
-                    <button class="button" onclick="cambiarCantidad(${producto.id}, 1)">+</button>
-                </td>
+                <td>${cantidad}</td>
                 <td>$${subtotal.toLocaleString('es-CO')}</td>
                 <td>
+                    <button class="button" onclick="agregarAlCarrito(${producto.id})">Agregar</button>
                     <button class="remove-button" onclick="eliminarDelCarrito(${producto.id})">Eliminar</button>
                 </td>
             `;
@@ -43,12 +40,30 @@ async function mostrarCarrito() {
     actualizarCarritoIcono(); // Asegurarse de actualizar el ícono cuando se muestra el carrito
 }
 
-function cambiarCantidad(idProducto, cambio) {
+function agregarAlCarrito(idProducto) {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || {};
+    
+    // Incrementar la cantidad del producto en el carrito
+    if (carrito[idProducto]) {
+        carrito[idProducto] += 1; // Aumentar cantidad si ya existe
+    } else {
+        carrito[idProducto] = 1; // Si no existe, añadir con cantidad 1
+    }
+
+    // Guardar el carrito actualizado
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+    // Volver a mostrar el carrito
+    mostrarCarrito();
+    actualizarCarritoIcono(); // Actualizar el número en el ícono del carrito
+}
+
+function eliminarDelCarrito(idProducto) {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || {};
     
     // Verificar si el producto existe en el carrito
     if (carrito[idProducto]) {
-        carrito[idProducto] += cambio; // Cambiar la cantidad
+        carrito[idProducto] -= 1; // Reducir la cantidad en uno
         
         // Si la cantidad llega a cero, eliminar el producto del carrito
         if (carrito[idProducto] <= 0) {
@@ -62,45 +77,6 @@ function cambiarCantidad(idProducto, cambio) {
         mostrarCarrito();
         actualizarCarritoIcono(); // Actualizar el número en el ícono del carrito
     }
-}
-
-function eliminarDelCarrito(idProducto) {
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || {};
-    
-    // Verificar si el producto existe en el carrito
-    if (carrito[idProducto]) {
-        delete carrito[idProducto]; // Eliminar el producto del carrito
-        
-        // Guardar el carrito actualizado
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-        
-        // Volver a mostrar el carrito
-        mostrarCarrito();
-        actualizarCarritoIcono(); // Actualizar el número en el ícono del carrito
-    }
-}
-
-// Función para vaciar el carrito
-function vaciarCarrito() {
-    localStorage.removeItem('carrito'); // Eliminar el carrito del localStorage
-    mostrarCarrito(); // Volver a mostrar el carrito
-    actualizarCarritoIcono(); // Actualizar el número en el ícono del carrito
-}
-
-// Función para finalizar la compra
-function finalizarCompra() {
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || {};
-    
-    if (Object.keys(carrito).length === 0) {
-        alert('El carrito está vacío. Añade productos antes de finalizar la compra.');
-        return;
-    }
-
-    // Aquí puedes agregar la lógica para procesar el pago o enviar la orden
-    alert('Compra finalizada con éxito. ¡Gracias por tu compra!');
-
-    // Vaciar el carrito después de la compra
-    vaciarCarrito();
 }
 
 // Función para actualizar el número en el ícono del carrito

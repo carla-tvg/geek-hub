@@ -22,18 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para agregar eventos a las categorías del menú
     function agregarEventosCategorias(productos) {
         const botonesCategorias = document.querySelectorAll('.dropdown a');
-
+        console.log('Botones de categoría encontrados:', botonesCategorias); // Verifica los elementos encontrados
+    
         botonesCategorias.forEach(boton => {
             boton.addEventListener('click', (event) => {
                 event.preventDefault(); // Evitar la acción por defecto del enlace
                 const categoriaSeleccionada = event.target.getAttribute('data-category');
-
-                // Verificar que la categoría seleccionada y los productos tengan categoría
-                const productosFiltrados = productos.filter(producto => 
-                    producto.categoria && 
+                console.log('Categoría seleccionada:', categoriaSeleccionada); // Confirmar la categoría seleccionada
+    
+                const productosFiltrados = productos.filter(producto =>
+                    producto.categoria &&
                     producto.categoria.toLowerCase() === categoriaSeleccionada.toLowerCase()
                 );
-
+    
+                console.log('Productos filtrados:', productosFiltrados); // Muestra los productos filtrados
                 mostrarProductos(productosFiltrados); // Mostrar los productos filtrados
             });
         });
@@ -63,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <span class="product-quantity" id="cantidad-${producto.id}">${cantidadEnCarrito}</span>
                                 <button class="btn-increase" data-id="${producto.id}">+</button>
                             </div>
-                            <a class="btn-secondary" data-id="${producto.id}">Añadir al Carrito</a>
+                        
                         </div>
                     </div>
                 `;
@@ -73,7 +75,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         agregarEventosCarrito(); // Agregar eventos a los botones de agregar y eliminar
 
+<<<<<<< HEAD
         añadirCarrito(); 
+=======
+        /* */
+>>>>>>> origin/carlis/develop
 
     }
 
@@ -154,7 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
             event.preventDefault(); // Evitar que se recargue la página
             const query = searchInput.value.toLowerCase();
 
-            // Filtrar productos según la búsqueda y asegurarse que nombre y descripción existan
             const productosFiltrados = productos.filter(producto => 
                 (producto.nombre && producto.nombre.toLowerCase().includes(query)) || 
                 (producto.descripcion && producto.descripcion.toLowerCase().includes(query))
@@ -175,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function filtrarRecienLlegados(productos) {
-        const diasRecientes = 7; // Define cuántos días atrás consideras como "reciente"
+        const diasRecientes = 7; 
         const fechaLimite = new Date();
         fechaLimite.setDate(fechaLimite.getDate() - diasRecientes);
 
@@ -185,7 +190,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-
 export function agregarEventosRecienLlegados(productos) {
     const recienLlegadosLink = document.getElementById("recienLlegados");
 
@@ -196,9 +200,8 @@ export function agregarEventosRecienLlegados(productos) {
     });
 }
 
-// Asegúrate de que la función filtrarRecienLlegados esté también disponible si no está dentro de agregarEventosRecienLlegados
 export function filtrarRecienLlegados(productos) {
-    const diasRecientes = 7; // Define cuántos días atrás consideras como "reciente"
+    const diasRecientes = 7; 
     const fechaLimite = new Date();
     fechaLimite.setDate(fechaLimite.getDate() - diasRecientes);
 
@@ -233,7 +236,6 @@ export function mostrarProductos(productos) {
         }
     });
 
-    añadirCarrito();
 }
 
 export function cargarProductos() {

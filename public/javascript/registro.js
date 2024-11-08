@@ -39,7 +39,7 @@ document.getElementById('telefono').addEventListener('input', function() {
     }
 });
 
-/// Validar contraseñas en tiempo real
+// Validar contraseñas en tiempo real
 function validarPassword() {
     const password = document.getElementById('password').value.trim();
     const confirmPassword = document.getElementById('confirmPassword').value.trim();
@@ -50,7 +50,6 @@ function validarPassword() {
     // Solo muestra el mensaje si confirmPassword tiene un valor
     if (confirmPassword) {
         if (password === confirmPassword) {
-            // Solo limpiamos el mensaje si las contraseñas coinciden
             errorMessage.style.color = ""; // Resetea el color
         } else {
             errorMessage.innerText = "Las contraseñas no coinciden";
@@ -68,17 +67,23 @@ function registerUser(event) {
     limpiarErrores(); // Limpia mensajes de error previos
 
     // Captura los valores de los campos del formulario
-    const nombreCompleto = event.target.nombreCompleto.value.trim();
+    const nombre = event.target.nombre.value.trim();
+    const apellido = event.target.apellido.value.trim();
     const telefono = event.target.telefono.value.trim();
     const correo = event.target.correo.value.trim();
     const password = event.target.password.value.trim();
-    const confirmPassword = document.getElementById('confirmPassword').value.trim(); // Cambiar aquí
+    const confirmPassword = document.getElementById('confirmPassword').value.trim();
 
     let isValid = true;
 
     // Validaciones con mensajes de error personalizados
-    if (!nombreCompleto) {
+    if (!nombre) {
         showNotification("El nombre es obligatorio", "error");
+        isValid = false;
+    }
+
+    if (!apellido) {
+        showNotification("El apellido es obligatorio", "error");
         isValid = false;
     }
 
@@ -115,12 +120,12 @@ function registerUser(event) {
     if (!isValid) return;
 
     // Si todo es válido, se registra al usuario
-    const usuario = { nombreCompleto, telefono, correo, password };
+    const usuario = { nombre, apellido, telefono, correo, password };
 
     console.log(usuario); //prueba
 
     // Enviar solicitud para agregar el usuario al servidor
-    fetch('http://localhost:3000/api/usuarios', {
+    fetch('http://localhost:8080/usuarios/crear', {  // URL correcta: usuarios/crear
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -147,9 +152,10 @@ function toggleForm() {
     registroForm.classList.toggle("active");
     loginForm.classList.toggle("active");
 }
+
 function togglePasswordVisibility(fieldId) {
     const passwordField = document.getElementById(fieldId);
-    const toggleIcon = event.currentTarget.querySelector('i'); // Encuentra el ícono dentro del span
+    const toggleIcon = event.currentTarget.querySelector('i');
 
     // Cambiar el tipo de input entre 'password' y 'text'
     if (passwordField.type === 'password') {
@@ -158,7 +164,7 @@ function togglePasswordVisibility(fieldId) {
         toggleIcon.classList.add('fa-eye-slash'); // Cambiar al ícono de "ocultar"
     } else {
         passwordField.type = 'password'; // Ocultar la contraseña
-        toggleIcon.classList.remove('fa-eye-slash'); // Cambiar al ícono a "ocultar"
+        toggleIcon.classList.remove('fa-eye-slash'); // Cambiar al ícono de "ocultar"
         toggleIcon.classList.add('fa-eye'); // Cambiar al ícono de "visible"
     }
 }
