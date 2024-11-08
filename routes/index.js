@@ -46,6 +46,10 @@ router.get('/admin/panelEcommerce.html', (req, res) => {
 });
 
 router.get('/admin/gestionEcommerce.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/html/admin/gestionUsuarios.html'));
+});
+
+router.get('/admin/gestionUsuarios.html', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/html/admin/gestionEcommerce.html'));
 });
 
