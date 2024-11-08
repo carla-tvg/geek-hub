@@ -11,17 +11,16 @@ function redirigirALogin() {
 // Función para mostrar la información del perfil
 async function mostrarPerfil() {
     const token = obtenerToken();
-    console.log(token); 
+    console.log("Token:", token); 
 
     if (token) {
         try {
             const response = await fetch('http://localhost:8080/usuarios/perfil', {
                 method: 'GET',
                 headers: {
-                    'Authorization': `Bearer ${token}`,  // Token enviado en el encabezado
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
-                },
-                credentials: 'same-origin',
+                }
             });
 
             if (!response.ok) {
@@ -36,6 +35,8 @@ async function mostrarPerfil() {
                 <p><strong>Correo:</strong> ${data.correo}</p>
                 <p><strong>Teléfono:</strong> ${data.telefono}</p>
             `;
+            perfilInfo.style.display = 'block'; // Mostrar la información del perfil
+            document.getElementById("editarInfo").style.display = 'none'; // Ocultar el formulario de edición
         } catch (error) {
             console.error('Error al obtener la información del perfil:', error);
             document.getElementById('perfilInfo').innerHTML = '<p>Error al cargar la información del perfil.</p>';
@@ -45,85 +46,78 @@ async function mostrarPerfil() {
     }
 }
 
+// Función para cargar los datos actuales del usuario en el formulario de edición
+function cargarDatosUsuario() {
+    fetch('/api/usuario', {
+        headers: {
+            'Authorization': `Bearer ${obtenerToken()}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("nombre").value = data.nombre;
+        document.getElementById("email").value = data.email;
+        document.getElementById("direccion").value = data.direccion || '';
+        document.getElementById("telefono").value = data.telefono || '';
+    })
+    .catch(error => console.error("Error al cargar los datos del usuario:", error));
+}
+
 // Función para cerrar sesión
 function cerrarSesion() {
     localStorage.removeItem('authToken');
+    localStorage.removeItem("user");
     redirigirALogin();
 }
 
-// Llamar a la función de mostrar perfil al cargar la página
-document.addEventListener('DOMContentLoaded', mostrarPerfil);
+// Agregar eventos al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    mostrarPerfil();
 
-// Agregar evento al enlace de cerrar sesión
-document.getElementById('cerrarSesion').addEventListener('click', (event) => {
-    event.preventDefault();
-    cerrarSesion();
+    // Evento para ver el perfil
+    document.getElementById('verPerfil').addEventListener('click', (event) => {
+        event.preventDefault();
+        mostrarPerfil(); // Mostrar solo la información del perfil
+    });
+
+    // Evento para editar información del perfil
+    document.getElementById("editarInfoLink").addEventListener("click", (event) => {
+        event.preventDefault();
+        document.getElementById("perfilInfo").style.display = "none"; // Ocultar la información del perfil
+        document.getElementById("editarInfo").style.display = "block"; // Mostrar el formulario de edición
+        cargarDatosUsuario(); // Rellenar el formulario con los datos actuales del usuario
+    });
+
+    // Evento para cerrar sesión
+    document.getElementById("cerrarSesion").addEventListener("click", cerrarSesion);
 });
 
-// Agregar evento al enlace de Ver Perfil
-document.getElementById('verPerfil').addEventListener('click', (event) => {
-    event.preventDefault();
-    mostrarPerfil(); // Llama a la función mostrarPerfil al hacer clic en "Ver Perfil"
-});
-
-document.getElementById("editarInfoLink").addEventListener("click", (event) => {
-    event.preventDefault();
-
-    // Ocultar contenido de perfil y mostrar el formulario de edición
-    document.getElementById("perfilInfo").style.display = "none";
-    document.getElementById("editarInfo").style.display = "block";
-
-    // Rellenar el formulario con los datos actuales del usuario (simulado aquí)
-    cargarDatosUsuario();
-});
-
-function cargarDatosUsuario() {
-    // Aquí llamas a la API para obtener la información del usuario
-    fetch('/api/usuario')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("nombre").value = data.nombre;
-            document.getElementById("email").value = data.email;
-            document.getElementById("direccion").value = data.direccion || '';
-            document.getElementById("telefono").value = data.telefono || '';
-        })
-        .catch(error => console.error("Error al cargar los datos del usuario:", error));
-}
-
+// Función para enviar los datos actualizados
 document.getElementById("formEditarInfo").addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    // Obtener el ID del usuario que deseas editar
-    const userId = 1; // O el ID real del usuario obtenido de algún lugar, como un token o perfil
-
-    // Recoger los datos del formulario
     const datosActualizados = {
-        nuevoNombre: document.getElementById("nombre").value,
-        nuevoApellido: document.getElementById("apellido").value,
-        nuevoTelefono: document.getElementById("telefono").value,
-        nuevoCorreo: document.getElementById("email").value,
-        nuevoPassword: document.getElementById("password").value  // Este campo puede estar oculto o ser opcional
+        nombre: document.getElementById("nombre").value,
+        apellido: document.getElementById("apellido").value,
+        telefono: document.getElementById("telefono").value,
+        correo: document.getElementById("email").value
     };
 
-    // Construir la URL de la solicitud
-    let queryParams = Object.keys(datosActualizados)
-        .filter(key => datosActualizados[key] !== "")
-        .map(key => `${key}=${encodeURIComponent(datosActualizados[key])}`)
-        .join("&");
-
     try {
-        const response = await fetch(`/usuarios/editar/${userId}?${queryParams}`, {
+        const response = await fetch(`/usuarios/editar`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer <TOKEN>" // Añade el token del usuario si es necesario
-            }
+                "Authorization": `Bearer ${obtenerToken()}`
+            },
+            body: JSON.stringify(datosActualizados)
         });
 
         if (response.ok) {
-            const updatedUser = await response.json();
             alert("Información actualizada con éxito.");
-            // Aquí puedes actualizar la vista del perfil con los nuevos datos
+            mostrarPerfil(); // Volver a mostrar el perfil actualizado
+            document.getElementById("perfilInfo").style.display = "block";
+            document.getElementById("editarInfo").style.display = "none";
         } else {
             alert("Error al actualizar la información del usuario.");
         }

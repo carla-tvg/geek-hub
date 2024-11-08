@@ -65,6 +65,10 @@ router.get('/carrito.html', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/html/carrito.html'));
 });
 
+router.get('/carrito-micuenta.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/html/carrito-micuenta.html'));
+});
+
 router.get('/usuarios/perfil', verificarToken, (req, res) => {
     // Aquí puedes acceder a los datos del usuario desde req.usuario
     res.json({

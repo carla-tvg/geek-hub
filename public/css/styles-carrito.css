@@ -189,26 +189,7 @@ body::before {
   pointer-events: none;
 }
 
-.search-button {
-  padding: 4px 8px; /* Reducir el padding a la mitad */
-  border: none;
-  background-color: rgb(255, 255, 255);
-  color: #4242429f;
-  cursor: pointer;
-  border-radius: 0 5px 5px 0; /* Bordes redondeados solo en el lado derecho */
-  transition: background-color 0.3s ease;
-  position: relative; /* Colocamos el botón en el lado derecho */
-  right: 0;
-  top: 0;
-  bottom: 0;
-  height: 100%; /* Aseguramos que el botón tenga la misma altura que el input */
-  width: 65px; /* Ajustar el ancho según sea necesario */
-}
 
-.search-button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  color: #000;
-}
 
 /* Media queries para dispositivos pequeños */
 .menu-toggle {
@@ -383,7 +364,6 @@ body {
 
   button{
     padding: 10px 15px; /* Espaciado interno */
-    margin:  15px; /* Espaciado entre botones */
     border: none;
     border-radius: 5px; /* Bordes redondeados */
     cursor: pointer;
