@@ -416,6 +416,68 @@ body {
     text-align: left; /* Alineación a la izquierda */
 }
 
+#editarInfo {
+  display: none;
+  max-width: 400px;
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+    color: #fff; /* Color de texto en blanco para contrastar */
+  text-align: left; /* Alineación del texto a la izquierda */
+}
+
+#editarInfo h2 {
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+#formEditarInfo label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+#formEditarInfo input[type="text"],
+#formEditarInfo input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+#formEditarInfo input[type="text"]:focus,
+#formEditarInfo input[type="email"]:focus {
+  border-color: #80d4ff;
+  outline: none;
+}
+
+#formEditarInfo button {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  padding: 15px 30px;
+  font-size: 1rem;
+  color: black;
+  margin-top: 20px;
+  border-radius: 8px;
+  transition: 0.3s;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  display: block;
+  background-color: #34EDF3;
+  border: none;
+}
+
+
+
+#formEditarInfo button:hover {
+  background-color: #fff;
+}
+
 .profile-content h1 {
     font-family: 'Orbitron', sans-serif; /* Fuente futurista */
     font-size: 2.5rem; /* Tamaño del encabezado */
