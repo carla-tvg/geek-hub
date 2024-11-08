@@ -125,7 +125,7 @@ function registerUser(event) {
     console.log(usuario); //prueba
 
     // Enviar solicitud para agregar el usuario al servidor
-    fetch('http://localhost:8080/usuarios/crear', {
+    fetch('http://localhost:8080/usuarios/crear', {  // URL correcta: usuarios/crear
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

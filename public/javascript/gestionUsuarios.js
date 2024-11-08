@@ -2,7 +2,8 @@
 function cargarUsuarios() {
     const usuariosTableBody = document.getElementById("usuariosTable");
 
-    fetch('/api/usuarios')
+    // Solicitar los usuarios desde la ruta correcta del backend
+    fetch('/usuarios/traer')  // Cambié la URL aquí para que coincida con la ruta del backend
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error al cargar los usuarios');
@@ -41,7 +42,7 @@ function cargarUsuarios() {
 // Función para eliminar un usuario
 function eliminarUsuario(id) {
     if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
-        fetch(`/api/usuarios/${id}`, {
+        fetch(`/usuarios/eliminar/${id}`, {  // Cambié la URL aquí para que coincida con la ruta del backend
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

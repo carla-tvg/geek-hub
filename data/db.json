@@ -326,6 +326,14 @@
       "precio": 650000,
       "stock": 10,
       "imagen": "/img-productos/imagen-1729606336126-523262637.png"
+    },
+    {
+      "id": 1731029431243,
+      "nombre": "producto nuevo2",
+      "descripcion": "esto es un producto nuevor",
+      "precio": 25000,
+      "stock": 10,
+      "imagen": "/img-productos/imagen-1731029431233-683382886.png"
     }
   ]
 }

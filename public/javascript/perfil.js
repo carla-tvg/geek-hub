@@ -1,51 +1,62 @@
-// perfil.js
+// Función para obtener el token de autenticación
+function obtenerToken() {
+    return localStorage.getItem('authToken');
+}
+
+// Función para redirigir al usuario si no está autenticado
+function redirigirALogin() {
+    window.location.href = '/registro.html';
+}
 
 // Función para mostrar la información del perfil
 async function mostrarPerfil() {
-    // Obtener el ID del usuario del localStorage
-    const userId = localStorage.getItem('userId');
+    
+    const token = obtenerToken();
+    console.log(token); 
 
-    if (userId) {
+    if (token) {
         try {
-            // Hacer una llamada al backend para obtener la información del usuario
-            const response = await fetch(`/api/usuarios/${userId}`);
-            if (!response.ok) throw new Error('Error al obtener la información del usuario');
+            const response = await fetch('http://localhost:8080/usuarios/perfil', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,  // Token enviado en el encabezado
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'same-origin',  // Cambiar a 'same-origin' si no se usan cookies para autenticación
+            });
 
-            const usuario = await response.json();
+            if (!response.ok) {
+                throw new Error(`Error ${response.status}: No se pudo obtener el perfil`);
+            }
 
+            const data = await response.json();
             const perfilInfo = document.getElementById('perfilInfo');
             perfilInfo.innerHTML = `
-                
-                <p><strong>Nombre:</strong> ${usuario.nombreCompleto || 'No disponible'}</p>
-                <p><strong>Email:</strong> ${usuario.correo || 'No disponible'}</p>
-                <p><strong>Teléfono:</strong> ${usuario.telefono || 'No disponible'}</p>
+                <h3>Información del Perfil</h3>
+                <p><strong>Nombre:</strong> ${data.nombre} ${data.apellido}</p>
+                <p><strong>Correo:</strong> ${data.correo}</p>
+                <p><strong>Teléfono:</strong> ${data.telefono}</p>
             `;
         } catch (error) {
-            console.error(error);
+            console.error('Error al obtener la información del perfil:', error);
             document.getElementById('perfilInfo').innerHTML = '<p>Error al cargar la información del perfil.</p>';
         }
     } else {
-        document.getElementById('perfilInfo').innerHTML = '<p>No se encontró información de usuario.</p>';
+        redirigirALogin();
     }
 }
 
-// Llamar a la función al cargar la página
-document.addEventListener('DOMContentLoaded', mostrarPerfil);
-
 // Función para cerrar sesión
 function cerrarSesion() {
-    // Eliminar el ID de usuario del localStorage
-    localStorage.removeItem('userId');
-    
-    // Redirigir al usuario a la página de inicio
-    window.location.href = '/'; // Cambia esto a la URL que desees para la página de inicio
+    localStorage.removeItem('authToken');
+    redirigirALogin();
 }
 
-// Llamar a la función al cargar la página
+// Llamar a la función de mostrar perfil al cargar la página
 document.addEventListener('DOMContentLoaded', mostrarPerfil);
 
 // Agregar evento al enlace de cerrar sesión
 document.getElementById('cerrarSesion').addEventListener('click', (event) => {
-    event.preventDefault(); // Evitar la acción por defecto del enlace
+    event.preventDefault();
     cerrarSesion();
 });

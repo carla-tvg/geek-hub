@@ -186,7 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-
 export function agregarEventosRecienLlegados(productos) {
     const recienLlegadosLink = document.getElementById("recienLlegados");
 

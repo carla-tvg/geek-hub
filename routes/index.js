@@ -4,7 +4,7 @@ const router = express.Router();
 const path = require('path');
 
 const productosRoutes = require('./gestionProductos'); 
-const gestionLogin = require('./gestionLogin');
+const verificarToken = require('../middleware/verificarToken');
 const adminsRoutes = require('./admins'); // Importa el archivo admins.js
 const carritoRoutes = require('./gestionCarrito'); 
 
@@ -23,6 +23,9 @@ router.get('/admin/gestionProductos.html', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/html/admin/gestionProductos.html'));
 });
 
+router.get('/perfil.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/html/perfil.html'));
+});
 
 
 router.get('/registro.html', (req, res) => {
@@ -58,8 +61,14 @@ router.get('/carrito.html', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/html/carrito.html'));
 });
 
-router.get('/perfil.html', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/html/perfil.html'));
+router.get('/usuarios/perfil', verificarToken, (req, res) => {
+    // Aquí puedes acceder a los datos del usuario desde req.usuario
+    res.json({
+        nombre: req.usuario.nombre,
+        apellido: req.usuario.apellido,
+        correo: req.usuario.correo,
+        telefono: req.usuario.telefono
+    });
 });
 
 router.get('/centrodeseguridad.html', (req, res) => {
@@ -73,10 +82,6 @@ router.get('/terminosycondiciones.html', (req, res) => {
 // Usar las rutas de productos bajo /api/productos
 router.use('/api/productos', productosRoutes);
 
-
-
-// Usar las rutas de inicio de sesión bajo /api/login
-router.use('/api/login', gestionLogin); // Define la ruta base para las funciones de login
 
 // Usar las rutas de administradores bajo /api/admin
 router.use('/api/admin', adminsRoutes); // Define la ruta base para las funciones de admin
