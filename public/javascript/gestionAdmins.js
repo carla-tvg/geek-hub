@@ -3,27 +3,27 @@ function loginUser(event) {
     const correoAdminLogin = document.getElementById('correoAdminLogin').value;
     const passwordAdminLogin = document.getElementById('passwordAdminLogin').value;
 
-    fetch('/api/admin/login', {
+    fetch('http://localhost:8080/usuarios/login', {  // Asegúrate de cambiar a la URL de tu backend en producción
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email: correoAdminLogin, password: passwordAdminLogin }),
+        body: JSON.stringify({ correo: correoAdminLogin, password: passwordAdminLogin }),
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Redirigir según el rol del usuario
-            if (data.role === 'superadmin') {
-                window.location.href = '/admin/panelAdmin.html'; // Redirigir a superadmin
-            } else if (data.role === 'admin') {
-                window.location.href = '/admin/panelEcommerce.html'; // Redirigir a admin
-            } else {
-                alert('Rol no reconocido');
-            }
-        } else {
-            alert('Correo o contraseña incorrectos');
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Credenciales inválidas');
+        }
+        return response.text(); // Recibimos el token como texto plano
+    })
+    .then(token => {
+        localStorage.setItem('token', token); // Guardar el token en localStorage
+
+        // Obtener el rol del token decodificado o hacer una solicitud para obtenerlo
+        if (token) {
+            // Dependiendo del rol (puedes cambiar esta lógica según lo necesites)
+            window.location.href = '/admin/panelAdmin.html';  // Panel para superadmin o admin
         }
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => alert('Error en el inicio de sesión: ' + error.message));
 }
