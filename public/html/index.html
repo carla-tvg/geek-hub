@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="../css/style-carrusel.css">
   <script type="module" src="../javascript/productos.js"></script>
 
 </head>
@@ -21,7 +23,6 @@
   <div class="container">
    <a href="/"> <img src="../img-carla/geekhub.png" alt="Geek Hub Logo" class="logo-image"></a>
     <br><br>
-
 
     <nav class="navbar">
       <div class="menu-toggle">
@@ -38,8 +39,6 @@
             <li><a href="#" data-category="electronicos">Electrónicos</a></li>
             <li><a href="#" data-category="muebles">Muebles</a></li>
             <li><a href="#"data-category="ropa">Ropa</a></li>
-          
-
           </ul>
         </li>
         <li><a href="#" id="recienLlegados"><i class="fas fa-box"></i> Recién Llegados</a></li>
@@ -58,6 +57,35 @@
       </ul>
   </nav>
   <br><br>
+
+  <!-- carrusel -->
+  <div class="container-carousel">
+    <div class="carruseles" id="slider">
+        <section class="slider-section">
+            <img src="../img-carrusel/1.svg">
+        </section>
+        <section class="slider-section">
+            <img src="../img-carrusel/2.svg">
+        </section>
+        <section class="slider-section">
+            <img src="../img-carrusel/3.svg">
+        </section>
+        <section class="slider-section">
+            <img src="../img-carrusel/4.svg">
+        </section>
+        <section class="slider-section">
+            <img src="../img-carrusel/5.svg">
+        </section>
+        <section class="slider-section">
+            <img src="../img-carrusel/6.svg">
+        </section>
+    </div>
+    <div class="btn-left"><i class='bx bx-chevron-left'></i></div>
+    <div class="btn-right"><i class='bx bx-chevron-right'></i></div>
+</div>
+<script src="../javascript/script-carrusel.js"></script>
+
+
   <h1>Productos</h1>
   
   <div id="productos" class="productos-container">
@@ -141,9 +169,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<script  src="javascript/productos.js"></script>
+<script  src="../javascript/productos.js"></script>
 
-<script src="javascript/script.js"></script>
+<script src="../javascript/script.js"></script>
 
 
 

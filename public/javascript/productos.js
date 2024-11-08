@@ -59,13 +59,13 @@ document.addEventListener("DOMContentLoaded", () => {
                             <h3 class="product-name">${producto.nombre}</h3>
                             <p class="product-description">${producto.descripcion}</p>
                             <strong class="product-price">$${Number(producto.precio).toLocaleString('es-CO')}</strong>
-                            <span class="product-rating">${estrellasHTML}</span>
+                            <span class="product-rating">${estrellasHTML} </span>
                             <div class="cart-actions">
-                                <button class="btn-decrease" data-id="${producto.id}">-</button>
-                                <span class="product-quantity" id="cantidad-${producto.id}">${cantidadEnCarrito}</span>
-                                <button class="btn-increase" data-id="${producto.id}">+</button>
-                            </div>
-                        
+                            <button class="btn-decrease" data-id="${producto.id}">−</button>
+                            <span class="product-quantity" id="cantidad-${producto.id}">${cantidadEnCarrito}</span>
+                            <button class="btn-increase" data-id="${producto.id}">+</button>
+                        </div>
+                        <button class="btn-secondary" data-id="${producto.id}">Añadir al Carrito</button>
                         </div>
                     </div>
                 `;
@@ -74,52 +74,41 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         agregarEventosCarrito(); // Agregar eventos a los botones de agregar y eliminar
-
-        /* */
-
     }
 
+    // Función para agregar eventos a botones del carrito
     function agregarEventosCarrito() {
         const botonesIncrementar = document.querySelectorAll('.btn-increase');
         const botonesDisminuir = document.querySelectorAll('.btn-decrease');
+        const botonesAgregarCarrito = document.querySelectorAll('.btn-secondary');
 
         botonesIncrementar.forEach(boton => {
             boton.addEventListener('click', (e) => {
                 const idProducto = e.target.getAttribute('data-id');
-                carrito[idProducto] = (carrito[idProducto] || 0) + 1; // Incrementar cantidad
-                actualizarCarrito(idProducto); // Actualizar carrito solo para este producto
+                carrito[idProducto] = (carrito[idProducto] || 0) + 1;
+                actualizarCarrito(idProducto);
             });
         });
-
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('btn-secondary')) {
-                const productId = e.target.getAttribute('data-id');
-                // Incrementar la cantidad del producto en el carrito
-                if (carrito[productId]) {
-                    carrito[productId]++;
-                } else {
-                    carrito[productId] = 1;
-                }
-                // Actualizar la cantidad mostrada en la interfaz
-                document.getElementById(`cantidad-${productId}`).textContent = carrito[productId];
-                console.log(`Producto ${productId} añadido al carrito. Cantidad actual: ${carrito[productId]}`);
-                }
-            actualizarCarrito();
-        }); 
-
-
+    
         botonesDisminuir.forEach(boton => {
             boton.addEventListener('click', (e) => {
                 const idProducto = e.target.getAttribute('data-id');
                 if (carrito[idProducto]) {
-                    carrito[idProducto] -= 1; // Disminuir cantidad
-                    if (carrito[idProducto] === 0) {
-                        delete carrito[idProducto]; // Eliminar del carrito si llega a 0
-                    }
+                    carrito[idProducto]--;
+                    if (carrito[idProducto] === 0) delete carrito[idProducto];
+                    actualizarCarrito(idProducto);
                 }
-                actualizarCarrito(idProducto); // Actualizar carrito solo para este producto
             });
         });
+    
+        botonesAgregarCarrito.forEach(boton => {
+            boton.addEventListener('click', (e) => {
+                const productId = e.target.getAttribute('data-id');
+                carrito[productId] = (carrito[productId] || 0) + 1;
+                actualizarCarrito(productId);
+            });
+        });
+
     }
 
     function actualizarCarrito(idProducto) {
@@ -224,7 +213,7 @@ export function mostrarProductos(productos) {
                         <p class="product-description">${producto.descripcion}</p>
                         <strong class="product-price">$${Number(producto.precio).toLocaleString('es-CO')}</strong>
                     </div>
-                     <a class="btn-secondary" data-id="${producto.id}">Añadir al Carrito</a>
+                    <a class="btn-secondary" data-id="${producto.id}">Añadir al Carrito</a>
 
                 </div>
             `;

@@ -19,13 +19,26 @@ body {
   position: relative;
   width: 400px;
   height: auto; 
-  margin: 70px auto; 
-  background: rgba(0, 0, 0, 0.39); 
+  margin: 20px auto; 
+  background: rgba(21, 21, 31, 0.493);
   backdrop-filter: blur(10px); 
   border-radius: 20px;
   padding: 40px;
   overflow: hidden;
   transition: box-shadow 0.5s ease; 
+}
+
+
+@keyframes animate {
+  0% {
+    box-shadow: 0 0 50px #0ef; 
+  }
+  50% {
+    box-shadow: 0 0 50px #056dcf; 
+  }
+  100% {
+    box-shadow: 0 0 50px #34EDF3; 
+  }
 }
 
 h2 {

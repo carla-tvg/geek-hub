@@ -63,6 +63,7 @@ body {
     flex: 1; /* Toma la mitad derecha */
     background: rgba(21, 21, 31, 0.493);
     backdrop-filter: blur(10px);
+    background: rgba(21, 21, 31, 0.493);
     padding: 40px;
     overflow: auto;
     margin-left: 0px; /* Espacio entre la imagen y el formulario */

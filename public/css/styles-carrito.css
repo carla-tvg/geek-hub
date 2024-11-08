@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} 
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -142,33 +142,7 @@ body::before {
   position: relative; /* Esto asegura que el dropdown se posicione correctamente */
 }
 
-.dropdown {
-  display: none; /* Cambiar a block cuando se muestre */
-  position: absolute;
-  top: 100%; /* Asegura que esté justo debajo del menú */
-  left: 0; /* Alineación horizontal */
-  width: 200px; /* Ajusta según sea necesario */
-  background: #72009a;
-  border-radius: 15px;
-  padding: 10px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
-  z-index: 1000; /* Asegúrate de que este valor sea alto */
-  pointer-events: auto; /* Permite la interacción */
-}
-
-.dropdown-item {
-  display: block; /* Asegura que los elementos del dropdown se muestren como bloques */
-  color: white; /* Color del texto */
-  padding: 5px 10px; /* Espaciado interno */
-  text-decoration: none; /* Quita el subrayado */
-}
-
-.dropdown-item:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Efecto hover */
-}
-
-/* Buscador más ancho */  
+/* Buscador más ancho */
 .search-item {
   flex-grow: 3; /* Aumenta el ancho del buscador */
   display: flex;

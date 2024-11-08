@@ -42,7 +42,7 @@
       "categoria": "accesorios",
       "stock": 10,
       "puntuacion": 4.5,
-      "fechaLlegada": "2024-10-15"
+      "fechaLlegada": "2024-11-07"
     },
     {
       "id": 5,
@@ -53,7 +53,7 @@
       "categoria": "muebles",
       "stock": 10,
       "puntuacion": 4.5,
-      "fechaLlegada": "2024-10-10"
+      "fechaLlegada": "2024-11-07"
     },
     {
       "id": 6,
@@ -86,7 +86,7 @@
       "categoria": "electronicos",
       "stock": 10,
       "puntuacion": 4.5,
-      "fechaLlegada": "2024-10-01"
+      "fechaLlegada": "2024-11-07"
     },
     {
       "id": 9,
@@ -97,7 +97,7 @@
       "categoria": "electronicos",
       "stock": 10,
       "puntuacion": 4.5,
-      "fechaLlegada": "2024-10-01"
+      "fechaLlegada": "2024-11-07"
     },
     {
       "id": 10,
@@ -152,7 +152,7 @@
       "categoria": "accesorios",
       "stock": 10,
       "puntuacion": 4.7,
-      "fechaLlegada": "2024-10-22"
+      "fechaLlegada": "2024-11-07"
     },
     {
       "id": 15,
